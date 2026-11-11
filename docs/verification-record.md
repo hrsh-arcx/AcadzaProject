@@ -21,9 +21,9 @@ All observations below concern the supplied snapshot and implementation. No hidd
 - Public GitHub destination supplied by the user: https://github.com/hrsh-arcx/AcadzaProject. Initial read showed no remote refs.
 - Vercel CLI is installed via npm exec but initially reported logged out. No deployment is claimed.
 
-## Browser verification limitation
+## Browser verification
 
-The in-app browser access host was unavailable. Windows Computer Use then stopped because it could not reliably determine the browser URL. No screenshot, responsive-layout, clicking, or browser-local persistence verification is claimed. Unit tests cover transitions and sanitization, but do not substitute for visual/browser QA.
+The in-app browser access host was unavailable. Windows Computer Use then stopped because it could not reliably determine the browser URL. Later, Playwright launched installed Microsoft Edge against the local production server. Screenshots were visually inspected at 1440 x 900 and 390 x 844. The desktop Proposed change tab was clicked and its exact diff and rendered before/after preview appeared. The first preview exposed a stale CSS URL because a build had replaced assets while an older server was running; restarting that server restored HTTP 200 for the stylesheet. These checks do not verify the public deployment or every review interaction.
 
 ## External dependencies still requiring verification
 
@@ -37,7 +37,7 @@ Update this file with actual results, failures, commands, and limits as they occ
 
 - Python suite: **46 passed**, including batch ID coverage, size fallback, blind-input isolation, Groq request/limit behavior, key consistency, MCQ serialization, and atomic type-migration guards.
 - Console suite: **13 passed**, including the actual route handlers' unconfigured-storage, cross-origin, and request-size checks.
-- The final production Next.js build and TypeScript check passed after the dashboard's responsive text, per-case model labels, blind answers, and completed-run comparison card were added. HTTP GET on port 3100 returned 200 and the report queue. The connected browser host remained unavailable; no visual screenshot claim is made.
+- The final production Next.js build and TypeScript check passed after the dashboard's responsive text, per-case model labels, blind answers, and completed-run comparison card were added. HTTP GET on port 3100 returned 200 and the report queue. A subsequent local Edge/Playwright preview captured and visually checked desktop and mobile layouts and the Proposed change tab after restarting the stale preview server.
 - Real PostgreSQL HTTP verification passed at http://127.0.0.1:3100: approval, a subsequent GET with identical persisted state, draft editing, rejection, audit atomicity, one winner/one HTTP 409 for conflicting writes, and an idempotent retry. The script created four audit events in a new isolated test workspace and printed no credentials or cookies.
 - The integration checks exposed two real defects beyond the unit suite: cached Next environment loading initially ignored root .env, and the initial origin check rejected legitimate requests when Next's internal URL used localhost. Both were corrected before the successful HTTP check. Cross-origin writes still fail the route-handler test.
 - Gemini 3.8's larger run encountered timeouts. A Gemini 3.5 verifier completed; its subsequent per-question run completed **10 reports / 7 grouped cases** before an HTTP 429.
