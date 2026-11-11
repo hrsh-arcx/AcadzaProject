@@ -135,3 +135,5 @@ npm.cmd run dev
 Open http://127.0.0.1:3000. The UI works from precomputed findings and needs no model calls during review. Its Run details page identifies the actual artifact mode. Without PostgreSQL it explicitly uses a browser-local demo workspace.
 
 Actual checks and remaining limits are recorded in [docs/verification-record.md](docs/verification-record.md). Product rationale is in [PRODUCT.md](PRODUCT.md); exact prompts and genuine mistakes are in [PROMPTS.md](PROMPTS.md).
+
+The [bonus source-content audit](docs/bonus-audit.md) documents findings in four questions with no student reports. It is separate from the required 44-report export.
