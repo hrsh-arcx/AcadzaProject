@@ -1,0 +1,37 @@
+{
+  "scope": "Secondary defects not specifically reported by students. These are source observations, not hidden ground-truth labels. They are excluded from the required 44-result array and have not been auto-applied.",
+  "findings": [
+    {
+      "questionId": "6264197209f4fd65f58f5707",
+      "repair": "spelling",
+      "field": "question",
+      "find": "Canolla",
+      "replace": "Canola",
+      "evidence": "Option B misspells the crop name; the same question's solution uses Canola. Student R040 only wrote 'wrong', and the academic answer C remains correct.",
+      "status": "assistant_reviewed_secondary_finding"
+    },
+    {
+      "questionId": "61ee6c9d90a1a968a168686b",
+      "repair": "spelling",
+      "field": "solution",
+      "find": "prominant",
+      "replace": "prominent",
+      "evidence": "The solution contains a separate spelling error; R022 reports the option's plexux typo, not this word. The keyed answer remains B.",
+      "status": "assistant_reviewed_secondary_finding"
+    },
+    {
+      "questionId": "6956d7e988d7701e5617bd3e",
+      "repair": "notation",
+      "field": "solution",
+      "evidence": "The displayed velocity relation contains two minus operators where the explanation requires v = dx/dt = Aω cos(ωt). R030 disputes the amplitude; that amplitude/key is correct. Faculty should verify and replace the two specific operator spans.",
+      "status": "faculty_review"
+    }
+  ],
+  "unreportedQuestionIds": [
+    "68dea87d387eea3d0d95fbe3",
+    "68dea657387eea3d0d95f54a",
+    "695ede2a88d7701e561aa9d9",
+    "68dea6e6387eea3d0d95f6f8"
+  ],
+  "unreportedQuestionConclusion": "No new academic defect is asserted for these four questions merely because they lack reports. Their presence is not evidence of a defect."
+}

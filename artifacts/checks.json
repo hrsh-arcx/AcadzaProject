@@ -1,0 +1,177 @@
+[
+  {
+    "id": "lcr_voltage",
+    "passed": true,
+    "value": 50.0,
+    "expected": 50,
+    "evidence": "V = sqrt(40² + (60−30)²) = 50 V; option A."
+  },
+  {
+    "id": "gas_pressure",
+    "passed": true,
+    "value": 4800.0,
+    "expected": 4800,
+    "evidence": "P = ρv_rms²/3 = 0.09×400²/3 = 4800 Pa; option D."
+  },
+  {
+    "id": "cube_flux",
+    "passed": true,
+    "value": 1.0,
+    "expected": 1,
+    "evidence": "Face contribution q/(4ε₀), corner contribution q/(4ε₀); n = 1."
+  },
+  {
+    "id": "buoyancy",
+    "passed": true,
+    "value": 20.0,
+    "expected": 20,
+    "evidence": "800 g = (1 g/cm³)×a²×2 cm, so a = 20 cm."
+  },
+  {
+    "id": "electron_energy",
+    "passed": true,
+    "value": 16.71245167460696,
+    "expected": 16.71,
+    "evidence": "K = h²/(2mλ²) ≈ 16.71 eV, consistent with option B (16.8 eV)."
+  },
+  {
+    "id": "mean_life",
+    "passed": true,
+    "value": 1.4426950408889636,
+    "expected": 1.4427,
+    "evidence": "τ = 3/ln(48/6) ≈ 1.443 min; only option B."
+  },
+  {
+    "id": "expansion",
+    "passed": true,
+    "value": 5.7e-05,
+    "expected": 5.7e-05,
+    "evidence": "α = 0.19/(100×100) = 1.9×10⁻⁵ °C⁻¹; γ = 3α = 5.7×10⁻⁵, option A."
+  },
+  {
+    "id": "friction",
+    "passed": true,
+    "value": 0.8,
+    "expected": 0.8,
+    "evidence": "F−100μ=10 and 2F−100μ=100 give μ=0.8; option A."
+  },
+  {
+    "id": "projectile",
+    "passed": true,
+    "value": 4.0,
+    "expected": 4.0,
+    "evidence": "R/H = 4 cot θ; R=H implies tan θ=4, option B."
+  },
+  {
+    "id": "shm",
+    "passed": true,
+    "value": 11.313708498984761,
+    "expected": 11.313708498984761,
+    "evidence": "v=Aω cos(ωt), ω=π/8, t=2; A=8√2 m, option D."
+  },
+  {
+    "id": "wheels",
+    "passed": true,
+    "value": 4.0,
+    "expected": 4,
+    "evidence": "Relative angle = (1/2)(π/2−π/4)t²=2π; first positive t=4 s."
+  },
+  {
+    "id": "ydse",
+    "passed": true,
+    "value": 7.999999999999999,
+    "expected": 8,
+    "evidence": "Shift = (1/0.005)[0.002(0.5)−0.0015(0.4)] = 0.08 m = 8 cm."
+  },
+  {
+    "id": "area",
+    "passed": true,
+    "value": 3113.0,
+    "expected": 3113,
+    "evidence": "6(7.203)²=311.299254 m²; four significant figures give A=311.3 and 10A=3113."
+  },
+  {
+    "id": "sphere",
+    "passed": true,
+    "value": 14.0,
+    "expected": 14,
+    "evidence": "V(R/2)=22 V and V(2R)=8 V relative to infinity; difference=14 V."
+  },
+  {
+    "id": "drops",
+    "passed": true,
+    "value": 4.000000000000001,
+    "expected": 4,
+    "evidence": "Q=64q and R=4r; σ_big/σ_small = 64/16=4, option B."
+  },
+  {
+    "id": "forces",
+    "passed": true,
+    "value": 1.0,
+    "expected": 1.0,
+    "evidence": "Newton's third law gives equal force magnitudes; ratio 1:1."
+  },
+  {
+    "id": "half_life",
+    "passed": true,
+    "value": 180.0,
+    "expected": 180,
+    "evidence": "7/8 disintegrated means 1/8 remains: three half-lives, 180 days."
+  },
+  {
+    "id": "interference",
+    "passed": true,
+    "value": 2.0,
+    "expected": 2,
+    "evidence": "I/I₀=2+2 cos(π/2)=2. Assertion false; 'always' in reason also false; no offered option matches."
+  },
+  {
+    "id": "coulomb",
+    "passed": true,
+    "value": 99.00000000000001,
+    "expected": 99,
+    "evidence": "F'=100(1.1)(0.9)=99 N; option C."
+  },
+  {
+    "id": "photoelectric",
+    "passed": true,
+    "value": 1.1,
+    "expected": 1.1,
+    "evidence": "Stopping potential = 1240/400−2=1.1 V; option D."
+  },
+  {
+    "id": "momentum",
+    "passed": true,
+    "value": 2.0,
+    "expected": 2,
+    "evidence": "At fixed mass, p∝√K; four times K gives twice p, option A."
+  },
+  {
+    "id": "copper_conditional",
+    "passed": true,
+    "value": 50.000000000000014,
+    "expected": 50,
+    "evidence": "Using the solution's explicit 10 cm edge gives contraction 50 mm³; the stem omits that edge."
+  },
+  {
+    "id": "inductance_conditional",
+    "passed": true,
+    "value": 50.00132593632245,
+    "expected": 50.0028,
+    "evidence": "Using the solution's explicit L=95.5 mH gives Z≈50 Ω; L is absent from the stem."
+  },
+  {
+    "id": "lens_power",
+    "passed": true,
+    "value": 5.0,
+    "expected": 5,
+    "evidence": "Real magnification 4 gives v=50 cm; total power 10 D, each lens 5 D."
+  },
+  {
+    "id": "image_ratio",
+    "passed": true,
+    "value": 16.0,
+    "expected": 16,
+    "evidence": "Lens positions give magnifications 4 and 1/4; image-size ratio 16."
+  }
+]

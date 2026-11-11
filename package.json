@@ -1,0 +1,14 @@
+{
+  "name": "acadza-report-fix",
+  "private": true,
+  "workspaces": ["apps/console"],
+  "scripts": {
+    "dev": "npm run dev --workspace apps/console",
+    "build": "npm run build --workspace apps/console",
+    "start": "npm run start --workspace apps/console",
+    "typecheck": "npm run typecheck --workspace apps/console",
+    "test:web": "npm run test --workspace apps/console",
+    "triage": "python -m engine.cli --mode reviewed",
+    "verify": "python -m engine.cli --validate-only"
+  }
+}

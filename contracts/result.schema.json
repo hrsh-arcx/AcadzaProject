@@ -1,0 +1,139 @@
+{
+  "$defs": {
+    "Edit": {
+      "additionalProperties": false,
+      "properties": {
+        "field": {
+          "enum": [
+            "question",
+            "solution",
+            "answer",
+            "questionType"
+          ],
+          "title": "Field",
+          "type": "string"
+        },
+        "find": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          ],
+          "title": "Find"
+        },
+        "replace": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          ],
+          "title": "Replace"
+        }
+      },
+      "required": [
+        "field",
+        "find",
+        "replace"
+      ],
+      "title": "Edit",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "reportId": {
+      "title": "Reportid",
+      "type": "string"
+    },
+    "questionId": {
+      "title": "Questionid",
+      "type": "string"
+    },
+    "verdict": {
+      "enum": [
+        "defect",
+        "no_error",
+        "display_issue",
+        "app_issue",
+        "language_mode",
+        "already_fixed",
+        "not_actionable"
+      ],
+      "title": "Verdict",
+      "type": "string"
+    },
+    "repair": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Repair"
+    },
+    "edit": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Edit"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "route": {
+      "enum": [
+        "auto_apply",
+        "faculty_review",
+        "no_change"
+      ],
+      "title": "Route",
+      "type": "string"
+    },
+    "confidence": {
+      "maximum": 1,
+      "minimum": 0,
+      "title": "Confidence",
+      "type": "number"
+    },
+    "evidence": {
+      "maxLength": 1800,
+      "minLength": 1,
+      "title": "Evidence",
+      "type": "string"
+    },
+    "student_reply": {
+      "maxLength": 700,
+      "minLength": 1,
+      "title": "Student Reply",
+      "type": "string"
+    }
+  },
+  "required": [
+    "reportId",
+    "questionId",
+    "verdict",
+    "repair",
+    "edit",
+    "route",
+    "confidence",
+    "evidence",
+    "student_reply"
+  ],
+  "title": "Result",
+  "type": "object"
+}
