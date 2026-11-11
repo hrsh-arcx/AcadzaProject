@@ -67,11 +67,9 @@ Coverage is not accuracy against hidden labels. Check `docs/verification-record.
 
 ## Deployment to Vercel
 
-1. Push this project to a public GitHub repository. Check the staged diff and secret ignore rules first.
-2. Import it into Vercel, choose **Next.js**, and set Root Directory to `apps/console`. Enable inclusion of files outside that directory so shared contracts remain available.
-3. Use the repository npm lockfile/workspace install. Build command: `npm run build`; Next.js output directory: default. If using the Vercel CLI, run it from `apps/console` and confirm the project root.
-4. Add `DATABASE_URL` (a pooled PostgreSQL connection string) and a random `SESSION_SECRET` of at least 32 characters to Vercel. The console needs no inference key; inference is an offline job.
-5. Redeploy, check the public URL in an unauthenticated browser, and verify approval persistence after refresh. Keep the project and database available for seven days.
+The live console is [acadza-report-fix-eight.vercel.app](https://acadza-report-fix-eight.vercel.app/). Project `acadza-report-fix` is connected to the public GitHub repository. Vercel uses Next.js, Node 24, Root Directory `apps/console`, and includes source files outside that directory for shared contracts and artifacts. The repository npm workspace build command is `npm run build`; Next.js uses its default output directory. The CLI was linked from the repository root.
+
+`DATABASE_URL` and `SESSION_SECRET` are configured as Vercel secrets for Production and Preview. No Groq key was deployed: inference runs offline, while the console reads a precomputed reviewed snapshot. The public URL returned HTTP 200 without Vercel authentication; the real production PostgreSQL review flow was verified in an isolated workspace. Keep the deployment and database available for seven days from submission.
 
 The application initializes `acadza_workspaces` on first database access. The database user needs permission to create this table. Its JSONB state is updated with an optimistic version comparison, keeping a review action and its audit event atomic. This is a scoped demo store, not production SSO or a privileged institutional faculty account.
 
@@ -88,12 +86,13 @@ The application initializes `acadza_workspaces` on first database access. The da
 
 ## Submission checklist
 
-- [ ] Public GitHub repository and committed results.json
-- [ ] Genuine complete live run, or explicit reviewed/precomputed disclosure
-- [ ] Public faculty console URL, persistent review storage verified, seven-day availability
-- [ ] PROMPTS.md with exact prompts and genuine failures
-- [ ] PRODUCT.md, at most one page
+- [x] Public GitHub repository and committed results.json
+- [x] Genuine complete live candidate and explicit reviewed/precomputed console disclosure
+- [x] Public faculty console URL and persistent review storage verified
+- [ ] Seven-day availability after submission
+- [x] PROMPTS.md with exact prompts and genuine failures
+- [x] PRODUCT.md, at most one page
 - [ ] Three-minute recording (see docs/demo-script.md)
 - [ ] Email with the three links and your own commitment/start-date/motivation answers
 
-No public deployment, external API outcome, database verification, or recording is implied by this checklist.
+The recording and submission email remain the applicant's deliverables; their completion is not implied by this checklist.

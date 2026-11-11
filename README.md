@@ -125,6 +125,8 @@ Questions? Reply to the email. Good luck. We're excited to see what you build.
 
 The assignment above is preserved. See [IMPLEMENTATION.md](IMPLEMENTATION.md) for installation, architecture, safety policy, live inference configuration, and deployment.
 
+**Live faculty console:** [acadza-report-fix-eight.vercel.app](https://acadza-report-fix-eight.vercel.app/). It serves precomputed reviewed findings and stores faculty actions in isolated PostgreSQL demo workspaces; no inference key is needed in the browser.
+
 ```powershell
 python -m venv .venv
 .venv/Scripts/python.exe -m pip install -r engine/requirements.txt

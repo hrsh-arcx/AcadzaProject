@@ -27,7 +27,6 @@ The in-app browser access host was unavailable. Windows Computer Use then stoppe
 
 ## External dependencies still requiring verification
 
-- Public production deployment and unauthenticated access.
 - Seven-day availability (requires leaving deployment and storage active).
 - Actual three-minute screen recording and viewing permissions.
 
@@ -35,6 +34,8 @@ Update this file with actual results, failures, commands, and limits as they occ
 
 ## Latest verified outcomes
 
+- **Production deployment:** Vercel project `acadza-report-fix` is linked to the public GitHub repository and serves [acadza-report-fix-eight.vercel.app](https://acadza-report-fix-eight.vercel.app/). The Next.js/TypeScript build completed on Vercel with Node 24, Root Directory `apps/console`, and outside-root source access enabled. An unauthenticated HTTP GET returned 200, and the public page was visually inspected in Brave. Vercel Authentication was disabled for the public assignment URL; the temporary automation bypass created by `vercel curl` was revoked.
+- The deployed `/api/workspace` reported `storage=database`. `scripts/verify_http.py --origin https://acadza-report-fix-eight.vercel.app` passed approval, persistence after a new GET, draft edit, rejection, atomic audit, one HTTP 409 for concurrent writes, and idempotent retry in a new isolated workspace. It recorded four test audit events and sent no student message. Production and Preview hold only `DATABASE_URL` and `SESSION_SECRET` as Vercel secrets; no Groq key was deployed.
 - A reported desktop scroll failure was reproduced at 1920 x 877 on R023: the centre grid item expanded beyond its fixed-height layout, clipping the action footer. Grid row and panel minimum sizing were corrected. Playwright/Edge then confirmed the centre content scrolls, R023's **Approve finding** and R001's **Approve correction** buttons are visible, and action footers remain within their panels at 390, 900, 1024, 1280, and 1920px widths. No approval was submitted during this layout check.
 - Python suite: **46 passed**, including batch ID coverage, size fallback, blind-input isolation, Groq request/limit behavior, key consistency, MCQ serialization, and atomic type-migration guards.
 - Console suite: **13 passed**, including the actual route handlers' unconfigured-storage, cross-origin, and request-size checks.
