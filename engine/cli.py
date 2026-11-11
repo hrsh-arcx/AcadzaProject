@@ -1,12 +1,15 @@
 import argparse
 import json
+import os
+import re
 from collections import Counter, defaultdict
 from datetime import datetime, timezone
+from decimal import Decimal, InvalidOperation
 from pathlib import Path
 from engine.checks import academic_checks
 from engine.content import apply_patches, digest, payload, title
 from engine.models import Proposal, Result, Solve
-from engine.provider import Gemini
+from engine.provider import Gemini, Groq, load_env
 from engine.reviewed import decisions
 from engine.validation import validate_proposal
 from engine.batching import generate_batch
@@ -75,7 +78,147 @@ def validate_export(results, questions, reports, taxonomy):
                 raise ValueError(str(errors))
 
 
-def run(mode="reviewed", limit=None, max_calls=20, min_interval=20, candidate=False, batch_size=8):
+def canonical_answer(question_type, answer, expected_unit=None):
+    if not isinstance(answer, str):
+        return None
+    if question_type == "scq":
+        match = re.fullmatch(r"\(?\s*([A-Da-d])\s*\)?", answer.strip())
+        return match.group(1).upper() if match else None
+    if question_type == "integerQuestion":
+        try:
+            value_text = answer.strip()
+            if expected_unit:
+                match = re.fullmatch(r"([+-]?\d+(?:\.\d+)?)\s*" + re.escape(expected_unit), value_text, re.I)
+                if match:
+                    value_text = match.group(1)
+            value = Decimal(value_text)
+            return str(value.normalize()) if value.is_finite() else None
+        except InvalidOperation:
+            return None
+    return None
+
+
+def reconcile_blind_key(question, solves, proposal):
+    """Block a model's contradictory key claims without choosing a new key."""
+    if len(solves) != 2 or not all(s["sufficient_data"] for s in solves):
+        return proposal
+    question_type = question["questionType"]
+    unit_match = re.search(r"\(\s*in\s+([A-Za-z]+)\s*\)", payload(question)["question"], re.I)
+    expected_unit = unit_match.group(1) if unit_match else None
+    answers = [canonical_answer(question_type, s["answer"], expected_unit) for s in solves]
+    current = canonical_answer(question_type, payload(question)["answer"], expected_unit)
+    if not current or not answers[0] or answers[0] != answers[1]:
+        return proposal
+    if current != answers[0] and proposal["verdict"] != "defect":
+        proposal.update(verdict="defect", repair="answer_key", patches=[], unresolved=True,
+            evidence=f"Key-consistency check: stored answer {current} differs from both blind answers {answers[0]}. The adjudication's non-defect claim was rejected; faculty must verify the calculation.",
+            student_reply="Your report is being reviewed: independent checks disagree with the stored answer. Faculty will verify the calculation before any key change.")
+    elif current == answers[0] and proposal["repair"] == "answer_key" and proposal["patches"]:
+        proposed = [canonical_answer(question_type, p["replace"], expected_unit) for p in proposal["patches"] if p["field"] == "answer"]
+        if len(proposed) == len(proposal["patches"]) and all(value == current for value in proposed):
+            proposal.update(verdict="no_error", repair=None, patches=[], unresolved=False,
+                evidence=f"The stored answer {payload(question)['answer']} matches both blind answers in the question's requested unit. The proposed key replacement changes only the unit display, not the value.",
+                student_reply="The stored number matches the result in the unit requested by the question, so no answer-key change is needed.")
+        else:
+            proposal.update(patches=[], unresolved=True,
+                evidence=proposal["evidence"] + " Key-consistency check blocked the proposed key edit because both blind answers match the stored key.")
+    elif proposal["repair"] == "answer_key":
+        proposed = [canonical_answer(question_type, p["replace"], expected_unit) for p in proposal["patches"] if p["field"] == "answer"]
+        if proposed and any(value != answers[0] for value in proposed):
+            proposal.update(patches=[], unresolved=True,
+                evidence=proposal["evidence"] + " Key-consistency check blocked a proposed key edit that disagrees with both blind answers.")
+    return proposal
+
+
+def reconcile_history(question, reports, proposal):
+    """Trust a dated correction only when the reported old text is now absent."""
+    if proposal["repair"] not in (None, "spelling"):
+        return proposal
+    current_text = payload(question)["question"]
+    for event in question.get("errorHistory", []):
+        corrections = re.findall(r"['\"]?([A-Za-z]+)['\"]?\s*->\s*['\"]?([A-Za-z]+)['\"]?", event.get("note", ""))
+        for old, new in corrections:
+            if (any(re.search(r"\b" + re.escape(old) + r"\b", r["comment"], re.I) for r in reports)
+                and not re.search(r"\b" + re.escape(old) + r"\b", current_text, re.I)
+                and re.search(r"\b" + re.escape(new) + r"\b", current_text, re.I)):
+                proposal.update(verdict="already_fixed", repair=None, patches=[], unresolved=False,
+                    evidence=f"Dated error history records '{old}' to '{new}', and the current question contains '{new}' but not '{old}'.",
+                    student_reply=f"The reported '{old}' spelling has already been corrected to '{new}' in the current question.")
+                return proposal
+    return proposal
+
+
+def reconcile_taxonomy(proposal, taxonomy):
+    """Turn contradictory model fields into reviewable, patch-free findings."""
+    verdict, repair = proposal["verdict"], proposal["repair"]
+    if verdict != "defect" and repair is not None:
+        if repair in taxonomy["repairs"]:
+            proposal.update(verdict="defect", patches=[], unresolved=True,
+                evidence=proposal["evidence"] + " Model verdict and content repair conflicted; no edit was accepted without faculty review.",
+                student_reply="Your report has been sent for faculty review. No question change has been applied yet.")
+        else:
+            proposal.update(repair=None, patches=[], unresolved=True,
+                evidence=proposal["evidence"] + " Model supplied an unknown repair; no edit was accepted without faculty review.")
+    elif verdict == "defect" and repair not in taxonomy["repairs"]:
+        proposal.update(verdict="not_actionable", repair=None, patches=[], unresolved=True,
+            evidence=proposal["evidence"] + " Model gave no valid repair category; faculty must classify this before editing.",
+            student_reply="Your report needs faculty classification before any question change can be proposed.")
+    elif verdict != "defect" and proposal["patches"]:
+        proposal.update(patches=[], unresolved=True,
+            evidence=proposal["evidence"] + " A non-defect proposal cannot carry an edit; the edit was discarded for faculty review.")
+    return proposal
+
+
+def reconcile_reply(proposal):
+    """A dry-run proposal cannot tell a learner a new edit has been applied."""
+    if proposal["verdict"] == "already_fixed":
+        return proposal
+    claim = re.search(r"\b(?:has|have|had)\s+been\s+(?:fixed|corrected|updated|changed|applied)\b|"
+        r"\b(?:we|i)\s+(?:have\s+)?(?:fixed|corrected|updated|changed|applied)\b|"
+        r"\b(?:is|are)\s+now\s+(?:fixed|corrected|updated|changed)\b", proposal["student_reply"], re.I)
+    if claim:
+        proposal["student_reply"] = "Thank you for reporting this. Faculty will review the finding; no new question change has been applied yet."
+    return proposal
+
+
+def reconcile_unanswerable(solves, proposal):
+    """A missing valid option cannot be repaired by changing only the key."""
+    no_option = re.compile(r"options? (?:do(?:es)? not include|do(?:es)? not contain)|none of .*options?|no (?:provided |offered )?options?|not (?:among|listed)", re.I)
+    if (proposal["verdict"] == "defect" and proposal["repair"] == "answer_key" and len(solves) == 2
+        and all(s["answer"] is None and s["sufficient_data"] and no_option.search(s["derivation"]) for s in solves)):
+        proposal.update(repair="unsound", patches=[], unresolved=True,
+            evidence="Both independent solves find that no offered option matches the answer as written. A key-only change cannot repair the missing valid choice; faculty must review the question.",
+            student_reply="The available choices appear not to cover the result. Faculty will review the question before any scoring or content change.")
+    return proposal
+
+
+def reconcile_mcq_storage(question, solves, proposal):
+    """Separate malformed answer serialization from academic answer disputes."""
+    if question["questionType"] != "mcq":
+        return proposal
+    answer = payload(question)["answer"]
+    if not isinstance(answer, list):
+        return proposal
+    if len(answer) == 1 and isinstance(answer[0], str) and re.fullmatch(r"[A-D](?:,\s*[A-D])+", answer[0]):
+        labels = [part.strip() for part in answer[0].split(",")]
+        if len(set(labels)) == len(labels):
+            proposal.update(verdict="defect", repair="answer_key",
+                patches=[{"field": "answer", "find": answer, "replace": labels}], unresolved=True,
+                evidence="The MCQ key stores several option labels as one comma-delimited array item. Separating those labels fixes serialization only; faculty must still verify the correct answer set because the blind solves disagree.",
+                student_reply="The answer format needs correction. Faculty will also verify which choices are correct before any scoring change.")
+    elif (proposal["repair"] == "type_mismatch" and isinstance(answer, list)
+          and len([item for item in answer if isinstance(item, str) and re.fullmatch("[A-D]", item)]) == 1
+          and all(item == "" or isinstance(item, str) and re.fullmatch("[A-D]", item) for item in answer)):
+        label = next(item for item in answer if item)
+        if len(solves) == 2 and all(canonical_answer("scq", solve["answer"]) == label for solve in solves):
+            proposal.update(patches=[{"field": "questionType", "find": "mcq", "replace": "scq"},
+                {"field": "answer", "find": answer, "replace": label}], unresolved=True,
+                evidence=proposal["evidence"] + " Both dependent fields are proposed together; faculty must confirm the intended scoring type.")
+    return proposal
+
+
+def run(mode="reviewed", limit=None, max_calls=30, min_interval=20, candidate=False, batch_size=8,
+        model_switches=None):
     questions, reports, taxonomy = load_data()
     hashes = {name: digest(read("data/" + name + ".json")) for name in ("questions", "reports", "taxonomy")}
     if mode == "reviewed" and hashes != read("engine/source-lock.json"):
@@ -88,7 +231,17 @@ def run(mode="reviewed", limit=None, max_calls=20, min_interval=20, candidate=Fa
     checks = academic_checks()
     if not all(c["passed"] for c in checks.values()):
         raise ValueError("An academic calculation check failed")
-    provider = Gemini(ROOT / "artifacts/private-runs/gemini-cache", max_calls, min_interval) if mode == "live" else None
+    provider = None
+    if mode == "live":
+        load_env()
+        provider = (Groq(ROOT / "artifacts/private-runs/groq-cache", max_calls, min_interval)
+                    if os.environ.get("GROQ_API_KEY") else
+                    Gemini(ROOT / "artifacts/private-runs/gemini-cache", max_calls, min_interval))
+    switches = dict(model_switches or [])
+    if switches and not isinstance(provider, Groq):
+        raise ValueError("Model switching requires Groq live mode")
+    if any(index < 1 or not re.fullmatch(r"[a-zA-Z0-9._/-]+", model) for index, model in switches.items()):
+        raise ValueError("Invalid model switch")
     results, cases = [], []
     interruption = None
     prepared = {}
@@ -96,6 +249,9 @@ def run(mode="reviewed", limit=None, max_calls=20, min_interval=20, candidate=Fa
     for index, (qid, group) in enumerate(groups.items()):
         if limit and index >= limit:
             break
+        if provider and index in switches:
+            provider.model = switches[index]
+            print(f"Switching Groq model for remaining cases: {provider.model}", flush=True)
         q = by_id[qid]
         solves = []
         if provider:
@@ -110,9 +266,15 @@ def run(mode="reviewed", limit=None, max_calls=20, min_interval=20, candidate=Fa
                 else:
                     blind = {"questionType": q["questionType"], "question": payload(q)["question"], "quesImages": payload(q)["quesImages"]}
                     solves = [provider.generate(prompt, blind, Solve).model_dump() for prompt in ("solve-v1.txt", "verify-v1.txt")]
-                    proposal = provider.generate("adjudicate-v1.txt", {"question": q,
+                    proposal = provider.generate("adjudicate-v2.txt", {"question": q,
                         "reports": [{k: r[k] for k in ("reportId", "reportedAt", "source", "comment")} for r in group],
-                        "taxonomy": taxonomy, "blind_solves": solves}, Proposal).model_dump()
+                        "taxonomy": taxonomy, "stored_answer": payload(q)["answer"], "blind_solves": solves}, Proposal).model_dump()
+                proposal = reconcile_taxonomy(proposal, taxonomy)
+                proposal = reconcile_mcq_storage(q, solves, proposal)
+                proposal = reconcile_blind_key(q, solves, proposal)
+                proposal = reconcile_unanswerable(solves, proposal)
+                proposal = reconcile_history(q, group, proposal)
+                proposal = reconcile_reply(proposal)
                 proposal.update(checks=[], review=proposal.pop("unresolved"))
             except (RuntimeError, ValueError, OSError) as error:
                 interruption = {"questionId": qid, "reason": str(error)}
@@ -148,6 +310,7 @@ def run(mode="reviewed", limit=None, max_calls=20, min_interval=20, candidate=Fa
             results.append(row)
         severity = 3 if proposal["repair"] in ("answer_key", "unsound", "stem_data", "option_repair", "diagram", "type_mismatch") else 2 if proposal["verdict"] == "defect" else 1
         case = {"id": qid, "title": title(q), "question": q, "reports": group,
+            "model": provider.model if provider else None,
             "decision": {"verdict": proposal["verdict"], "repair": proposal["repair"], "route": route, "confidence": score, "evidence": evidence},
             "patches": patches, "sourceHash": digest(q), "checks": support, "blindSolves": solves,
             "validation": {"passed": not errors, "errors": errors, "scope": rule["fields"] if rule else []},
@@ -161,9 +324,14 @@ def run(mode="reviewed", limit=None, max_calls=20, min_interval=20, candidate=Fa
     full = len(results) == len(reports)
     if full:
         validate_export(results, questions, reports, taxonomy)
+    models_used = list(dict.fromkeys(c["model"] for c in cases if c["model"]))
     manifest = {"schemaVersion": "1.0", "mode": mode, "generatedAt": datetime.now(timezone.utc).isoformat(),
         "inputHashes": hashes, "reportCount": len(results), "questionCount": len(cases), "complete": full,
-        "model": provider.model if provider else None, "apiCallsThisRun": provider.calls if provider else 0,
+        "model": ", ".join(models_used) if models_used else None, "modelsUsed": models_used,
+        "modelSwitches": [{"afterCases": index, "model": model} for index, model in sorted(switches.items())],
+        "provider": type(provider).__name__.lower() if provider else None,
+        "responseModesUsed": sorted(provider.response_modes) if isinstance(provider, Groq) else [],
+        "apiCallsThisRun": provider.calls if provider else 0,
         "cacheHits": provider.cache_hits if provider else 0,
         "thinkingLevel": provider.thinking_level or "model-default" if provider else None,
         "requestBudget": provider.max_calls if provider else None, "interruption": interruption,
@@ -171,7 +339,8 @@ def run(mode="reviewed", limit=None, max_calls=20, min_interval=20, candidate=Fa
         "confidenceMeaning": "Uncalibrated evidence rating: 0.90 calculation or blind agreement; 0.80 textual/history support; 0.65 limited support; unresolved capped at 0.75; blocked 0.30. Not a probability.",
         "promptHashes": {p.name: digest(p.read_text(encoding="utf-8")) for p in (ROOT / "engine/prompts").glob("*.txt")},
         "resultsHash": digest(results), "routeCounts": dict(Counter(r["route"] for r in results)),
-        "disclosure": "Assistant-reviewed fixed-dataset baseline; no Gemini calls were made." if not provider else "Gemini-generated proposals; writes remain gated by deterministic policy."}
+        "disclosure": "Assistant-reviewed fixed-dataset baseline; no external model calls were made." if not provider else
+        f"{type(provider).__name__}-generated proposals; writes remain gated by deterministic policy."}
     if candidate:
         write("artifacts/live/results.json", results)
         write("artifacts/live/cases.json", cases)
@@ -213,14 +382,24 @@ def main():
     parser.add_argument("--mode", choices=["reviewed", "live"], default="reviewed")
     parser.add_argument("--limit", type=int)
     parser.add_argument("--validate-only", action="store_true")
-    parser.add_argument("--max-api-calls", type=int, default=20)
+    parser.add_argument("--max-api-calls", type=int, default=30)
     parser.add_argument("--min-request-interval", type=float, default=20)
     parser.add_argument("--batch-size", type=int, default=8)
+    parser.add_argument("--model-switch", action="append", default=[], metavar="CASES:MODEL",
+                        help="Switch Groq model after this many grouped cases; may be repeated")
     parser.add_argument("--candidate", action="store_true", help="Save a reviewable candidate without replacing the main artifact")
     parser.add_argument("--promote-live", action="store_true")
     args = parser.parse_args()
     if args.max_api_calls < 0 or args.min_request_interval < 0 or args.batch_size < 1 or args.limit is not None and args.limit < 1:
         parser.error("Request limits must be nonnegative and question limit must be positive")
+    switches = []
+    for value in args.model_switch:
+        count, separator, model = value.partition(":")
+        if not separator or not count.isdigit() or int(count) < 1 or not re.fullmatch(r"[a-zA-Z0-9._/-]+", model):
+            parser.error("--model-switch must be CASES:MODEL with a positive case count")
+        switches.append((int(count), model))
+    if len({index for index, _ in switches}) != len(switches):
+        parser.error("Duplicate model switch case count")
     if args.promote_live:
         promote_live()
     elif args.validate_only:
@@ -228,7 +407,8 @@ def main():
         validate_export(read("results.json"), q, r, t)
         print("All source reports covered; result schema and export policies passed.")
     else:
-        if not run(args.mode, args.limit, args.max_api_calls, args.min_request_interval, args.candidate, args.batch_size):
+        if not run(args.mode, args.limit, args.max_api_calls, args.min_request_interval, args.candidate,
+                   args.batch_size, switches):
             raise SystemExit(2)
 
 

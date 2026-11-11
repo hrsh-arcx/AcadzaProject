@@ -33,7 +33,7 @@ import {
   TriangleAlert,
   X,
 } from "lucide-react";
-import { cases, manifest, taxonomy } from "@/lib/data";
+import { cases, comparison, manifest, taxonomy } from "@/lib/data";
 import { applyPatches, transition, validatePatches } from "@/lib/review";
 import { safeHtml } from "@/lib/sanitize";
 import {
@@ -58,6 +58,8 @@ const when = (s: string) =>
   }).format(new Date(s));
 const displayValue = (v: string | string[]) => (Array.isArray(v) ? v.join(", ") : v);
 const storageKey = `acadza-review-v1-${manifest.resultsHash}`;
+const providerLabel =
+  manifest.provider === "groq" ? "Groq" : manifest.provider === "gemini" ? "Gemini" : "Model";
 
 function Content({ value }: { value: string }) {
   return <div className="academic-content" dangerouslySetInnerHTML={{ __html: safeHtml(value) }} />;
@@ -317,7 +319,7 @@ export default function FacultyConsole() {
           </div>
           <div className="topbar-right">
             <span className="live-dot" />{" "}
-            {manifest.mode === "live" ? "Gemini results" : "Reviewed snapshot"}
+            {manifest.mode === "live" ? `${providerLabel} results` : "Reviewed snapshot"}
             <span className="topbar-divider" />
             <span className="demo-tag">DEMO WORKSPACE</span>
           </div>
@@ -786,7 +788,7 @@ export default function FacultyConsole() {
                         </span>
                         <strong>
                           {manifest.mode === "live"
-                            ? "Gemini triage generated"
+                            ? `${providerLabel} triage generated`
                             : "Reviewed baseline generated"}
                         </strong>
                         <time>{when(manifest.generatedAt)} IST</time>
@@ -896,6 +898,12 @@ export default function FacultyConsole() {
               </div>
               <div className="checks-box">
                 <div className="section-label">VERIFICATION</div>
+                {manifest.mode === "live" && active.model && (
+                  <div className="check-row muted">
+                    <Info size={14} />
+                    <span>Case model: {active.model}</span>
+                  </div>
+                )}
                 <div className="check-row">
                   <ShieldCheck size={15} />
                   <span>
@@ -921,6 +929,12 @@ export default function FacultyConsole() {
                       Blind solve {i + 1}
                       <ChevronDown size={12} />
                     </summary>
+                    <p>
+                      Answer:{" "}
+                      {Array.isArray(s.answer)
+                        ? s.answer.join(", ")
+                        : (s.answer ?? "Insufficient data")}
+                    </p>
                     <p>{s.derivation}</p>
                   </details>
                 ))}
@@ -1053,6 +1067,22 @@ export default function FacultyConsole() {
                 <strong>{storage === "database" ? "PostgreSQL" : "Browser sandbox"}</strong>
               </div>
             </div>
+            {manifest.mode === "reviewed" && (
+              <div className="run-comparison">
+                <div className="run-comparison-heading">
+                  <Sparkles size={17} />
+                  <strong>Completed Groq cross-check</strong>
+                  <span>{comparison.reportCount} reports</span>
+                </div>
+                <p>
+                  {comparison.verdictRepairAgreement}/{comparison.reportCount} verdict and repair
+                  pairs match this reviewed snapshot. {comparison.routeDifferenceIds.length} routes
+                  and {comparison.editDifferenceIds.length} edits differ; the reviewed version keeps
+                  the fuller supported edit previews.
+                </p>
+                <small>Agreement between artifacts is not hidden-ground-truth accuracy.</small>
+              </div>
+            )}
             <p>{manifest.confidenceMeaning}</p>
             <div className="run-warning">
               <Info size={18} />
@@ -1073,8 +1103,8 @@ export default function FacultyConsole() {
           <span>Built for the people behind better questions.</span>
           <span>
             <span className="live-dot" />{" "}
-            {manifest.mode === "live" ? "Precomputed Gemini run" : "Precomputed reviewed findings"}{" "}
-            · {storage === "database" ? "Persistent review workspace" : "Browser sandbox"}
+            {manifest.mode === "live" ? "Precomputed model run" : "Precomputed reviewed findings"} ·{" "}
+            {storage === "database" ? "Persistent review workspace" : "Browser sandbox"}
           </span>
         </footer>
       </div>

@@ -123,7 +123,7 @@ Questions? Reply to the email. Good luck. We're excited to see what you build.
 
 ## Running this submission
 
-The assignment above is preserved. See [IMPLEMENTATION.md](IMPLEMENTATION.md) for installation, architecture, safety policy, live Gemini configuration, and deployment.
+The assignment above is preserved. See [IMPLEMENTATION.md](IMPLEMENTATION.md) for installation, architecture, safety policy, live inference configuration, and deployment.
 
 ```powershell
 python -m venv .venv
@@ -132,6 +132,6 @@ npm.cmd ci
 npm.cmd run dev
 ```
 
-Open http://127.0.0.1:3000. The UI works from precomputed findings and needs no Gemini calls during review. Its Run details page identifies the actual artifact mode. Without PostgreSQL it explicitly uses a browser-local demo workspace.
+Open http://127.0.0.1:3000. The UI works from precomputed findings and needs no model calls during review. Its Run details page identifies the actual artifact mode. Without PostgreSQL it explicitly uses a browser-local demo workspace.
 
 Actual checks and remaining limits are recorded in [docs/verification-record.md](docs/verification-record.md). Product rationale is in [PRODUCT.md](PRODUCT.md); exact prompts and genuine mistakes are in [PROMPTS.md](PROMPTS.md).

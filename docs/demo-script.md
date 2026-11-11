@@ -1,6 +1,6 @@
 # Three-minute demonstration
 
-Record an actual browser session. Use a fresh demo workspace and remove accidental notifications first. State the actual mode shown in Run details; do not imply Gemini ran if it has not.
+Record an actual browser session. Use a fresh demo workspace and remove accidental notifications first. State the actual mode shown in Run details; do not imply a complete live model run if the displayed artifact is the reviewed baseline.
 
 **0:00–0:25 — The faculty problem.** Show the 39 cases grouped from 44 reports. Explain that scoring/answerability harm leads the queue, followed by report count and oldest report. Counts are actual records, not fabricated student-exposure estimates.
 

@@ -2,6 +2,7 @@ import pytest
 from engine.batching import index_batch, generate_batch
 from engine.models import BatchSolves, BatchProposals
 from engine.cli import load_data
+from engine.provider import RequestTooLargeError
 
 
 def test_batch_requires_every_requested_id_exactly_once():
@@ -28,3 +29,51 @@ def test_blind_batch_inputs_exclude_keys_solutions_and_reports():
     for _, data in seen[:2]:
         assert set(data["cases"][0]) == {"questionId", "questionType", "question", "quesImages"}
     assert "studentId" not in str(seen[2][1])
+
+
+def test_large_blind_batch_splits_adjudication_without_losing_cases():
+    questions, reports, taxonomy = load_data()
+    selected_ids = list(dict.fromkeys(r["questionId"] for r in reports))[:8]
+    selected = [next(q for q in questions if q["_id"] == qid) for qid in selected_ids]
+    groups = {qid: [r for r in reports if r["questionId"] == qid] for qid in selected_ids}
+    seen = []
+
+    class Fake:
+        def generate(self, prompt, data, model):
+            seen.append((prompt, data))
+            ids = ([item["questionId"] for item in data["cases"]] if model == BatchSolves
+                else [item["question"]["_id"] for item in data["cases"]])
+            if model == BatchSolves:
+                return BatchSolves(items=[{"questionId": qid, "answer": "A", "derivation": "test",
+                    "assumptions": [], "sufficient_data": True} for qid in ids])
+            return BatchProposals(items=[{"questionId": qid, "verdict": "no_error", "repair": None,
+                "patches": [], "evidence": "test", "student_reply": "test", "unresolved": False} for qid in ids])
+
+    result = generate_batch(Fake(), selected, groups, taxonomy)
+    assert set(result) == set(selected_ids)
+    assert [prompt for prompt, _ in seen] == ["solve-batch-v2.txt", "verify-batch-v2.txt"] + ["adjudicate-batch-v2.txt"] * 3
+    assert [len(data["cases"]) for _, data in seen] == [8, 8, 3, 3, 2]
+
+
+def test_rejected_adjudication_recursively_splits_only_that_chunk():
+    questions, reports, taxonomy = load_data()
+    selected_ids = list(dict.fromkeys(r["questionId"] for r in reports))[:3]
+    selected = [next(q for q in questions if q["_id"] == qid) for qid in selected_ids]
+    groups = {qid: [r for r in reports if r["questionId"] == qid] for qid in selected_ids}
+    sizes = []
+
+    class Fake:
+        def generate(self, _prompt, data, model):
+            ids = ([item["questionId"] for item in data["cases"]] if model == BatchSolves
+                else [item["question"]["_id"] for item in data["cases"]])
+            if model == BatchSolves:
+                return BatchSolves(items=[{"questionId": qid, "answer": "A", "derivation": "test",
+                    "assumptions": [], "sufficient_data": True} for qid in ids])
+            sizes.append(len(ids))
+            if len(ids) > 1:
+                raise RequestTooLargeError("test")
+            return BatchProposals(items=[{"questionId": ids[0], "verdict": "no_error", "repair": None,
+                "patches": [], "evidence": "test", "student_reply": "test", "unresolved": False}])
+
+    assert set(generate_batch(Fake(), selected, groups, taxonomy)) == set(selected_ids)
+    assert sizes == [3, 1, 2, 1, 1]

@@ -1,0 +1,1 @@
+The provider could not generate a response under strict JSON Schema decoding. Return one JSON object matching the following schema exactly. Include every required field, use only allowed enum values, and do not add markdown or commentary. This is a response-format fallback, not permission to change the academic evidence or taxonomy rules.

@@ -1,1 +1,536 @@
-[]
+[
+  {
+    "reportId": "R001",
+    "questionId": "60f744b3f1b9bc7cc7b4a949",
+    "verdict": "defect",
+    "repair": "answer_key",
+    "edit": {
+      "field": "answer",
+      "find": "C",
+      "replace": "A"
+    },
+    "route": "faculty_review",
+    "confidence": 0.65,
+    "evidence": "The solution and both blind solves compute the supply voltage as 50 V, which corresponds to option A. The stored answer key is \"C\" (130 V), contradicting the correct calculation and student reports.",
+    "student_reply": "Thanks for pointing this out; the answer key appears to be incorrect."
+  },
+  {
+    "reportId": "R002",
+    "questionId": "60f744b3f1b9bc7cc7b4a949",
+    "verdict": "defect",
+    "repair": "answer_key",
+    "edit": {
+      "field": "answer",
+      "find": "C",
+      "replace": "A"
+    },
+    "route": "faculty_review",
+    "confidence": 0.65,
+    "evidence": "The solution and both blind solves compute the supply voltage as 50 V, which corresponds to option A. The stored answer key is \"C\" (130 V), contradicting the correct calculation and student reports.",
+    "student_reply": "Thanks for pointing this out; the answer key appears to be incorrect."
+  },
+  {
+    "reportId": "R003",
+    "questionId": "60f744b3f1b9bc7cc7b4a949",
+    "verdict": "defect",
+    "repair": "answer_key",
+    "edit": {
+      "field": "answer",
+      "find": "C",
+      "replace": "A"
+    },
+    "route": "faculty_review",
+    "confidence": 0.65,
+    "evidence": "The solution and both blind solves compute the supply voltage as 50 V, which corresponds to option A. The stored answer key is \"C\" (130 V), contradicting the correct calculation and student reports.",
+    "student_reply": "Thanks for pointing this out; the answer key appears to be incorrect."
+  },
+  {
+    "reportId": "R004",
+    "questionId": "68e870ef42c06737d6e565c4",
+    "verdict": "defect",
+    "repair": "answer_key",
+    "edit": {
+      "field": "answer",
+      "find": "A",
+      "replace": "D"
+    },
+    "route": "faculty_review",
+    "confidence": 0.65,
+    "evidence": "Both blind solutions compute the pressure as 4800 N/m², which corresponds to option D. The stored answer key is \"A\", conflicting with the correct solution and the independent solves.",
+    "student_reply": "Thank you for pointing this out; the answer key appears to be incorrect."
+  },
+  {
+    "reportId": "R005",
+    "questionId": "68dea616d0cda73d07e93ae6",
+    "verdict": "defect",
+    "repair": "answer_key",
+    "edit": {
+      "field": "answer",
+      "find": "2",
+      "replace": "1"
+    },
+    "route": "faculty_review",
+    "confidence": 0.65,
+    "evidence": "Both blind solves and physics reasoning indicate the correct value of n is 1, while the stored answer is 2. The first blind solve correctly accounts for the fraction of field lines from each charge, matching the solution derivation.",
+    "student_reply": "Thanks for pointing that out—your observation that the answer key should be n = 1 is helpful."
+  },
+  {
+    "reportId": "R006",
+    "questionId": "696a866665252c04fc1f81c2",
+    "verdict": "defect",
+    "repair": "stem_data",
+    "edit": null,
+    "route": "faculty_review",
+    "confidence": 0.65,
+    "evidence": "The question asks for the volume contraction of a copper cube but does not provide the cube's edge length or initial volume. The stored solution assumes a specific size (10 cm) without justification, leading to an answer of 50 m³ that cannot be derived from the given data. This missing geometric information constitutes a stem_data defect.",
+    "student_reply": "Thanks for pointing that out – the question indeed lacks the necessary dimension to compute a numeric volume change."
+  },
+  {
+    "reportId": "R007",
+    "questionId": "60f742f6660d187cc13a8078",
+    "verdict": "defect",
+    "repair": "stem_data",
+    "edit": null,
+    "route": "faculty_review",
+    "confidence": 0.65,
+    "evidence": "The question states a resistance of 40 Ω and an inductance in series but does not provide the inductance value or reactance, while the stored solution calculates a specific impedance (50 Ω) using an implicit inductance. This mismatch indicates missing data in the stem, matching the reports about the absent inductance value.",
+    "student_reply": "Thanks for pointing out the missing inductance information; we'll look into adding the required value."
+  },
+  {
+    "reportId": "R008",
+    "questionId": "60f742f6660d187cc13a8078",
+    "verdict": "defect",
+    "repair": "stem_data",
+    "edit": null,
+    "route": "faculty_review",
+    "confidence": 0.65,
+    "evidence": "The question states a resistance of 40 Ω and an inductance in series but does not provide the inductance value or reactance, while the stored solution calculates a specific impedance (50 Ω) using an implicit inductance. This mismatch indicates missing data in the stem, matching the reports about the absent inductance value.",
+    "student_reply": "Thanks for pointing out the missing inductance information; we'll look into adding the required value."
+  },
+  {
+    "reportId": "R009",
+    "questionId": "622f08d7b70e4b50e4500a1b",
+    "verdict": "defect",
+    "repair": "option_repair",
+    "edit": null,
+    "route": "faculty_review",
+    "confidence": 0.65,
+    "evidence": "Two reports note that only three options are displayed and that an option D is missing, indicating an option missing issue.",
+    "student_reply": "Thanks for pointing that out; we’ll look into adding the missing option."
+  },
+  {
+    "reportId": "R010",
+    "questionId": "622f08d7b70e4b50e4500a1b",
+    "verdict": "defect",
+    "repair": "option_repair",
+    "edit": null,
+    "route": "faculty_review",
+    "confidence": 0.65,
+    "evidence": "Two reports note that only three options are displayed and that an option D is missing, indicating an option missing issue.",
+    "student_reply": "Thanks for pointing that out; we’ll look into adding the missing option."
+  },
+  {
+    "reportId": "R011",
+    "questionId": "68e872546e45ba37dcc16bc0",
+    "verdict": "defect",
+    "repair": "option_repair",
+    "edit": {
+      "field": "question",
+      "find": "<br />(C) <br />(D)",
+      "replace": "<br />(C) <math display=\"inline\" xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn> 1 </mn><mi>:</mi><mn> 1 </mn></mrow></math><br />(D)"
+    },
+    "route": "faculty_review",
+    "confidence": 0.65,
+    "evidence": "Option (C) is empty in the stored HTML — there is no MathML or text between '(C)' and the following '<br />' tag. The correct answer to the question is 1:1 by Newton's Third Law (the mutual electrostatic forces between two charges are always equal in magnitude). Both blind solvers independently arrived at 1:1 and identified option C as the intended correct choice. The stored answer key is 'C', which is consistent with the physics, but the option itself is blank, making the question unanswerable as displayed to the student. The student's report correctly identifies this issue. The solution confirms 1:1 without ambiguity, so the missing content is fully supported for repair. The correct content for option C is the ratio 1:1, formatted consistently with the other options using inline MathML.",
+    "student_reply": "You're right — option C was showing as blank, which made it impossible to select a meaningful answer. We've proposed a fix to fill in the missing content. Thank you for catching that!"
+  },
+  {
+    "reportId": "R012",
+    "questionId": "61dffbec08489156b684bd22",
+    "verdict": "defect",
+    "repair": "spelling",
+    "edit": {
+      "field": "question",
+      "find": "Epithellial tisue",
+      "replace": "Epithelial tissue"
+    },
+    "route": "auto_apply",
+    "confidence": 0.8,
+    "evidence": "Option A contains the misspelled phrase \"Epithellial tisue\"; correcting it to \"Epithelial tissue\" fixes the reported spelling mistake.",
+    "student_reply": "Thank you for reporting this. Faculty will review the finding; no new question change has been applied yet."
+  },
+  {
+    "reportId": "R013",
+    "questionId": "617fa18efd53ff1629ed890f",
+    "verdict": "defect",
+    "repair": "exam_reference",
+    "edit": {
+      "field": "question",
+      "find": "(NEET 2019) Which",
+      "replace": "Which"
+    },
+    "route": "auto_apply",
+    "confidence": 0.8,
+    "evidence": "The question text begins with '(NEET 2019)' which is an exam source tag that should not appear in the student-facing question. Both blind solvers correctly identify D (Lamina) as the answer, confirming the academic content is sound. The student's comment specifically flags this extraneous reference. The taxonomy key 'exam_reference' covers exactly this case: a '(JEE Main 2019)'-style tag inside the question text.",
+    "student_reply": "Good catch! That exam tag doesn't belong in the question text — we've flagged it for removal. Thanks for spotting it."
+  },
+  {
+    "reportId": "R014",
+    "questionId": "63765a28f1d8416ae0408d89",
+    "verdict": "defect",
+    "repair": "markup_leak",
+    "edit": null,
+    "route": "faculty_review",
+    "confidence": 0.75,
+    "evidence": "The report notes that the LaTeX \\frac markup is visible in the rendered question, indicating a markup leak. Replacing the raw LaTeX with plain text fixes the display without altering the question meaning. Model verdict and content repair conflicted; no edit was accepted without faculty review.",
+    "student_reply": "Thank you for reporting this. Faculty will review the finding; no new question change has been applied yet."
+  },
+  {
+    "reportId": "R015",
+    "questionId": "6956d79788d7701e5617bc29",
+    "verdict": "defect",
+    "repair": "identical_options",
+    "edit": null,
+    "route": "faculty_review",
+    "confidence": 0.65,
+    "evidence": "Options (B) and (C) both read '0 W'. Both blind solvers independently derive P = 0 W and confirm the duplication. The stored answer key 'B' is consistent with the physics, but the presence of two identical correct options makes the SCQ ambiguous in practice (a student selecting C would also be correct). This is a genuine content defect: a duplicated option that requires a faculty-authored replacement distractor to resolve. The taxonomy's identical_options repair has an empty fields list, so no machine patch is possible.",
+    "student_reply": "You're right — options B and C are both listed as 0 W, which makes the question ambiguous. I'll flag this for the faculty team to provide a distinct replacement option. Thanks for the careful catch!"
+  },
+  {
+    "reportId": "R016",
+    "questionId": "6263d75bdd44e265ef926d97",
+    "verdict": "defect",
+    "repair": "solution_fix",
+    "edit": {
+      "field": "solution",
+      "find": "a = 40 cm",
+      "replace": "a = 20 cm"
+    },
+    "route": "faculty_review",
+    "confidence": 0.65,
+    "evidence": "Both blind solves independently derive a = 20 cm from the same equation (2a² = 800 → a² = 400 → a = 20). The stored answer '20' is correct. The solution's equation is correct but its final stated result 'a = 40 cm' contains an arithmetic error (√400 = 20, not 40). The student correctly identified the inconsistency between the solution text and the answer key; the answer key is right and the solution's conclusion is wrong.",
+    "student_reply": "Good eye! The answer key of 20 cm is correct — the solution just has a typo in its final line. A fix has been proposed to make the solution match."
+  },
+  {
+    "reportId": "R017",
+    "questionId": "6208e80a9cb2ab67dac61bd0",
+    "verdict": "already_fixed",
+    "repair": null,
+    "edit": null,
+    "route": "no_change",
+    "confidence": 0.8,
+    "evidence": "Dated error history records 'mere' to 'more', and the current question contains 'more' but not 'mere'.",
+    "student_reply": "The reported 'mere' spelling has already been corrected to 'more' in the current question."
+  },
+  {
+    "reportId": "R018",
+    "questionId": "612151a6a34397610a9a2e58",
+    "verdict": "defect",
+    "repair": "solution_fix",
+    "edit": null,
+    "route": "faculty_review",
+    "confidence": 0.65,
+    "evidence": "The solution's first line states '5.469 × 10⁻¹⁰ m = 5.47 Å', which corresponds to 0.547 nm, not the 0.3 nm (3 Å) given in the question. Both blind solves independently derive 16.8 eV using λ = 0.3 nm = 3 Å, confirming the answer key B is correct. The solution does reach 16.8 eV (via 2.65 × 10⁻¹⁸ J), so the final value is correct, but the opening line with 5.47 Å is a remnant from a different problem and contradicts the question stem. Students R018 and R019 both flagged this discrepancy accurately.",
+    "student_reply": "You're right to flag this — the 5.47 Å line in the solution doesn't match the 0.3 nm wavelength asked in the question. A corrected solution is on its way."
+  },
+  {
+    "reportId": "R019",
+    "questionId": "612151a6a34397610a9a2e58",
+    "verdict": "defect",
+    "repair": "solution_fix",
+    "edit": null,
+    "route": "faculty_review",
+    "confidence": 0.65,
+    "evidence": "The solution's first line states '5.469 × 10⁻¹⁰ m = 5.47 Å', which corresponds to 0.547 nm, not the 0.3 nm (3 Å) given in the question. Both blind solves independently derive 16.8 eV using λ = 0.3 nm = 3 Å, confirming the answer key B is correct. The solution does reach 16.8 eV (via 2.65 × 10⁻¹⁸ J), so the final value is correct, but the opening line with 5.47 Å is a remnant from a different problem and contradicts the question stem. Students R018 and R019 both flagged this discrepancy accurately.",
+    "student_reply": "You're right to flag this — the 5.47 Å line in the solution doesn't match the 0.3 nm wavelength asked in the question. A corrected solution is on its way."
+  },
+  {
+    "reportId": "R020",
+    "questionId": "68c8153cfb6b2f16e2d3ceaf",
+    "verdict": "defect",
+    "repair": "answer_key",
+    "edit": {
+      "field": "answer",
+      "find": [
+        "A, B, D"
+      ],
+      "replace": [
+        "A",
+        "B",
+        "D"
+      ]
+    },
+    "route": "faculty_review",
+    "confidence": 0.65,
+    "evidence": "The MCQ key stores several option labels as one comma-delimited array item. Separating those labels fixes serialization only; faculty must still verify the correct answer set because the blind solves disagree.",
+    "student_reply": "The answer format needs correction. Faculty will also verify which choices are correct before any scoring change."
+  },
+  {
+    "reportId": "R021",
+    "questionId": "68f21caf941cda588bc04365",
+    "verdict": "defect",
+    "repair": "type_mismatch",
+    "edit": null,
+    "route": "faculty_review",
+    "confidence": 0.65,
+    "evidence": "The question has exactly one correct option (B: 1.44 min), confirmed by the solution and both blind solvers. It is stored as questionType 'mcq' (multiple-correct), which on this platform applies multi-select scoring. The student reports selecting the single correct option B and receiving a negative mark, consistent with an MCQ scoring model where missing an expected 'correct' selection (or the type itself) triggers a penalty. The appropriate type for a single-answer question is 'scq'. The student's observation that 'only B is correct' is accurate; the underlying defect is the type field, not the answer content. Both dependent fields are proposed together; faculty must confirm the intended scoring type.",
+    "student_reply": "You're right that only option B is correct here. The issue is that the question is tagged as a multiple-correct type when it should be single-correct, which can affect scoring. We've flagged this for correction."
+  },
+  {
+    "reportId": "R022",
+    "questionId": "61ee6c9d90a1a968a168686b",
+    "verdict": "defect",
+    "repair": "spelling",
+    "edit": {
+      "field": "question",
+      "find": "Choroid plexux",
+      "replace": "Choroid plexus"
+    },
+    "route": "auto_apply",
+    "confidence": 0.8,
+    "evidence": "Option (D) in the question text reads 'Choroid plexux' — a misspelling of 'plexus'. Both blind solves independently confirm the correct answer is B (Peyer's patches), so the answer key is sound. The only defect is the spelling error in the option text.",
+    "student_reply": "Thanks for catching that typo in the option text — a patch has been proposed to correct 'plexux' to 'plexus'."
+  },
+  {
+    "reportId": "R023",
+    "questionId": "68ecbacb2ec87a18deba1ad7",
+    "verdict": "defect",
+    "repair": "wrong_chapter",
+    "edit": null,
+    "route": "faculty_review",
+    "confidence": 0.65,
+    "evidence": "The student comment indicates the question is placed under the \"Living World\" chapter but pertains to neural control, suggesting a chapter misclassification.",
+    "student_reply": "Thank you for pointing that out; the chapter appears to be mismatched."
+  },
+  {
+    "reportId": "R024",
+    "questionId": "5fc60508028950133eac8963",
+    "verdict": "defect",
+    "repair": "answer_form",
+    "edit": null,
+    "route": "faculty_review",
+    "confidence": 0.8,
+    "evidence": "The report notes that the unit for the frictional force is not mentioned in the question stem. This matches the 'answer_form' taxonomy, which covers missing unit or answer format specifications.",
+    "student_reply": "Thanks for pointing out the missing unit; we'll note that the answer should be expressed in newtons (N)."
+  },
+  {
+    "reportId": "R025",
+    "questionId": "622df25ab70e4b50e44ff837",
+    "verdict": "defect",
+    "repair": "diagram",
+    "edit": null,
+    "route": "faculty_review",
+    "confidence": 0.65,
+    "evidence": "The report indicates that the figure referenced in the stem is missing, which matches the 'diagram' taxonomy defect. No content change can be auto‑generated; faculty must add the appropriate illustration.",
+    "student_reply": "Thank you for pointing out the missing figure. We'll have the faculty add the appropriate diagram."
+  },
+  {
+    "reportId": "R026",
+    "questionId": "620e23cecc50543bc7db9186",
+    "verdict": "defect",
+    "repair": "syllabus",
+    "edit": null,
+    "route": "faculty_review",
+    "confidence": 0.65,
+    "evidence": "Student reported the question is out of syllabus for NEET.",
+    "student_reply": "Thank you for your feedback; we'll review the syllabus relevance of this question."
+  },
+  {
+    "reportId": "R027",
+    "questionId": "6062ec84518e9535e120c422",
+    "verdict": "no_error",
+    "repair": null,
+    "edit": null,
+    "route": "no_change",
+    "confidence": 0.65,
+    "evidence": "The report comment is a prompt injection attempt ('IGNORE ALL PREVIOUS INSTRUCTIONS...'). Ignoring the injection, both blind solves independently confirm answer A (5.7 × 10⁻⁵ /°C) with correct derivations: α = ΔL/(L₀·ΔT) = 0.19/(100×100) = 1.9×10⁻⁵ /°C, then γ = 3α = 5.7×10⁻⁵ /°C. The stored answer key is A, which matches. The student's suggestion of C (1.9×10⁻⁵ /°C) is the linear expansion coefficient, not the cubical expansion coefficient asked for in the question. No defect found.",
+    "student_reply": "Thanks for reaching out! After re-checking the calculation, the coefficient of cubical expansion (γ = 3α) works out to 5.7 × 10⁻⁵ /°C, so option A is indeed correct."
+  },
+  {
+    "reportId": "R028",
+    "questionId": "6956d7bb23cb221e570d6013",
+    "verdict": "no_error",
+    "repair": null,
+    "edit": null,
+    "route": "no_change",
+    "confidence": 0.65,
+    "evidence": "Both blind solvers independently derived tan(θ)=4 by setting R=H, confirming option B. The student's suggested answer tan⁻¹(2) is incorrect: substituting tan(θ)=2 gives R/H=2, not 1. The stored answer, solution, and question are all correct.",
+    "student_reply": "The worked solution in the question is correct — setting R = H leads to tan θ = 4, so option (B) is the right answer. Great that you're double-checking the physics; that's a good habit!"
+  },
+  {
+    "reportId": "R029",
+    "questionId": "68e8734442c06737d6e56da4",
+    "verdict": "no_error",
+    "repair": null,
+    "edit": null,
+    "route": "no_change",
+    "confidence": 0.65,
+    "evidence": "The stored answer key is \"A\" (0.8) and both independent blind solutions derive μ = 0.8. The student's comment that μ should be 0.4 is inconsistent with the correct physics and the existing answer key.",
+    "student_reply": "Your calculation looks good, but the answer key already lists option A (0.8) as correct."
+  },
+  {
+    "reportId": "R030",
+    "questionId": "6956d7e988d7701e5617bd3e",
+    "verdict": "no_error",
+    "repair": null,
+    "edit": null,
+    "route": "no_change",
+    "confidence": 0.65,
+    "evidence": "The problem asks for the amplitude of SHM starting from equilibrium with T=16s and v=π m/s at t=2s. Both blind solvers independently derive A = 8√2 m (option D) using v = Aω cos(ωt) with ω = π/8 and cos(π/4) = 1/√2. The stored answer D is correct. The student's claim of 4√2 (option B) does not follow from any valid computation of the given values; it appears to be an arithmetic or algebraic error on the student's part. No defect in the question, solution, or answer key is identified.",
+    "student_reply": "Thanks for flagging this! The stored answer (D) is correct — both independent solutions confirm the amplitude is 8√2 m. It's a tricky step with the cos(π/4) term; give that another look and you should arrive at the same result."
+  },
+  {
+    "reportId": "R031",
+    "questionId": "68dea619d0cda73d07e93aee",
+    "verdict": "no_error",
+    "repair": null,
+    "edit": null,
+    "route": "no_change",
+    "confidence": 0.65,
+    "evidence": "The stored answer is 4 and both blind solutions independently compute 4 seconds, matching the stored answer. The student's comment that the answer should be 2 seconds is inconsistent with the correct physics and the provided solution.",
+    "student_reply": "Your observation is noted; the current answer key and solution appear correct."
+  },
+  {
+    "reportId": "R032",
+    "questionId": "68dea7c2387eea3d0d95f9bb",
+    "verdict": "no_error",
+    "repair": null,
+    "edit": null,
+    "route": "no_change",
+    "confidence": 0.65,
+    "evidence": "The stored answer 8 matches both blind answers in the question's requested unit. The proposed key replacement changes only the unit display, not the value.",
+    "student_reply": "The stored number matches the result in the unit requested by the question, so no answer-key change is needed."
+  },
+  {
+    "reportId": "R033",
+    "questionId": "68dea715387eea3d0d95f790",
+    "verdict": "no_error",
+    "repair": null,
+    "edit": null,
+    "route": "no_change",
+    "confidence": 0.65,
+    "evidence": "The stored answer is 3113, which matches both blind solves and follows correct significant‑figure rounding (311.3 m² then multiplied by 10). The student’s suggested value 3112.99 does not reflect the required rounding for an integer question.",
+    "student_reply": "Your observation is appreciated; the current answer key correctly follows the rounding rules."
+  },
+  {
+    "reportId": "R034",
+    "questionId": "695ee00b88d7701e561aabc5",
+    "verdict": "defect",
+    "repair": "unsound",
+    "edit": null,
+    "route": "faculty_review",
+    "confidence": 0.65,
+    "evidence": "Both independent solves find that no offered option matches the answer as written. A key-only change cannot repair the missing valid choice; faculty must review the question.",
+    "student_reply": "The available choices appear not to cover the result. Faculty will review the question before any scoring or content change."
+  },
+  {
+    "reportId": "R035",
+    "questionId": "66fe9dbe22132e5a70a3e579",
+    "verdict": "no_error",
+    "repair": null,
+    "edit": null,
+    "route": "no_change",
+    "confidence": 0.65,
+    "evidence": "The stored answer key is \"D\" and both blind solves agree that relaxin and inhibin are not antagonistic, matching the solution explanation. The student's comment that the answer is wrong is inaccurate.",
+    "student_reply": "Thank you for checking; the answer key appears correct as is."
+  },
+  {
+    "reportId": "R036",
+    "questionId": "60ca4feb6420652745f55522",
+    "verdict": "display_issue",
+    "repair": null,
+    "edit": null,
+    "route": "no_change",
+    "confidence": 0.65,
+    "evidence": "All four options (A: 100 N, B: 121 N, C: 99 N, D: None of these) are present in the stored HTML. Both blind solves confirm C (99 N) is correct, matching the stored answer. The student's complaint — 'options are cut on my phone screen' — is a rendering/layout issue on their device, not a content defect. The nested span markup with inline color styles is messy but all option text is stored correctly; triage is a phone-width display problem, not missing or truncated stored content.",
+    "student_reply": "Thanks for flagging that! This looks like a screen-size rendering issue on your device rather than a problem with the question itself. The options are all present in the system."
+  },
+  {
+    "reportId": "R037",
+    "questionId": "68c9ae5afb6b2f16e2d43b1c",
+    "verdict": "display_issue",
+    "repair": null,
+    "edit": null,
+    "route": "no_change",
+    "confidence": 0.65,
+    "evidence": "The report only mentions that the question takes a long time to load on the Android app. There is no problem with the question text, options, answer key, or solution.",
+    "student_reply": "Thanks for letting us know about the loading delay. We'll look into improving the performance."
+  },
+  {
+    "reportId": "R038",
+    "questionId": "68f21df0941cda588bc0470b",
+    "verdict": "app_issue",
+    "repair": null,
+    "edit": null,
+    "route": "no_change",
+    "confidence": 0.65,
+    "evidence": "The stored answer key is \"A\" and both blind solutions also select \"A\" as correct. The student's report indicates a UI problem where selecting A was recorded as B, not a content defect.",
+    "student_reply": "It looks like the app recorded your selection incorrectly; the answer key itself is correct."
+  },
+  {
+    "reportId": "R039",
+    "questionId": "68c801bc1b1dbc16dc93bf2b",
+    "verdict": "language_mode",
+    "repair": null,
+    "edit": null,
+    "route": "no_change",
+    "confidence": 0.65,
+    "evidence": "Both blind solves independently confirm answer A (≈600 eV), matching the stored key and the stored solution. The question content is physically correct. The student comment 'Hindi me question chahiye' is a request for a Hindi version of this question, which is not currently available in that language. This is a language availability request, not a content defect.",
+    "student_reply": "Your understanding of the question looks good — the answer is indeed (A) 600 eV. A Hindi version of this question isn't currently available, but your feedback has been noted for the team."
+  },
+  {
+    "reportId": "R040",
+    "questionId": "6264197209f4fd65f58f5707",
+    "verdict": "no_error",
+    "repair": null,
+    "edit": null,
+    "route": "no_change",
+    "confidence": 0.65,
+    "evidence": "Both blind solves independently confirm C (Golden rice) as correct. Golden Rice is the textbook GM food engineered to produce β-carotene (provitamin A) in the endosperm, specifically to combat xerophthalmia. The stored answer key matches. The student's generic 'wrong' comment provides no specific reasoning and the academic content is correct. Minor cosmetic issues exist in the solution text (missing spaces: 'riceis', 'ofvitamin', 'tonight' instead of 'to night', etc.) and some redundant HTML nesting in the question, but these do not affect the correctness of the question or answer key the student is challenging.",
+    "student_reply": "The stored answer (C – Golden rice) is correct: Golden Rice is genetically engineered to produce β-carotene, a precursor of vitamin A, specifically to prevent blindness from vitamin A deficiency. The other options (Flavr Savr tomato, Canola, Bt-Brinjal) address different traits."
+  },
+  {
+    "reportId": "R041",
+    "questionId": "6208e298fa399567e0878700",
+    "verdict": "not_actionable",
+    "repair": null,
+    "edit": null,
+    "route": "no_change",
+    "confidence": 0.65,
+    "evidence": "Student comment is 'asdfgh' — unintelligible. Both blind solves independently confirm option A (Julius von Sachs) is correct, matching the stored answer key. The solution is consistent with standard biology references. No defect identified.",
+    "student_reply": "Thanks for reaching out! We reviewed this question and it appears to be correct as written. If you had a specific concern in mind, feel free to share more details and we'll take another look."
+  },
+  {
+    "reportId": "R042",
+    "questionId": "63c7cce12981ed154ee92c94",
+    "verdict": "defect",
+    "repair": "wrong_chapter",
+    "edit": null,
+    "route": "faculty_review",
+    "confidence": 0.65,
+    "evidence": "The question is filed under \"Geometrical optics and optical instruments\" but the content concerns a parallel‑plate capacitor and displacement current, which belongs to electromagnetism, not optics.",
+    "student_reply": "Thank you for pointing out the mis‑classification; we will review the chapter assignment."
+  },
+  {
+    "reportId": "R043",
+    "questionId": "636283dbe3770c24f866e6d6",
+    "verdict": "no_error",
+    "repair": null,
+    "edit": null,
+    "route": "no_change",
+    "confidence": 0.65,
+    "evidence": "The student claims the answer should be 1:4, reasoning that the bigger drop has more area. This reasoning is incomplete: while the area increases by a factor of 16 (R=4r, so R²/r²=16), the total charge also increases by a factor of 64. The net ratio is 64/16 = 4, giving 4:1. Both blind solves independently confirm answer B (4:1), and the stored solution correctly derives σ_bigger/σ_smaller = 64·(r²/R²) = 64/16 = 4. The question content, answer key, and solution are all correct. The student made a reasoning error by considering only the area increase without accounting for the charge increase.",
+    "student_reply": "The bigger drop does have more area, but it also carries 64 times the total charge. When you account for both effects (64× charge divided by 16× area), the surface density ratio comes out to 4:1, so option B is correct."
+  },
+  {
+    "reportId": "R044",
+    "questionId": "68dea577d0cda73d07e9391c",
+    "verdict": "no_error",
+    "repair": null,
+    "edit": null,
+    "route": "no_change",
+    "confidence": 0.65,
+    "evidence": "The question asks for V(P) − V(S), not V(P) − V(∞). Given kQ/R = 16 V: V(P) − V(∞) = (11/8)·16 = 22 V and V(S) − V(∞) = (1/2)·16 = 8 V, so V(P) − V(S) = 22 − 8 = 14 V. Both blind solves independently arrive at 14, matching the stored answer. The student's value of 22 V is the potential at P relative to infinity, not the potential difference between P and S as the question requests. The solution's derivation is correct in every step.",
+    "student_reply": "Great catch on working through the potential at point P — you got 22 V, which is V(P) relative to infinity. The question asks for the difference V(P) − V(S), and since V(S) = 8 V above infinity, the answer works out to 22 − 8 = 14 V."
+  }
+]

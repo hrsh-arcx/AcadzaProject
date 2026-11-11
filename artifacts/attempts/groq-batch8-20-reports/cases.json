@@ -1,0 +1,1205 @@
+[
+  {
+    "id": "60f744b3f1b9bc7cc7b4a949",
+    "title": "In a LCR circuit the pd between the terminals of the inductance is 60 V, between the terminals of the capacitor is 30V and that be",
+    "question": {
+      "_id": "60f744b3f1b9bc7cc7b4a949",
+      "qid": null,
+      "questionType": "scq",
+      "subject": "Physics",
+      "chapter": "Alternating Current and EM Waves",
+      "concept": null,
+      "subConcept": null,
+      "level": "EASY",
+      "error": 1,
+      "updatedAt": "2025-10-23T09:32:22.361Z",
+      "scq": {
+        "question": "<h3><span style=\"color:#000000\">In a LCR circuit the pd between the terminals of the inductance is 60 V, between the terminals of the capacitor is 30V and that between the terminals of resistance is 40V. the supply voltage will be equal to &hellip;&hellip;<span style=\"color:#000000\"></h3><h3>(A)<span style=\"color:#000000\"> <span style=\"color:#000000\">50 V<br />(B)<span style=\"color:#000000\"> <span style=\"color:#000000\">70 V<br />(C)<span style=\"color:#000000\"> </span><span style=\"color:#000000\">130 V<br />(D)</span></span></span><span style=\"color:#000000\"> </span></span></span><span style=\"color:#000000\">10 V</span></span></span></h3>",
+        "solution": "<h3><math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\"><mstyle displaystyle=\"true\"><mrow><mi>V</mi><mo>&#x0003D;</mo><msqrt><mrow><msubsup><mi>V</mi><mrow><mi>R</mi></mrow><mrow><mn>2</mn></mrow></msubsup><mo>&#x0002B;</mo><msup><mrow><mo stretchy=\"true\" fence=\"true\" form=\"prefix\">&#x00028;</mo><msub><mi>V</mi><mrow><mi>L</mi></mrow></msub><mo>&#x02212;</mo><msub><mi>V</mi><mrow><mi>C</mi></mrow></msub><mo stretchy=\"true\" fence=\"true\" form=\"postfix\">&#x00029;</mo></mrow><mrow><mn>2</mn></mrow></msup></mrow></msqrt></mrow></mstyle></math> <math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\"><mstyle displaystyle=\"true\"><mrow><mo>&#x0003D;</mo><msqrt><mrow><mo stretchy=\"false\">&#x00028;</mo><mn>40</mn><msup><mo stretchy=\"false\">&#x00029;</mo><mrow><mn>2</mn></mrow></msup><mo>&#x0002B;</mo><mo stretchy=\"false\">&#x00028;</mo><mn>60</mn><mo>&#x02212;</mo><mn>30</mn><msup><mo stretchy=\"false\">&#x00029;</mo><mrow><mn>2</mn></mrow></msup></mrow></msqrt><mo>&#x0003D;</mo><mn>50</mn><mrow><mtext>&#x000A0;</mtext><mi mathvariant=\"normal\">V</mi></mrow></mrow></mstyle></math></h3>",
+        "answer": "C",
+        "quesImages": [],
+        "solutionImages": []
+      },
+      "errorHistory": []
+    },
+    "reports": [
+      {
+        "reportId": "R002",
+        "questionId": "60f744b3f1b9bc7cc7b4a949",
+        "studentId": "stu_05afd283",
+        "source": "ios",
+        "reportedAt": "2026-11-03T22:11:00Z",
+        "comment": "wrong ans"
+      },
+      {
+        "reportId": "R003",
+        "questionId": "60f744b3f1b9bc7cc7b4a949",
+        "studentId": "stu_e7c98753",
+        "source": "ios",
+        "reportedAt": "2026-11-04T10:42:00Z",
+        "comment": "Sir root(40^2+30^2)=50 then why 130??"
+      },
+      {
+        "reportId": "R001",
+        "questionId": "60f744b3f1b9bc7cc7b4a949",
+        "studentId": "stu_cd48eb56",
+        "source": "web",
+        "reportedAt": "2026-11-07T01:25:00Z",
+        "comment": "answer should be 50V. solution also says 50 but key is C"
+      }
+    ],
+    "decision": {
+      "verdict": "defect",
+      "repair": "answer_key",
+      "route": "faculty_review",
+      "confidence": 0.65,
+      "evidence": "The stored answer key is \"C\" (130 V) while the solution and blind solves both give 50 V, matching option A. The key is therefore incorrect."
+    },
+    "patches": [],
+    "sourceHash": "cd300b95646793ef45ec8650b3662fabb79563cd5a78541d9a027e4a6168035e",
+    "checks": [],
+    "blindSolves": [
+      {
+        "answer": "A",
+        "derivation": "In an LCR series circuit the phasor sum of voltages gives the supply voltage: V = √(V_R² + (V_L – V_C)²). Substituting V_R = 40 V, V_L = 60 V, V_C = 30 V gives V = √(40² + (60‑30)²) = √(1600 + 900) = √2500 = 50 V.",
+        "assumptions": [
+          "Voltages are given as rms phasor magnitudes."
+        ],
+        "sufficient_data": true
+      },
+      {
+        "answer": "50 V",
+        "derivation": "Supply voltage magnitude = sqrt(V_R² + (V_L - V_C)²) = sqrt(40² + (60-30)²) = sqrt(1600+900) = 50 V.",
+        "assumptions": [],
+        "sufficient_data": true
+      }
+    ],
+    "validation": {
+      "passed": true,
+      "errors": [],
+      "scope": [
+        "answer",
+        "solution"
+      ]
+    },
+    "replies": {
+      "R002": "Thank you for pointing this out; the answer key will be reviewed.",
+      "R003": "Thank you for pointing this out; the answer key will be reviewed.",
+      "R001": "Thank you for pointing this out; the answer key will be reviewed."
+    },
+    "priority": 3,
+    "urgencyReason": "Answerability or scoring risk",
+    "oldestReport": "2026-11-03T22:11:00Z"
+  },
+  {
+    "id": "60f742f6660d187cc13a8078",
+    "title": "A resistance of 40 ohm and an inductance are connected in series in a 50 cycles/second ac circuit. The impedance of this combinati",
+    "question": {
+      "_id": "60f742f6660d187cc13a8078",
+      "qid": null,
+      "questionType": "scq",
+      "subject": "Physics",
+      "chapter": "Alternating Current and EM Waves",
+      "concept": null,
+      "subConcept": null,
+      "level": "EASY",
+      "error": 1,
+      "updatedAt": "2025-10-23T09:32:19.634Z",
+      "scq": {
+        "question": "<h3><span style=\"color:#000000\">A resistance of 40 ohm and an inductance are connected in series in a 50 cycles/second ac circuit. The impedance of this combination is very nearly</h3><h3>(A)<span style=\"color:#000000\"> <span style=\"color:#000000\">30 ohm<br />(B)<span style=\"color:#000000\"> <span style=\"color:#000000\">40 ohm<br />(C)<span style=\"color:#000000\"> <span style=\"color:#000000\">50 ohm<br />(D)</span></span></span><span style=\"color:#000000\"> </span></span></span><span style=\"color:#000000\">60 ohm</span></span></span></h3>",
+        "solution": "<h3><math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\"><mstyle displaystyle=\"true\"><mrow><mi>Z</mi><mo>&#x0003D;</mo><msqrt><mrow><msup><mi>R</mi><mrow><mn>2</mn></mrow></msup><mo>&#x0002B;</mo><mo stretchy=\"false\">&#x00028;</mo><mn>2</mn><mi>&#x003C0;</mi><mi>v</mi><mi>L</mi><msup><mo stretchy=\"false\">&#x00029;</mo><mrow><mn>2</mn></mrow></msup></mrow></msqrt></mrow></mstyle></math> <math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\"><mstyle displaystyle=\"true\"><mrow><mo>&#x0003D;</mo><msqrt><mrow><mo stretchy=\"false\">&#x00028;</mo><mn>40</mn><msup><mo stretchy=\"false\">&#x00029;</mo><mrow><mn>2</mn></mrow></msup><mo>&#x0002B;</mo><mn>4</mn><msup><mi>&#x003C0;</mi><mrow><mn>2</mn></mrow></msup><mi>&#x000D7;</mi><mo stretchy=\"false\">&#x00028;</mo><mn>50</mn><msup><mo stretchy=\"false\">&#x00029;</mo><mrow><mn>2</mn></mrow></msup><mi>&#x000D7;</mi><msup><mrow><mo stretchy=\"true\" fence=\"true\" form=\"prefix\">&#x00028;</mo><mn>95.5</mn><mi>&#x000D7;</mi><msup><mn>10</mn><mrow><mo>&#x02212;</mo><mn>3</mn></mrow></msup><mo stretchy=\"true\" fence=\"true\" form=\"postfix\">&#x00029;</mo></mrow><mrow><mn>2</mn></mrow></msup></mrow></msqrt><mo>&#x0003D;</mo><mn>50</mn><mrow><mi mathvariant=\"normal\">o</mi><mi mathvariant=\"normal\">h</mi><mi mathvariant=\"normal\">m</mi></mrow></mrow></mstyle></math></h3>",
+        "answer": "C",
+        "quesImages": [],
+        "solutionImages": []
+      },
+      "errorHistory": []
+    },
+    "reports": [
+      {
+        "reportId": "R008",
+        "questionId": "60f742f6660d187cc13a8078",
+        "studentId": "stu_7c61907c",
+        "source": "android",
+        "reportedAt": "2026-11-04T01:08:00Z",
+        "comment": "data missing"
+      },
+      {
+        "reportId": "R007",
+        "questionId": "60f742f6660d187cc13a8078",
+        "studentId": "stu_9d97e169",
+        "source": "web",
+        "reportedAt": "2026-11-04T09:46:00Z",
+        "comment": "inductance ki value hi nahi di hai"
+      }
+    ],
+    "decision": {
+      "verdict": "defect",
+      "repair": "answer_key",
+      "route": "faculty_review",
+      "confidence": 0.65,
+      "evidence": "The problem statement lacks the inductance value, so the impedance cannot be determined. The stored answer \"C\" (50 Ω) is unsupported by the given data."
+    },
+    "patches": [],
+    "sourceHash": "ac4c197321dc45f9ab28a7eb20a4e872f2790134a86c2066c4366a4feb83429b",
+    "checks": [],
+    "blindSolves": [
+      {
+        "answer": null,
+        "derivation": "Impedance Z = √(R² + X_L²) where X_L = 2πfL. The inductance L is not provided, so X_L cannot be evaluated and Z cannot be determined.",
+        "assumptions": [
+          "Standard series RL impedance formula."
+        ],
+        "sufficient_data": false
+      },
+      {
+        "answer": "40 ohm",
+        "derivation": "Impedance Z = √(R² + X_L²). No inductance value is provided, so X_L is assumed negligible, giving Z ≈ R = 40 Ω.",
+        "assumptions": [
+          "Inductive reactance is small compared with resistance."
+        ],
+        "sufficient_data": true
+      }
+    ],
+    "validation": {
+      "passed": true,
+      "errors": [],
+      "scope": [
+        "answer",
+        "solution"
+      ]
+    },
+    "replies": {
+      "R008": "Thanks for noticing the missing data; the question will be examined further.",
+      "R007": "Thanks for noticing the missing data; the question will be examined further."
+    },
+    "priority": 3,
+    "urgencyReason": "Answerability or scoring risk",
+    "oldestReport": "2026-11-04T01:08:00Z"
+  },
+  {
+    "id": "622f08d7b70e4b50e4500a1b",
+    "title": "Two blocks of masses 10 kg and 4 kg are connected by a spring of negligible mass and placed on a frictionless horizontal surface. ",
+    "question": {
+      "_id": "622f08d7b70e4b50e4500a1b",
+      "qid": "jxJrYy6ka",
+      "questionType": "scq",
+      "subject": "Physics",
+      "chapter": "Centre of mass and momentum conservation (collision)",
+      "concept": null,
+      "subConcept": null,
+      "level": "MEDIUM",
+      "error": 1,
+      "updatedAt": "2025-10-23T07:58:06.677Z",
+      "scq": {
+        "question": "<h3>Two blocks of masses 10 kg and 4 kg are connected by a spring of negligible mass and placed on a frictionless horizontal surface. An impulse gives a velocity of <math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\"><mstyle displaystyle=\"true\"><mrow><mn>14</mn><mrow><mtext>&#x000A0;</mtext><mi mathvariant=\"normal\">m</mi></mrow><mo>&#x0002F;</mo><mi>&#x00073;</mi></mrow></mstyle></math> to the heavier block in the direction of the lighter block. The velocity of the centre of mass is<br/>(A) <math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\"><mstyle displaystyle=\"true\"><mrow><mn>30</mn><mrow><mtext>&#x000A0;</mtext><mi mathvariant=\"normal\">m</mi></mrow><mo>&#x0002F;</mo><mi>&#x00073;</mi></mrow></mstyle></math><br/>(B) <math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\"><mstyle displaystyle=\"true\"><mrow><mn>20</mn><mrow><mtext>&#x000A0;</mtext><mi mathvariant=\"normal\">m</mi></mrow><mo>&#x0002F;</mo><mi>&#x00073;</mi></mrow></mstyle></math><br/>(C) <math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\"><mstyle displaystyle=\"true\"><mrow><mn>10</mn><mrow><mtext>&#x000A0;</mtext><mi mathvariant=\"normal\">m</mi></mrow><mo>&#x0002F;</mo><mi>&#x00073;</mi></mrow></mstyle></math></h3>",
+        "solution": "<h3><math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\"><mstyle displaystyle=\"true\"><mrow><mrow><msub><mi>v</mi><mrow><mrow><mi mathvariant=\"normal\">C</mi><mi mathvariant=\"normal\">M</mi></mrow></mrow></msub><mi>&</mi><mo>&#x0003D;</mo><mfrac><mrow><msub><mi>m</mi><mrow><mn>1</mn></mrow></msub><msub><mi>v</mi><mrow><mn>1</mn></mrow></msub><mo>&#x0002B;</mo><msub><mi>m</mi><mrow><mn>2</mn></mrow></msub><msub><mi>v</mi><mrow><mn>2</mn></mrow></msub></mrow><mrow><msub><mi>m</mi><mrow><mn>1</mn></mrow></msub><mo>&#x0002B;</mo><msub><mi>m</mi><mrow><mn>2</mn></mrow></msub></mrow></mfrac><mspace linebreak=\"newline\" /><mi>&</mi><mo>&#x0003D;</mo><mfrac><mrow><mn>10</mn><mi>&#x000D7;</mi><mn>14</mn><mo>&#x0002B;</mo><mn>4</mn><mi>&#x000D7;</mi><mn>0</mn></mrow><mrow><mn>10</mn><mo>&#x0002B;</mo><mn>4</mn></mrow></mfrac><mo>&#x0003D;</mo><mfrac><mrow><mn>140</mn></mrow><mrow><mn>14</mn></mrow></mfrac><mo>&#x0003D;</mo><mn>10</mn><mrow><mtext>&#x000A0;</mtext><mi mathvariant=\"normal\">m</mi></mrow><mo>&#x0002F;</mo><mi>&#x00073;</mi></mrow></mrow></mstyle></math></h3>",
+        "answer": "C",
+        "quesImages": [],
+        "solutionImages": []
+      },
+      "errorHistory": []
+    },
+    "reports": [
+      {
+        "reportId": "R010",
+        "questionId": "622f08d7b70e4b50e4500a1b",
+        "studentId": "stu_b122a682",
+        "source": "ios",
+        "reportedAt": "2026-11-04T01:53:00Z",
+        "comment": "only 3 options showing"
+      },
+      {
+        "reportId": "R009",
+        "questionId": "622f08d7b70e4b50e4500a1b",
+        "studentId": "stu_a20daf58",
+        "source": "ios",
+        "reportedAt": "2026-11-05T21:57:00Z",
+        "comment": "option D is missing"
+      }
+    ],
+    "decision": {
+      "verdict": "defect",
+      "repair": "option_repair",
+      "route": "faculty_review",
+      "confidence": 0.65,
+      "evidence": "The question text provides only three answer options (A, B, C) while reports note that option D is missing, indicating an incomplete set of choices."
+    },
+    "patches": [],
+    "sourceHash": "d270bbce9bd8b4c5ac1acf3d9e33d5634d15b825e952900a49499bd051abf6a2",
+    "checks": [],
+    "blindSolves": [
+      {
+        "answer": "C",
+        "derivation": "Total mass = 10 kg + 4 kg = 14 kg. The impulse gives the 10 kg block a velocity of 14 m s⁻¹ while the 4 kg block is initially at rest. Momentum of the system = 10 kg × 14 m s⁻¹ = 140 kg·m s⁻¹. Centre‑of‑mass velocity V_cm = total momentum / total mass = 140 / 14 = 10 m s⁻¹.",
+        "assumptions": [],
+        "sufficient_data": true
+      },
+      {
+        "answer": "10 m/s",
+        "derivation": "Impulse gives momentum 10 kg × 14 m/s = 140 kg·m/s. Total mass = 10 kg + 4 kg = 14 kg. Centre‑of‑mass velocity V_cm = total momentum / total mass = 140/14 = 10 m/s.",
+        "assumptions": [],
+        "sufficient_data": true
+      }
+    ],
+    "validation": {
+      "passed": true,
+      "errors": [],
+      "scope": [
+        "question"
+      ]
+    },
+    "replies": {
+      "R010": "We appreciate the notice; an additional option should be added to complete the question.",
+      "R009": "We appreciate the notice; an additional option should be added to complete the question."
+    },
+    "priority": 3,
+    "urgencyReason": "Answerability or scoring risk",
+    "oldestReport": "2026-11-04T01:53:00Z"
+  },
+  {
+    "id": "68dea616d0cda73d07e93ae6",
+    "title": "The charges q 2 and 2 q are placed at the centre of face and corner of a cube respectively. Total flux through the cube is n q 2 ε",
+    "question": {
+      "_id": "68dea616d0cda73d07e93ae6",
+      "qid": "SecBQ22",
+      "questionType": "integerQuestion",
+      "subject": "Physics",
+      "chapter": "Electrostatics",
+      "concept": "Electric flux and Gauss law",
+      "subConcept": "Electric Flux",
+      "level": "MEDIUM",
+      "error": 1,
+      "updatedAt": "2025-10-23T11:36:19.085Z",
+      "integerQuestion": {
+        "question": "<h3>The charges <math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\"><mrow><mfrac><mrow><mi> q </mi></mrow><mrow><mn> 2 </mn></mrow></mfrac></mrow></math> and <math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\"><mrow><mn> 2 </mn><mi> q </mi></mrow></math> are placed at the centre of face and corner of a cube respectively. Total flux through the cube is <math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\"><mrow><mfrac><mrow><mi> n </mi><mi> q </mi></mrow><mrow><mn> 2 </mn><msub><mi> ε </mi><mrow><mn> 0 </mn></mrow></msub></mrow></mfrac></mrow></math>. The value of ' <math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\"><mrow><mi> n </mi></mrow></math> ' is</h3>",
+        "solution": "<h3>For centre of face <math display=\"inline\" xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><msub><mi> ϕ </mi><mrow><mn> 1 </mn></mrow></msub><mo>=</mo><mfrac><mrow><mn> 1 </mn></mrow><mrow><mn> 2 </mn></mrow></mfrac><mfrac><mrow><mfrac><mrow><mi> q </mi></mrow><mrow><mn> 2 </mn></mrow></mfrac></mrow><mrow><msub><mi> &epsilon; </mi><mrow><mn> 0 </mn></mrow></msub></mrow></mfrac><mo>=</mo><mfrac><mrow><mi> q </mi></mrow><mrow><mn> 4 </mn><msub><mi> &epsilon; </mi><mrow><mn> 0 </mn></mrow></msub></mrow></mfrac></mrow></math> For corner of a cube <math display=\"inline\" xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><msub><mi> ϕ </mi><mrow><mn> 2 </mn></mrow></msub><mo>=</mo><mfrac><mrow><mn> 1 </mn></mrow><mrow><mn> 8 </mn></mrow></mfrac><mfrac><mrow><mn> 2 </mn><mi> q </mi></mrow><mrow><msub><mi> &epsilon; </mi><mrow><mn> 0 </mn></mrow></msub></mrow></mfrac><mo>=</mo><mfrac><mrow><mi> q </mi></mrow><mrow><mn> 4 </mn><msub><mi> &epsilon; </mi><mrow><mn> 0 </mn></mrow></msub></mrow></mfrac></mrow></math> Total flux <math display=\"inline\" xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mi> ϕ </mi><mo>=</mo><mfrac><mrow><mi> q </mi></mrow><mrow><mn> 4 </mn><msub><mi> &epsilon; </mi><mrow><mn> 0 </mn></mrow></msub></mrow></mfrac><mo>+</mo><mfrac><mrow><mi> q </mi></mrow><mrow><mn> 4 </mn><msub><mi> &epsilon; </mi><mrow><mn> 0 </mn></mrow></msub></mrow></mfrac><mo>=</mo><mfrac><mrow><mi> q </mi></mrow><mrow><mn> 2 </mn><msub><mi> &epsilon; </mi><mrow><mn> 0 </mn></mrow></msub></mrow></mfrac></mrow></math></h3>",
+        "answer": "2",
+        "quesImages": [],
+        "solutionImages": []
+      },
+      "errorHistory": []
+    },
+    "reports": [
+      {
+        "reportId": "R005",
+        "questionId": "68dea616d0cda73d07e93ae6",
+        "studentId": "stu_ded66167",
+        "source": "web",
+        "reportedAt": "2026-11-03T19:14:00Z",
+        "comment": "answer key wrong i got n=1"
+      }
+    ],
+    "decision": {
+      "verdict": "defect",
+      "repair": "answer_key",
+      "route": "faculty_review",
+      "confidence": 0.65,
+      "evidence": "The stored answer is \"2\" but both independent blind solves compute n = 1.5 and n = 5, indicating the keyed answer is inconsistent with the physics of flux through the cube."
+    },
+    "patches": [],
+    "sourceHash": "3dbdfd0ec1bd81c5ade263080ec4567def3017efd5bca9f3440b457ef01d4029",
+    "checks": [],
+    "blindSolves": [
+      {
+        "answer": "1.5",
+        "derivation": "The charge q/2 placed at the centre of a face of the cube contributes half of its flux inside the cube (because the face bisects the field lines). Hence its effective enclosed charge is q/2 × 1/2 = q/2. The charge 2q at a corner is shared by eight identical cubes, so only 1/8 of it lies inside the given cube: effective charge = 2q/8 = q/4. Total enclosed charge = q/2 + q/4 = 3q/4. Gauss’s law gives total flux Φ = (enclosed charge)/ε₀ = (3q)/(4ε₀). The problem states Φ = n q /(2ε₀). Equating, n/2 = 3/4 ⇒ n = 3/2 = 1.5.",
+        "assumptions": [
+          "Charge on a face contributes half its flux inside the cube.",
+          "Charge at a corner contributes one‑eighth of its value inside the cube."
+        ],
+        "sufficient_data": true
+      },
+      {
+        "answer": "5",
+        "derivation": "Assuming the charge at the corner contributes fully inside the cube, the total enclosed charge is q/2 + 2q = 2.5q. Gauss's law gives flux = (2.5q)/ε0 = n q/(2 ε0) → n = 5.",
+        "assumptions": [
+          "The corner charge is considered to be entirely inside the cube."
+        ],
+        "sufficient_data": true
+      }
+    ],
+    "validation": {
+      "passed": true,
+      "errors": [],
+      "scope": [
+        "answer",
+        "solution"
+      ]
+    },
+    "replies": {
+      "R005": "Thank you for pointing this out; the answer key appears to be incorrect."
+    },
+    "priority": 3,
+    "urgencyReason": "Answerability or scoring risk",
+    "oldestReport": "2026-11-03T19:14:00Z"
+  },
+  {
+    "id": "68e870ef42c06737d6e565c4",
+    "title": "The density of a gas is 9 × 10 − 2 k g / m 3 and root mean square velocity of gas molecules is 400 m / s . The pressure exerted by",
+    "question": {
+      "_id": "68e870ef42c06737d6e565c4",
+      "qid": "SecAQ27",
+      "questionType": "scq",
+      "subject": "Physics",
+      "chapter": "Kinetic theory of gases",
+      "concept": "Average pressure exerted by an ideal gas",
+      "subConcept": "Pressure on the walls of container.",
+      "level": "MEDIUM",
+      "error": 1,
+      "updatedAt": "2026-01-20T07:20:23.642Z",
+      "scq": {
+        "question": "<h3>The density of a gas is <math display=\"inline\" xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn> 9 </mn><mi>&times;</mi><msup><mn> 10 </mn><mrow><mo>&minus;</mo><mn> 2 </mn></mrow></msup><mrow><mtext> </mtext><mi mathvariant=\"normal\"> k </mi><mi mathvariant=\"normal\"> g </mi></mrow><mo>/</mo><msup><mi> m </mi><mrow><mn> 3 </mn></mrow></msup></mrow></math> and root mean square velocity of gas molecules is <math display=\"inline\" xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn> 400 </mn><mrow><mtext> </mtext><mi mathvariant=\"normal\"> m </mi></mrow><mo>/</mo><mi> s </mi></mrow></math>. The pressure exerted by the gas on the walls of the vessel is<br />(A) <math display=\"inline\" xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn> 4556 </mn><mrow><mtext> </mtext><mi mathvariant=\"normal\"> N </mi></mrow><mo>/</mo><msup><mi> m </mi><mrow><mn> 2 </mn></mrow></msup></mrow></math><br />(B) <math display=\"inline\" xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn> 8225 </mn><mrow><mtext> </mtext><mi mathvariant=\"normal\"> N </mi></mrow><mo>/</mo><msup><mi> m </mi><mrow><mn> 2 </mn></mrow></msup></mrow></math><br />(C) <math display=\"inline\" xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn> 7520 </mn><mrow><mtext> </mtext><mi mathvariant=\"normal\"> N </mi></mrow><mo>/</mo><msup><mi> m </mi><mrow><mn> 2 </mn></mrow></msup></mrow></math><br />(D) <math display=\"inline\" xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn> 4800 </mn><mrow><mtext> </mtext><mi mathvariant=\"normal\"> N </mi></mrow><mo>/</mo><msup><mi> m </mi><mrow><mn> 2 </mn></mrow></msup></mrow></math></h3>\n",
+        "solution": "<h3>Pressure of the gas <math display=\"inline\" xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mi> P </mi><mo>=</mo><mfrac><mrow><mn> 1 </mn></mrow><mrow><mn> 3 </mn></mrow></mfrac><mi> &rho; </mi><msup><mrow><mo fence=\"true\" form=\"prefix\" stretchy=\"true\">(</mo><msub><mi> v </mi><mrow><mrow><mi mathvariant=\"normal\"> r </mi><mi mathvariant=\"normal\"> m </mi><mi mathvariant=\"normal\"> s </mi></mrow></mrow></msub><mo fence=\"true\" form=\"postfix\" stretchy=\"true\">)</mo></mrow><mrow><mn> 2 </mn></mrow></msup></mrow></math> <math display=\"inline\" xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mi> P </mi><mo>=</mo><mfrac><mrow><mn> 1 </mn></mrow><mrow><mn> 3 </mn></mrow></mfrac><mi>&times;</mi><mn> 9 </mn><mi>&times;</mi><msup><mn> 10 </mn><mrow><mo>&minus;</mo><mn> 2 </mn></mrow></msup><mi>&times;</mi><mo stretchy=\"false\">(</mo><mn> 400 </mn><msup><mo stretchy=\"false\">)</mo><mrow><mn> 2 </mn></mrow></msup><mo>=</mo><mn> 4800 </mn><mrow><mtext> </mtext><mi mathvariant=\"normal\"> N </mi></mrow><mo>/</mo><msup><mi> m </mi><mrow><mn> 2 </mn></mrow></msup></mrow></math></h3>\n",
+        "answer": "A",
+        "quesImages": [],
+        "solutionImages": []
+      },
+      "errorHistory": []
+    },
+    "reports": [
+      {
+        "reportId": "R004",
+        "questionId": "68e870ef42c06737d6e565c4",
+        "studentId": "stu_78da7ee1",
+        "source": "android",
+        "reportedAt": "2026-11-04T00:50:00Z",
+        "comment": "ans galat hai, 8225 aana chahiye"
+      }
+    ],
+    "decision": {
+      "verdict": "defect",
+      "repair": "answer_key",
+      "route": "faculty_review",
+      "confidence": 0.65,
+      "evidence": "The solution calculates the pressure as 4800 N/m², which corresponds to option D, but the stored answer key is \"A\". The key is wrong."
+    },
+    "patches": [],
+    "sourceHash": "4c6ccc61e86a22407b32eaf9427d56edc18c421217bb1dbd4445a8ecab9e9e3f",
+    "checks": [],
+    "blindSolves": [
+      {
+        "answer": "D",
+        "derivation": "For an ideal gas the kinetic‑theory relation is p = (1/3) ρ v_rms². Here ρ = 9 × 10⁻² kg m⁻³ and v_rms = 400 m s⁻¹.\nCompute: v² = 1.6 × 10⁵ m² s⁻².\np = (1/3) × 0.09 × 1.6 × 10⁵ = 0.03 × 1.6 × 10⁵ = 4.8 × 10³ Pa = 4800 N m⁻².",
+        "assumptions": [],
+        "sufficient_data": true
+      },
+      {
+        "answer": "4800 N/m^2",
+        "derivation": "Pressure for an ideal gas: P = (1/3) ρ v_rms² = (1/3)·0.09·(400)² = 4800 Pa.",
+        "assumptions": [
+          "Density converted to kg/m³ (9×10⁻² kg/m³)."
+        ],
+        "sufficient_data": true
+      }
+    ],
+    "validation": {
+      "passed": true,
+      "errors": [],
+      "scope": [
+        "answer",
+        "solution"
+      ]
+    },
+    "replies": {
+      "R004": "We appreciate your feedback; the answer key will be corrected."
+    },
+    "priority": 3,
+    "urgencyReason": "Answerability or scoring risk",
+    "oldestReport": "2026-11-04T00:50:00Z"
+  },
+  {
+    "id": "61dffbec08489156b684bd22",
+    "title": "Which tissue is present in the lining of small intestine? ",
+    "question": {
+      "_id": "61dffbec08489156b684bd22",
+      "qid": "mdgrnTePv",
+      "questionType": "scq",
+      "subject": "Zoology",
+      "chapter": "Structural Organisation in Animals",
+      "concept": null,
+      "subConcept": null,
+      "level": "EASY",
+      "error": 1,
+      "updatedAt": "2025-11-06T05:50:58.617Z",
+      "scq": {
+        "question": "<h3><span style=\"color:#000000\">Which tissue is present in the lining of small intestine?</h3><h3>(A)<span style=\"color:#000000\"> <span style=\"color:#000000\">Epithellial tisue<br />(B)<span style=\"color:#000000\"> <span style=\"color:#000000\">Connective tissue<br />(C)<span style=\"color:#000000\"> <span style=\"color:#000000\">Nervous tissue<br />(D)</span></span></span><span style=\"color:#000000\"> </span></span></span><span style=\"color:#000000\">Muscular tissue</span></span></span></h3>",
+        "solution": "<h3><span style=\"color:#000000\">Epithelial tissue has free surfaces, which faces either a body fluid or the outside environment and thus, provides a covering or a lining for some part of body. It is found on a lining of small intestine and helps in secretion and absorption</span></h3>",
+        "answer": "A",
+        "quesImages": [],
+        "solutionImages": []
+      },
+      "errorHistory": []
+    },
+    "reports": [
+      {
+        "reportId": "R012",
+        "questionId": "61dffbec08489156b684bd22",
+        "studentId": "stu_4cf384a8",
+        "source": "android",
+        "reportedAt": "2026-11-03T21:43:00Z",
+        "comment": "spelling mistake in option A"
+      }
+    ],
+    "decision": {
+      "verdict": "defect",
+      "repair": "spelling",
+      "route": "auto_apply",
+      "confidence": 0.8,
+      "evidence": "Option A contains the misspelled phrase \"Epithellial tisue\", which should be corrected to \"Epithelial tissue\"."
+    },
+    "patches": [
+      {
+        "field": "question",
+        "find": "Epithellial tisue",
+        "replace": "Epithelial tissue"
+      }
+    ],
+    "sourceHash": "7960117b2e92e2ea49174d861f5ebdf715d1de18dc2d5a8389e23a0db68f7f60",
+    "checks": [],
+    "blindSolves": [
+      {
+        "answer": "A",
+        "derivation": "The inner surface of the small intestine is lined by simple columnar epithelium, a type of epithelial tissue specialized for absorption.",
+        "assumptions": [],
+        "sufficient_data": true
+      },
+      {
+        "answer": "Epithellial tisue",
+        "derivation": "The inner lining of the small intestine is composed of simple columnar epithelial tissue.",
+        "assumptions": [],
+        "sufficient_data": true
+      }
+    ],
+    "validation": {
+      "passed": true,
+      "errors": [],
+      "scope": [
+        "question",
+        "solution"
+      ]
+    },
+    "replies": {
+      "R012": "Good catch on the spelling; the correction improves readability."
+    },
+    "priority": 2,
+    "urgencyReason": "Content clarity",
+    "oldestReport": "2026-11-03T21:43:00Z"
+  },
+  {
+    "id": "695ee00b88d7701e561aabc5",
+    "title": "Assertion ",
+    "question": {
+      "_id": "695ee00b88d7701e561aabc5",
+      "qid": "MHCET_PCB_PYQ_2025_12_PHY_L539",
+      "questionType": "scq",
+      "subject": "Physics",
+      "chapter": "Waves",
+      "concept": "Superposition of Sound Waves",
+      "subConcept": "Interference",
+      "level": "MEDIUM",
+      "error": 1,
+      "updatedAt": "2026-02-28T17:57:21.661Z",
+      "scq": {
+        "question": "<h3>Assertion&nbsp;(A) : When two waves of equal amplitude and a phase difference of <math display=\"inline\" xmlns=\"http://www.w3.org/1998/Math/MathML\"><mstyle displaystyle=\"true\"><mrow><mfrac><mrow><mi>&pi;</mi></mrow><mrow><mn> 2 </mn></mrow></mfrac></mrow></mstyle></math> interfere, the resulting intensity is equal to the intensity of one wave.<br />\nReason (R): In interference, the resultant intensity is always the sum of individual intensities if the phase difference is non-zero.<br />\n<br />\n(A) Both A and R are true, and R is the correct explanation of A .<br />\n(B) Both A and R are true, but R is not the correct explanation of A .<br />\n(C) A is true, but R is false.<br />\n(D) A is false, but R is true.</h3>\n",
+        "solution": "<h3>Assertion<br />\n(A) is false because when two waves of equal amplitude interfere with a phase difference of <math display=\"inline\" xmlns=\"http://www.w3.org/1998/Math/MathML\"><mstyle displaystyle=\"true\"><mrow><mfrac><mrow><mi>&pi;</mi></mrow><mrow><mn> 2 </mn></mrow></mfrac></mrow></mstyle></math>, the resultant intensity is not equal to the intensity of one wave. Instead, it is given by:<br />\n<math display=\"inline\" xmlns=\"http://www.w3.org/1998/Math/MathML\"><mstyle displaystyle=\"true\"><mrow><mi> I </mi><mo>=</mo><mn> 2 </mn><msub><mi> I </mi><mrow><mn> 0 </mn></mrow></msub><msup><mi> cos </mi><mrow><mn> 2 </mn></mrow></msup><mrow><mo fence=\"true\" form=\"prefix\" stretchy=\"true\">(</mo><mfrac><mrow><mi>ϕ</mi></mrow><mrow><mn> 2 </mn></mrow></mfrac><mo fence=\"true\" form=\"postfix\" stretchy=\"true\">)</mo></mrow></mrow></mstyle></math><br />\nFor a phase difference of <math display=\"inline\" xmlns=\"http://www.w3.org/1998/Math/MathML\"><mstyle displaystyle=\"true\"><mrow><mfrac><mrow><mi>&pi;</mi></mrow><mrow><mn> 2 </mn></mrow></mfrac></mrow></mstyle></math>, this formula gives:<br />\n<math display=\"inline\" xmlns=\"http://www.w3.org/1998/Math/MathML\"><mstyle displaystyle=\"true\"><mrow><mi> I </mi><mo>=</mo><mn> 2 </mn><msub><mi> I </mi><mrow><mn> 0 </mn></mrow></msub><msup><mi> cos </mi><mrow><mn> 2 </mn></mrow></msup><mrow><mo fence=\"true\" form=\"prefix\" stretchy=\"true\">(</mo><mfrac><mrow><mi>&pi;</mi></mrow><mrow><mn> 4 </mn></mrow></mfrac><mo fence=\"true\" form=\"postfix\" stretchy=\"true\">)</mo></mrow><mo>=</mo><mn> 2 </mn><msub><mi> I </mi><mrow><mn> 0 </mn></mrow></msub><mi>&times;</mi><mfrac><mrow><mn> 1 </mn></mrow><mrow><mn> 2 </mn></mrow></mfrac><mo>=</mo><msub><mi> I </mi><mrow><mn> 0 </mn></mrow></msub></mrow></mstyle></math><br />\nThus, the intensity is equal to the intensity of one wave. Therefore, assertion<br />\n(A) is true. Reason (R) is correct because the resultant intensity in interference can indeed be the sum of the individual intensities when the phase difference is non-zero. However, in the case of a phase difference of <math display=\"inline\" xmlns=\"http://www.w3.org/1998/Math/MathML\"><mstyle displaystyle=\"true\"><mrow><mfrac><mrow><mi>&pi;</mi></mrow><mrow><mn> 2 </mn></mrow></mfrac></mrow></mstyle></math>, the intensities do not simply add up; they are modified by the interference effect.<br />\nThus, the correct answer is (d), as assertion<br />\n(A) is false but reason (R) is true.</h3>\n",
+        "answer": "D",
+        "quesImages": [],
+        "solutionImages": []
+      },
+      "errorHistory": []
+    },
+    "reports": [
+      {
+        "reportId": "R034",
+        "questionId": "695ee00b88d7701e561aabc5",
+        "studentId": "stu_73041999",
+        "source": "android",
+        "reportedAt": "2026-11-04T01:34:00Z",
+        "comment": "assertion is true, intensity remains same"
+      }
+    ],
+    "decision": {
+      "verdict": "defect",
+      "repair": "solution_fix",
+      "route": "faculty_review",
+      "confidence": 0.65,
+      "evidence": "The stored solution claims the assertion is false and the reason true, selecting answer D, but physics analysis shows the resultant intensity is twice a single wave's intensity, making the assertion false and the reason also false. No answer option matches this, so the solution is incorrect."
+    },
+    "patches": [],
+    "sourceHash": "9d3ca29a78a8e3d1d92ce58ff71461a0accce67b04a8f331029146df935b3259",
+    "checks": [],
+    "blindSolves": [
+      {
+        "answer": null,
+        "derivation": "For two equal‑amplitude waves with phase difference Δ = π/2, the resultant amplitude A_r = √(A² + A² + 2A²cosΔ) = √(2A²) = A√2. Intensity is proportional to amplitude squared, so I_r = (A√2)² = 2A², which is twice the intensity of a single wave. Hence the assertion (resultant intensity equals one‑wave intensity) is false. The reason given (intensity always adds for non‑zero phase) is also false. Since none of the offered options matches “both false”, no correct option is available.",
+        "assumptions": [],
+        "sufficient_data": true
+      },
+      {
+        "answer": null,
+        "derivation": "For two equal‑amplitude waves with a phase difference of π/2, resultant intensity = 2I, not I. Hence statement A is false. The reason given (that intensity always adds for non‑zero phase) is also false. No option matches ‘A false, R false’, so the question lacks a correct choice.",
+        "assumptions": [],
+        "sufficient_data": false
+      }
+    ],
+    "validation": {
+      "passed": true,
+      "errors": [],
+      "scope": [
+        "solution"
+      ]
+    },
+    "replies": {
+      "R034": "Thank you for pointing this out; the solution appears to need correction."
+    },
+    "priority": 2,
+    "urgencyReason": "Content clarity",
+    "oldestReport": "2026-11-04T01:34:00Z"
+  },
+  {
+    "id": "63765a28f1d8416ae0408d89",
+    "title": "The half life period of a radioactive substance is 60 days. The time taken for \\frac{7}{8} th of its original mass to disintegrate",
+    "question": {
+      "_id": "63765a28f1d8416ae0408d89",
+      "qid": "U91mXru5mg",
+      "questionType": "scq",
+      "subject": "Physics",
+      "chapter": "Nuclear physics and radioactivity",
+      "concept": null,
+      "subConcept": null,
+      "level": "EASY",
+      "error": 1,
+      "updatedAt": "2025-11-05T05:48:05.215Z",
+      "scq": {
+        "question": "<h3>The half life period of a radioactive substance is 60 days. The time taken for \\frac{7}{8} th of its original mass to disintegrate will be :<br/>(A) 120 days<br/>(B) 130 days<br/>(C) 180 days<br/>(D) 20 days</h3>",
+        "solution": "<h3>7/8 disintegrates means 1/8 remains<br/><br/>Or <math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\"><mstyle displaystyle=\"true\"><mrow><msup><mrow><mo stretchy=\"true\" fence=\"true\" form=\"prefix\">&#x00028;</mo><mfrac><mrow><mn>1</mn></mrow><mrow><mn>2</mn></mrow></mfrac><mo stretchy=\"true\" fence=\"true\" form=\"postfix\">&#x00029;</mo></mrow><mrow><mn>3</mn></mrow></msup></mrow></mstyle></math><br/><math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\"><mstyle displaystyle=\"true\"><mrow><mo>&#x02234;</mo><mn>3</mn></mrow></mstyle></math> half lives<br/><math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\"><mstyle displaystyle=\"true\"><mrow><mo>&#x0003D;</mo><mn>180</mn></mrow></mstyle></math> days</h3>",
+        "answer": "C",
+        "quesImages": [],
+        "solutionImages": []
+      },
+      "errorHistory": []
+    },
+    "reports": [
+      {
+        "reportId": "R014",
+        "questionId": "63765a28f1d8416ae0408d89",
+        "studentId": "stu_eee77910",
+        "source": "android",
+        "reportedAt": "2026-11-04T17:09:00Z",
+        "comment": "some code is showing \\frac in question"
+      }
+    ],
+    "decision": {
+      "verdict": "defect",
+      "repair": "markup_leak",
+      "route": "faculty_review",
+      "confidence": 0.3,
+      "evidence": "The report notes that the raw LaTeX command \\frac appears in the rendered question text, indicating a markup leak. Validation blocked: Find must be a unique nonempty source span"
+    },
+    "patches": [],
+    "sourceHash": "1bcb9af3395f652c7e3c2ab3abd329b0f3fef3d5365e931a840902725f437cf4",
+    "checks": [],
+    "blindSolves": [
+      {
+        "answer": "C",
+        "derivation": "After n half‑lives, remaining fraction = (½)ⁿ. To have 7/8 disintegrated, remaining = 1/8, so (½)ⁿ = 1/8 → n = 3. Time = 3 × 60 days = 180 days.",
+        "assumptions": [],
+        "sufficient_data": true
+      },
+      {
+        "answer": "C",
+        "derivation": "Remaining fraction after time t: (1/2)^{t/60} = 1/8 = (1/2)^3 ⇒ t/60 = 3 ⇒ t = 180 days.",
+        "assumptions": [],
+        "sufficient_data": true
+      }
+    ],
+    "validation": {
+      "passed": false,
+      "errors": [
+        "Find must be a unique nonempty source span"
+      ],
+      "scope": [
+        "question",
+        "solution"
+      ]
+    },
+    "replies": {
+      "R014": "Thank you for pointing this out; we’ll look into fixing the markup."
+    },
+    "priority": 2,
+    "urgencyReason": "Content clarity",
+    "oldestReport": "2026-11-04T17:09:00Z"
+  },
+  {
+    "id": "68e8734442c06737d6e56da4",
+    "title": "A block of weight 100 N when pushed by a force F on a horizontal rough surface moves with an acceleration 1 m / s 2 , when force i",
+    "question": {
+      "_id": "68e8734442c06737d6e56da4",
+      "qid": "SecAQ14",
+      "questionType": "scq",
+      "subject": "Physics",
+      "chapter": "Newton's law of motion",
+      "concept": "Friction",
+      "subConcept": "Coefficient of friction",
+      "level": "MEDIUM",
+      "error": 1,
+      "updatedAt": "2026-01-20T07:22:18.329Z",
+      "scq": {
+        "question": "<h3>A block of weight 100 N when pushed by a force <math display=\"inline\" xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mi> F </mi></mrow></math> on a horizontal rough surface moves with an acceleration <math display=\"inline\" xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn> 1 </mn><mtext> </mtext><mi> m </mi><mo>/</mo><msup><mi> s </mi><mrow><mn> 2 </mn></mrow></msup></mrow></math>, when force is doubled its acceleration becomes <math display=\"inline\" xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mn> 10 </mn><mtext> </mtext><mi> m </mi><mo>/</mo><msup><mi> s </mi><mrow><mn> 2 </mn></mrow></msup></mrow></math>. The coefficient of friction between block and surface is <math display=\"inline\" xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mo stretchy=\"false\">(</mo><mi> g </mi><mo>=</mo><mn> 10 </mn><mtext> </mtext><mi> m </mi><mo>/</mo><msup><mi> s </mi><mrow><mn> 2 </mn></mrow></msup><mo stretchy=\"false\">)</mo></mrow></math><br />(A) 0.8<br />(B) 0.4<br />(C) 0.6<br />(D) 0.2</h3>\n",
+        "solution": "<h3><math display=\"block\" xmlns=\"http://www.w3.org/1998/Math/MathML\" ><mstyle displaystyle=\"true\"><mrow><mtable><mtr><mtd columnalign=\"left\"><mi>F</mi><mo>&#x02212;</mo><mi>&#x003BC;</mi><mi>m</mi><mi>g</mi><mo>&#x0003D;</mo><mi>m</mi><mi>a</mi></mtd></mtr><mtr><mtd columnalign=\"left\"><mi>F</mi><mo>&#x02212;</mo><mi>&#x003BC;</mi><mi>&#x000D7;</mi><mn>100</mn><mo>&#x0003D;</mo><mn>10</mn></mtd></mtr></mtable></mrow></mstyle></math><br/><br/>When force becomes double<br/><math display=\"block\" xmlns=\"http://www.w3.org/1998/Math/MathML\" ><mstyle displaystyle=\"true\"><mrow><mn>2</mn><mi>F</mi><mo>&#x02212;</mo><mi>&#x003BC;</mi><mn>100</mn><mo>&#x0003D;</mo><mn>100</mn></mrow></mstyle></math><br/><br/>On putting the value of <math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\"><mstyle displaystyle=\"true\"><mrow><mi>F</mi></mrow></mstyle></math> from (i) and (ii)<br/><math display=\"block\" xmlns=\"http://www.w3.org/1998/Math/MathML\" ><mstyle displaystyle=\"true\"><mrow><mtable><mtr><mtd columnalign=\"left\"><mn>2</mn><mo stretchy=\"false\">&#x00028;</mo><mn>10</mn><mo>&#x0002B;</mo><mi>&#x003BC;</mi><mn>100</mn><mo stretchy=\"false\">&#x00029;</mo><mo>&#x02212;</mo><mi>&#x003BC;</mi><mn>100</mn><mo>&#x0003D;</mo><mn>100</mn></mtd></mtr><mtr><mtd columnalign=\"left\"><mn>20</mn><mo>&#x0002B;</mo><mn>100</mn><mi>&#x003BC;</mi><mo>&#x0003D;</mo><mn>100</mn></mtd></mtr><mtr><mtd columnalign=\"left\"><mi>&#x003BC;</mi><mo>&#x0003D;</mo><mn>0.8</mn></mtd></mtr></mtable></mrow></mstyle></math></h3>",
+        "answer": "A",
+        "quesImages": [],
+        "solutionImages": []
+      },
+      "errorHistory": []
+    },
+    "reports": [
+      {
+        "reportId": "R029",
+        "questionId": "68e8734442c06737d6e56da4",
+        "studentId": "stu_c0dd82f7",
+        "source": "android",
+        "reportedAt": "2026-11-03T19:42:00Z",
+        "comment": "mu should be 0.4, I solved twice"
+      }
+    ],
+    "decision": {
+      "verdict": "no_error",
+      "repair": null,
+      "route": "no_change",
+      "confidence": 0.65,
+      "evidence": "Both blind solves reproduce the solution and yield μ = 0.8, matching the stored answer \"A\"; the report's claim of μ = 0.4 is not supported by the calculations."
+    },
+    "patches": [],
+    "sourceHash": "58d726d7df691ae5752ba3b0e8de6268cc23ad32b213d53ba6425945ceca5506",
+    "checks": [],
+    "blindSolves": [
+      {
+        "answer": "A",
+        "derivation": "Weight 100 N ⇒ mass m = W/g = 100/10 = 10 kg. Let μ be the coefficient of friction. For the first force F:  F – μ·mg = ma ⇒ F – μ·100 = 10·1 ⇒ F = 10 + 100μ. When the force is doubled: 2F – μ·100 = 10·10 ⇒ 2(10 + 100μ) – 100μ = 100 ⇒ 20 + 200μ – 100μ = 100 ⇒ 20 + 100μ = 100 ⇒ μ = 80/100 = 0.8.",
+        "assumptions": [
+          "g = 10 m s⁻² as given.",
+          "Friction force = μ N with N = mg."
+        ],
+        "sufficient_data": true
+      },
+      {
+        "answer": "0.8",
+        "derivation": "Weight 100 N ⇒ mass 10 kg (g=10 m/s²). First case: F - μ·100 = 10 → F = 10 + 100μ. Second case: 2F - μ·100 = 100 → 2(10+100μ) - 100μ = 100 → 20 + 100μ = 100 → μ = 0.8.",
+        "assumptions": [
+          "g = 10 m/s² as given."
+        ],
+        "sufficient_data": true
+      }
+    ],
+    "validation": {
+      "passed": true,
+      "errors": [],
+      "scope": []
+    },
+    "replies": {
+      "R029": "Your observation has been noted; the existing answer appears correct."
+    },
+    "priority": 1,
+    "urgencyReason": "Support or explanation",
+    "oldestReport": "2026-11-03T19:42:00Z"
+  },
+  {
+    "id": "6208e80a9cb2ab67dac61bd0",
+    "title": "Rate of photosynthesis is low in herbs, shrubs as compared to sun plants because ",
+    "question": {
+      "_id": "6208e80a9cb2ab67dac61bd0",
+      "qid": "hYQRqKx1w",
+      "questionType": "scq",
+      "subject": "Botany",
+      "chapter": "Photosynthesis in Higher Plants",
+      "concept": null,
+      "subConcept": null,
+      "level": "HARD",
+      "error": 1,
+      "updatedAt": "2026-11-07T10:42:00Z",
+      "scq": {
+        "question": "<h3><span style=\"color:#000000\">Rate of photosynthesis is low in herbs, shrubs as compared to sun plants because</h3><h3>(A)<span style=\"color:#000000\"> <span style=\"color:#000000\">Herb, shrubs receive more red light<br />(B)<span style=\"color:#000000\"> <span style=\"color:#000000\">Herb, shrubs receive more blue light<br />(C)<span style=\"color:#000000\"> </span><span style=\"color:#000000\">Herb, shrubs receive more green light</span></span></span><br />(D)</span></span></span><span style=\"color:#000000\"> </span></span></span><span style=\"color:#000000\">Herb, shrubs receive more white light</span></span></span></h3>",
+        "solution": "<h3><span style=\"color:#000000\">Minimum photosynthesis occur in the green wavelength. Plants grow under the canopy like herbs and shrubs receive very little red and blue-violet light because of its absorption by leaves of the canopy. They receive more of green light that is transmitted through leaves. As a result, the photosynthesis in herbs and shrubs is comparatively low</span></h3>",
+        "answer": "C",
+        "quesImages": [],
+        "solutionImages": []
+      },
+      "errorHistory": [
+        {
+          "type": "Spelling mistake",
+          "actor": "faculty",
+          "at": "2026-11-07T10:42:00Z",
+          "note": "'mere' -> 'more' in options A-C; 'shurbs' -> 'shrubs'"
+        }
+      ]
+    },
+    "reports": [
+      {
+        "reportId": "R017",
+        "questionId": "6208e80a9cb2ab67dac61bd0",
+        "studentId": "stu_b0babf1d",
+        "source": "android",
+        "reportedAt": "2026-11-04T02:08:00Z",
+        "comment": "spelling mistake 'mere' in options"
+      }
+    ],
+    "decision": {
+      "verdict": "already_fixed",
+      "repair": null,
+      "route": "no_change",
+      "confidence": 0.8,
+      "evidence": "Spelling mistake was corrected in errorHistory before this report."
+    },
+    "patches": [],
+    "sourceHash": "5b2c169c6c5a19750895d9994c87f50debc2dc26052a972faef744e27fedddf7",
+    "checks": [],
+    "blindSolves": [
+      {
+        "answer": "C",
+        "derivation": "Herbs and shrubs receive relatively more green light, which is less efficiently used in photosynthesis compared to red and blue wavelengths that sun‑light plants receive. Hence the rate is lower because they receive more green light.",
+        "assumptions": [],
+        "sufficient_data": true
+      },
+      {
+        "answer": "C",
+        "derivation": "Shade herbs and shrubs receive proportionally more green light and less red/blue light, which are most effective for photosynthesis, leading to a lower rate.",
+        "assumptions": [
+          "Interpretation of options as light colour composition received."
+        ],
+        "sufficient_data": true
+      }
+    ],
+    "validation": {
+      "passed": true,
+      "errors": [],
+      "scope": []
+    },
+    "replies": {
+      "R017": "Thanks for pointing out the spelling issue; it has already been addressed."
+    },
+    "priority": 1,
+    "urgencyReason": "Support or explanation",
+    "oldestReport": "2026-11-04T02:08:00Z"
+  },
+  {
+    "id": "68dea7c2387eea3d0d95f9bb",
+    "title": "In YDSE distance between the slits plane and screen is 1 m and distance between two slits is 5 mm . If slabs of thickness 2 mm and",
+    "question": {
+      "_id": "68dea7c2387eea3d0d95f9bb",
+      "qid": "SecAQ16",
+      "questionType": "integerQuestion",
+      "subject": "Physics",
+      "chapter": "Wave optics",
+      "concept": "Young double slit experiment setup",
+      "subConcept": "Cases when central maxima is not in Centre",
+      "level": "MEDIUM",
+      "error": 1,
+      "updatedAt": "2025-10-23T11:40:24.865Z",
+      "integerQuestion": {
+        "question": "<h3>In YDSE distance between the slits plane and screen is 1 m and distance between two slits is 5 mm . If slabs of thickness 2 mm and 1.5 mm having refractive index 1.5 and 1.4 are placed in front of two slits, find the shift (in cm ) of central maxima</h3>",
+        "solution": "<h3><math display=\"inline\" xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mspace width=\"1em\"></mspace><mi> D </mi><mo>=</mo><mn> 1 </mn><mtext> </mtext><mi> m </mi><mo>,</mo><mtext> </mtext><mi> d </mi><mo>=</mo><mn> 5 </mn><mi>&times;</mi><msup><mn> 10 </mn><mrow><mo>&minus;</mo><mn> 3 </mn></mrow></msup><mtext> </mtext><mi> m</mi></mrow></math><br />shift <math display=\"inline\" xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mo>=</mo><mfrac><mrow><mi> D </mi></mrow><mrow><mi> d </mi></mrow></mfrac><mrow><mo fence=\"true\" form=\"prefix\" stretchy=\"true\">[</mo><msub><mi> t </mi><mrow><mn> 1 </mn></mrow></msub><mrow><mo fence=\"true\" form=\"prefix\" stretchy=\"true\">(</mo><msub><mi> &mu; </mi><mrow><mn> 1 </mn></mrow></msub><mo>&minus;</mo><mn> 1 </mn><mo fence=\"true\" form=\"postfix\" stretchy=\"true\">)</mo></mrow><mo>&minus;</mo><msub><mi> t </mi><mrow><mn> 2 </mn></mrow></msub><mrow><mo fence=\"true\" form=\"prefix\" stretchy=\"true\">(</mo><msub><mi> &mu; </mi><mrow><mn> 2 </mn></mrow></msub><mo>&minus;</mo><mn> 1 </mn><mo fence=\"true\" form=\"postfix\" stretchy=\"true\">)</mo></mrow><mo fence=\"true\" form=\"postfix\" stretchy=\"true\">]</mo></mrow></mrow></math><br /><math display=\"inline\" xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mo>=</mo><mfrac><mrow><mn> 1 </mn></mrow><mrow><mn> 5 </mn><mi>&times;</mi><msup><mn> 10 </mn><mrow><mo>&minus;</mo><mn> 3 </mn></mrow></msup></mrow></mfrac><mo stretchy=\"false\">[</mo><mn> 2 </mn><mo stretchy=\"false\">(</mo><mn> 1.5 </mn><mo>&minus;</mo><mn> 1 </mn><mo stretchy=\"false\">)</mo><mo>&minus;</mo><mn> 1.5 </mn><mo stretchy=\"false\">(</mo><mn> 1.4 </mn><mo>&minus;</mo><mn> 1 </mn><mo stretchy=\"false\">)</mo><mo stretchy=\"false\">]</mo><mi>&times;</mi><msup><mn> 10 </mn><mrow><mo>&minus;</mo><mn> 3 </mn></mrow></msup><mo>=</mo><mfrac><mrow><mn> 0.4 </mn></mrow><mrow><mn> 5 </mn></mrow></mfrac><mo>=</mo><mn> 0.08 </mn><mtext> </mtext><mrow><mtext> </mtext><mi mathvariant=\"normal\"> m </mi></mrow></mrow></math>.</h3>",
+        "answer": "8",
+        "quesImages": [],
+        "solutionImages": []
+      },
+      "errorHistory": []
+    },
+    "reports": [
+      {
+        "reportId": "R032",
+        "questionId": "68dea7c2387eea3d0d95f9bb",
+        "studentId": "stu_43cfc9cf",
+        "source": "android",
+        "reportedAt": "2026-11-04T03:46:00Z",
+        "comment": "answer 0.08 hai, 8 kyu?"
+      }
+    ],
+    "decision": {
+      "verdict": "no_error",
+      "repair": null,
+      "route": "no_change",
+      "confidence": 0.65,
+      "evidence": "The answer key '8' matches the computed shift of 0.08 m (8 cm) in the solution."
+    },
+    "patches": [],
+    "sourceHash": "e86b08e9244fd844f46879ad6e961dc7fafc1fb914aa3044af712e26722fec34",
+    "checks": [],
+    "blindSolves": [
+      {
+        "answer": null,
+        "derivation": "The shift of the central maximum requires the wavelength of light to compute the fringe width (β = λD/d). The wavelength is not provided, so the numerical shift cannot be determined.",
+        "assumptions": [],
+        "sufficient_data": false
+      },
+      {
+        "answer": "8",
+        "derivation": "Optical path difference Δ = (μ1‑1)t1 – (μ2‑1)t2 = (0.5·2 mm) – (0.4·1.5 mm) = 0.4 mm. Shift on screen = (Δ/d)·L = (0.4 mm / 5 mm)·1 m = 0.08 m = 8 cm.",
+        "assumptions": [
+          "Distances are in the same units; d = 5 mm, L = 1 m."
+        ],
+        "sufficient_data": true
+      }
+    ],
+    "validation": {
+      "passed": true,
+      "errors": [],
+      "scope": []
+    },
+    "replies": {
+      "R032": "The answer aligns with the solution's calculation, so the question is correct."
+    },
+    "priority": 1,
+    "urgencyReason": "Support or explanation",
+    "oldestReport": "2026-11-04T03:46:00Z"
+  },
+  {
+    "id": "620e23cecc50543bc7db9186",
+    "title": "A biologist is trying to infer how five closely related species of snakes are related to one another. She noticed that some of the",
+    "question": {
+      "_id": "620e23cecc50543bc7db9186",
+      "qid": "ooPnTRb-EH",
+      "questionType": "scq",
+      "subject": "Zoology",
+      "chapter": "Evolution",
+      "concept": null,
+      "subConcept": null,
+      "level": "HARD",
+      "error": 1,
+      "updatedAt": "2025-11-06T06:38:25.497Z",
+      "scq": {
+        "question": "<h3><span style=\"color:#000000\">A biologist is trying to infer how five closely related species of snakes are related to one another. She noticed that some of the snakes have forked tongues and others do not. Which of the following would help her to distinguish their ancestral state?</h3><h3>(A)<span style=\"color:#000000\"> <span style=\"color:#000000\">She looks among snake fossils for evidences that being forked is a characteristic of the ancestor of this group, but determines no such fossils exists<br />(B)<span style=\"color:#000000\"> <span style=\"color:#000000\">She locates a specimen of a more distantly related snake to see if it has a forked tongue<br />(C)<span style=\"color:#000000\"> </span><span style=\"color:#000000\">She looks at a representative mammal species to see if it has a forked tongue</span></span></span><br />(D)</span></span></span><span style=\"color:#000000\"> </span></span></span><span style=\"color:#000000\">She flips a coin</span></span></span></h3>",
+        "solution": "<h3><span style=\"color:#000000\">Forked tongue snakes may represents the origin of new variety of snake from the non-forked tongue snakes. If biologist is trying to find that how closely these two species are related to each other than, he/she has to locate a specimen of more distantly related snake to see it, wheater, it has a forked tongue or not</span></h3>",
+        "answer": "B",
+        "quesImages": [],
+        "solutionImages": []
+      },
+      "errorHistory": []
+    },
+    "reports": [
+      {
+        "reportId": "R026",
+        "questionId": "620e23cecc50543bc7db9186",
+        "studentId": "stu_2ef6577a",
+        "source": "ios",
+        "reportedAt": "2026-11-04T04:59:00Z",
+        "comment": "out of syllabus for NEET"
+      }
+    ],
+    "decision": {
+      "verdict": "not_actionable",
+      "repair": null,
+      "route": "no_change",
+      "confidence": 0.65,
+      "evidence": "The comment concerns syllabus relevance, which does not require a content change."
+    },
+    "patches": [],
+    "sourceHash": "9ee06869fbe03d0cb3a3d93fa4a5474d51c84355e823ea077f3ecd616eee1294",
+    "checks": [],
+    "blindSolves": [
+      {
+        "answer": "B",
+        "derivation": "To infer the ancestral character state, the biologist should examine a more distantly related outgroup species. This provides information on the likely character of the common ancestor.",
+        "assumptions": [],
+        "sufficient_data": true
+      },
+      {
+        "answer": "B",
+        "derivation": "Using an outgroup (a more distantly related snake) allows inference of the ancestral character state.",
+        "assumptions": [
+          "Standard phylogenetic method of outgroup comparison."
+        ],
+        "sufficient_data": true
+      }
+    ],
+    "validation": {
+      "passed": true,
+      "errors": [],
+      "scope": []
+    },
+    "replies": {
+      "R026": "The concern about syllabus scope has been noted."
+    },
+    "priority": 1,
+    "urgencyReason": "Support or explanation",
+    "oldestReport": "2026-11-04T04:59:00Z"
+  },
+  {
+    "id": "63c7cce12981ed154ee92c94",
+    "title": "A large parallel plate capacitor, whose plates have an area of 1 m 2 and are separated from each other by 1 mm , is being charged ",
+    "question": {
+      "_id": "63c7cce12981ed154ee92c94",
+      "qid": "tTH86ZABzY",
+      "questionType": "scq",
+      "subject": "Physics",
+      "chapter": "Geometrical optics and optical instruments",
+      "concept": null,
+      "subConcept": null,
+      "level": "MEDIUM",
+      "error": 1,
+      "updatedAt": "2025-10-23T10:31:44.366Z",
+      "scq": {
+        "question": "<h3>A large parallel plate capacitor, whose plates have an area of <math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\"><mstyle displaystyle=\"true\"><mrow><mn>1</mn><msup><mrow><mtext>&#x000A0;</mtext><mi mathvariant=\"normal\">m</mi></mrow><mrow><mn>2</mn></mrow></msup></mrow></mstyle></math> and are separated from each other by 1 mm , is being charged at a rate of <math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\"><mstyle displaystyle=\"true\"><mrow><mn>25</mn><mrow><mtext>&#x000A0;</mtext><mi mathvariant=\"normal\">V</mi></mrow><mo>&#x0002F;</mo><mi>&#x00073;</mi></mrow></mstyle></math>. If the dielectric between the plates has the dielectric constant 10 , then the displacement current at this instant is<br/>(A) <math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\"><mstyle displaystyle=\"true\"><mrow><mn>1.1</mn><mi>&#x003BC;</mi><mrow><mtext>&#x000A0;</mtext><mi mathvariant=\"normal\">A</mi></mrow></mrow></mstyle></math><br/>(B) <math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\"><mstyle displaystyle=\"true\"><mrow><mn>11</mn><mi>&#x003BC;</mi><mrow><mtext>&#x000A0;</mtext><mi mathvariant=\"normal\">A</mi></mrow></mrow></mstyle></math><br/>(C) <math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\"><mstyle displaystyle=\"true\"><mrow><mn>2.2</mn><mi>&#x003BC;</mi><mrow><mtext>&#x000A0;</mtext><mi mathvariant=\"normal\">A</mi></mrow></mrow></mstyle></math><br/>(D) <math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\"><mstyle displaystyle=\"true\"><mrow><mn>0.22</mn><mi>&#x003BC;</mi><mrow><mtext>&#x000A0;</mtext><mi mathvariant=\"normal\">A</mi></mrow></mrow></mstyle></math></h3>",
+        "solution": "<h3><math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\"><mstyle displaystyle=\"true\"><mrow><mtable><mtr><mtd columnalign=\"left\"><mi>C</mi><mo>&#x0003D;</mo><mi>k</mi><msub><mi>&#x003B5;</mi><mrow><mn>0</mn></mrow></msub><mfrac><mrow><mi>A</mi></mrow><mrow><mi>d</mi></mrow></mfrac><mo>&#x0003D;</mo><mn>8.85</mn><mi>&#x000D7;</mi><msup><mn>10</mn><mrow><mo>&#x02212;</mo><mn>8</mn></mrow></msup><mi>F</mi></mtd></mtr><mtr><mtd columnalign=\"left\"><msub><mi>&#x00069;</mi><mrow><mi>&#x00064;</mi></mrow></msub><mo>&#x0003D;</mo><mfrac><mrow><mi>&#x00064;</mi></mrow><mrow><mrow><mi mathvariant=\"normal\">d</mi><mi mathvariant=\"normal\">t</mi></mrow></mrow></mfrac><mo stretchy=\"false\">&#x00028;</mo><mrow><mi mathvariant=\"normal\">C</mi><mi mathvariant=\"normal\">V</mi></mrow><mo stretchy=\"false\">&#x00029;</mo><mo>&#x0003D;</mo><mn>2.2</mn><mi>&#x003BC;</mi><mrow><mtext>&#x000A0;</mtext><mi mathvariant=\"normal\">A</mi></mrow></mtd></mtr></mtable></mrow></mstyle></math></h3>",
+        "answer": "C",
+        "quesImages": [],
+        "solutionImages": []
+      },
+      "errorHistory": []
+    },
+    "reports": [
+      {
+        "reportId": "R042",
+        "questionId": "63c7cce12981ed154ee92c94",
+        "studentId": "stu_d09e82a1",
+        "source": "web",
+        "reportedAt": "2026-11-04T07:00:00Z",
+        "comment": "chapter is wrong, displacement current is not geometrical optics"
+      }
+    ],
+    "decision": {
+      "verdict": "not_actionable",
+      "repair": null,
+      "route": "no_change",
+      "confidence": 0.65,
+      "evidence": "The report concerns an incorrect chapter assignment (Geometrical optics) for a physics question about displacement current, which is a metadata issue not covered by the taxonomy. No content defect is identified."
+    },
+    "patches": [],
+    "sourceHash": "d90d602bb2fe5f22ff81ec1e6e2366f905b264854ab7d5e5ae54f73cc7a78ef4",
+    "checks": [],
+    "blindSolves": [
+      {
+        "answer": "C",
+        "derivation": "Displacement current I_d = ε₀ ε_r A (dE/dt). dE/dt = (1/d) dV/dt = (1/1×10⁻³ m)·25 V s⁻¹ = 2.5×10⁴ V m⁻¹ s⁻¹. ε = ε₀ ε_r = 8.85×10⁻¹² F m⁻¹ ×10 = 8.85×10⁻¹¹ F m⁻¹. A = 1 m². Thus I_d = 8.85×10⁻¹¹ × 2.5×10⁴ = 2.21×10⁻⁶ A ≈ 2.2 µA, matching option C.",
+        "assumptions": [],
+        "sufficient_data": true
+      },
+      {
+        "answer": "C",
+        "derivation": "Capacitance C = ε0 εr A / d = 8.85×10⁻¹²·10·1 / 1×10⁻³ = 8.85×10⁻⁸ F. dV/dt = 25 V / µs = 25×10⁶ V/s. Displacement current Id = C·dV/dt = 8.85×10⁻⁸·25×10⁶ ≈ 2.2 A, which corresponds to 2.2 µA in the answer set (option C).",
+        "assumptions": [
+          "Interpretation of the answer choices as µA; the numerical magnitude matches option C."
+        ],
+        "sufficient_data": true
+      }
+    ],
+    "validation": {
+      "passed": true,
+      "errors": [],
+      "scope": []
+    },
+    "replies": {
+      "R042": "Thanks for pointing this out; the chapter label will be reviewed by the faculty."
+    },
+    "priority": 1,
+    "urgencyReason": "Support or explanation",
+    "oldestReport": "2026-11-04T07:00:00Z"
+  },
+  {
+    "id": "68ecbacb2ec87a18deba1ad7",
+    "title": "The absolute refractory period during an action potential generation is primarily caused by: ",
+    "question": {
+      "_id": "68ecbacb2ec87a18deba1ad7",
+      "qid": null,
+      "questionType": "scq",
+      "subject": "Botany",
+      "chapter": "The Living World",
+      "concept": null,
+      "subConcept": null,
+      "level": "EASY",
+      "error": 1,
+      "updatedAt": "2026-01-25T11:12:43.984Z",
+      "scq": {
+        "question": "<h3>The absolute refractory period during an action potential generation is primarily caused by:<br />\n(A) Closure of voltage-gated K<sup>+</sup> channels.<br />\n(B) Inactivation of voltage-gated Na<sup>+&nbsp;</sup>channels.<br />\n(C) Increased permeability to Cl<sup>&minus;&nbsp;</sup>ions.<br />\n(D) Continuous activation of the Na<sup>+</sup>/K<sup>+&nbsp;</sup>pump.</h3>\n",
+        "solution": "<h3>The absolute refractory period is the short interval immediately following the generation of an action potential during which the neuron is completely incapable of generating another action potential, regardless of the strength of the stimulus. This period is primarily due to the inactivation of the voltage-gated Na+channels. Although the membrane is depolarized (which would normally open them), these specific channels enter a temporary, locked inactivated state that prevents them from opening again, thereby halting the influx of Na+ ions required for a new depolarization.</h3>\n",
+        "answer": "B",
+        "quesImages": [],
+        "solutionImages": []
+      },
+      "errorHistory": []
+    },
+    "reports": [
+      {
+        "reportId": "R023",
+        "questionId": "68ecbacb2ec87a18deba1ad7",
+        "studentId": "stu_b6e11fbb",
+        "source": "android",
+        "reportedAt": "2026-11-04T07:21:00Z",
+        "comment": "this is from neural control chapter, why is it in living world"
+      }
+    ],
+    "decision": {
+      "verdict": "not_actionable",
+      "repair": null,
+      "route": "no_change",
+      "confidence": 0.9,
+      "evidence": "The comment flags the question being placed in the \"Living World\" chapter instead of a neuroscience-related chapter. This is a categorization issue not addressed by the available repair types."
+    },
+    "patches": [],
+    "sourceHash": "2e6e50d06fbefe7c6d928023cdc4cb4ea67365ca7ad8cd59236a3f6e46105109",
+    "checks": [],
+    "blindSolves": [
+      {
+        "answer": "B",
+        "derivation": "The absolute refractory period occurs because voltage‑gated Na⁺ channels become inactivated and cannot reopen until the membrane repolarizes.",
+        "assumptions": [],
+        "sufficient_data": true
+      },
+      {
+        "answer": "B",
+        "derivation": "The absolute refractory period is due to inactivation of voltage‑gated Na⁺ channels, preventing immediate re‑initiation of an action potential.",
+        "assumptions": [],
+        "sufficient_data": true
+      }
+    ],
+    "validation": {
+      "passed": true,
+      "errors": [],
+      "scope": []
+    },
+    "replies": {
+      "R023": "Appreciate the note; the chapter classification will be examined by the team."
+    },
+    "priority": 1,
+    "urgencyReason": "Support or explanation",
+    "oldestReport": "2026-11-04T07:21:00Z"
+  },
+  {
+    "id": "68f21df0941cda588bc0470b",
+    "title": "If the kinetic energy of a body becomes four times of its initial value, then new momentum will ",
+    "question": {
+      "_id": "68f21df0941cda588bc0470b",
+      "qid": "SecAQ14",
+      "questionType": "scq",
+      "subject": "Physics",
+      "chapter": "Work, power and energy",
+      "concept": "Energy",
+      "subConcept": "Relation between momentum and kinetic energy of a particle",
+      "level": "MEDIUM",
+      "error": 1,
+      "updatedAt": "2026-01-20T07:24:09.655Z",
+      "scq": {
+        "question": "<h3>If the kinetic energy of a body becomes four times of its initial value, then new momentum will<br />(A) Become twice its initial value<br />(B) Become three times, its initial value<br />(C) Become four times, its initial value<br />(D) Remains constant</h3>\n",
+        "solution": "<h3><math display=\"block\" xmlns=\"http://www.w3.org/1998/Math/MathML\" ><mstyle displaystyle=\"true\"><mrow><mfrac><mrow><msub><mi>p</mi><mrow><mn>2</mn></mrow></msub></mrow><mrow><msub><mi>p</mi><mrow><mn>1</mn></mrow></msub></mrow></mfrac><mo>&#x0003D;</mo><msqrt><mrow><mfrac><mrow><mi>K</mi><msub><mi>E</mi><mrow><mn>2</mn></mrow></msub></mrow><mrow><mi>K</mi><msub><mi>E</mi><mrow><mn>1</mn></mrow></msub></mrow></mfrac></mrow></msqrt></mrow></mstyle></math><br/><br/>When KE become four times then momentum (p) become two times.</h3>",
+        "answer": "A",
+        "quesImages": [],
+        "solutionImages": []
+      },
+      "errorHistory": []
+    },
+    "reports": [
+      {
+        "reportId": "R038",
+        "questionId": "68f21df0941cda588bc0470b",
+        "studentId": "stu_3b37845f",
+        "source": "android",
+        "reportedAt": "2026-11-04T16:58:00Z",
+        "comment": "I clicked A but it saved B"
+      }
+    ],
+    "decision": {
+      "verdict": "not_actionable",
+      "repair": null,
+      "route": "no_change",
+      "confidence": 0.9,
+      "evidence": "The report states that selecting option A saved as B, which is a platform/app behaviour problem rather than a content defect. This falls under the \"app_issue\" category, but the comment does not provide enough detail to modify the question content."
+    },
+    "patches": [],
+    "sourceHash": "d404adac511a7876a7a093d92607271db7c52ad120404a4dfac361389fc0d732",
+    "checks": [],
+    "blindSolves": [
+      {
+        "answer": "A",
+        "derivation": "Kinetic energy K = ½mv². If K becomes 4K₀, then v² becomes 4v₀², so v = 2v₀. Momentum p = mv, thus p = 2p₀. Hence the new momentum is twice the initial value.",
+        "assumptions": [],
+        "sufficient_data": true
+      },
+      {
+        "answer": "A",
+        "derivation": "Kinetic energy KE ∝ p², so if KE becomes 4 times, momentum p increases by √4 = 2 times.",
+        "assumptions": [],
+        "sufficient_data": true
+      }
+    ],
+    "validation": {
+      "passed": true,
+      "errors": [],
+      "scope": []
+    },
+    "replies": {
+      "R038": "Thanks for reporting; the app's answer‑recording will be looked into by the developers."
+    },
+    "priority": 1,
+    "urgencyReason": "Support or explanation",
+    "oldestReport": "2026-11-04T16:58:00Z"
+  },
+  {
+    "id": "6264197209f4fd65f58f5707",
+    "title": "Consumption of which one of the following foods can prevent the kind of blindness associated with vitamin 'A' deficiency? ",
+    "question": {
+      "_id": "6264197209f4fd65f58f5707",
+      "qid": "uiKqpBTMj",
+      "questionType": "scq",
+      "subject": "Zoology",
+      "chapter": "Biotechnology and its Applications",
+      "concept": null,
+      "subConcept": null,
+      "level": "EASY",
+      "error": 1,
+      "updatedAt": "2025-11-06T06:56:04.161Z",
+      "scq": {
+        "question": "<h3><span style=\"color:#000000\">Consumption of which one of the following foods can prevent the kind of blindness associated with vitamin &#39;A&#39; deficiency?</h3><h3>(A) &#39;Flavr Savr&#39; tomato<br />(B) Canolla<br />(C) Golden rice<br />(D) Bt-Brinjal</span></span></span></h3>",
+        "solution": "<h3><span style=\"color:#000000\">Golden riceis genetically engineered to producebeta-carotene, a precursor ofvitamin A, in the edible parts of the rice. It was specifically developed to helpprevent vitamin A deficiency, which can lead tonight blindness and complete blindness, especially in children in developing countries.</span>\n <span style=\"color:#000000\">Flavr Savr tomato: Engineered for longer shelf life.</span><br />\n\n <span style=\"color:#000000\">Canola: Known for oil production; not related to vitamin A.</span><br />\n\n <span style=\"color:#000000\">Bt-Brinjal: Engineered for insect resistance (Bt toxin), not vitamin A enrichment.</span></h3>",
+        "answer": "C",
+        "quesImages": [],
+        "solutionImages": []
+      },
+      "errorHistory": []
+    },
+    "reports": [
+      {
+        "reportId": "R040",
+        "questionId": "6264197209f4fd65f58f5707",
+        "studentId": "stu_0dea482f",
+        "source": "android",
+        "reportedAt": "2026-11-04T20:19:00Z",
+        "comment": "wrong"
+      }
+    ],
+    "decision": {
+      "verdict": "no_error",
+      "repair": null,
+      "route": "no_change",
+      "confidence": 0.9,
+      "evidence": "Both blind solves agree that option C (Golden rice) is correct, matching the stored answer key; the report’s comment \"wrong\" does not reflect an actual defect."
+    },
+    "patches": [],
+    "sourceHash": "e5506712ee47705ec2c1b2edcc460b4990e0cdc9022e8c3c5d4dd82054930eac",
+    "checks": [],
+    "blindSolves": [
+      {
+        "answer": "C",
+        "derivation": "Golden rice is genetically engineered to produce β‑carotene, a provitamin A, and can prevent vitamin‑A‑deficiency‑related blindness.",
+        "assumptions": [],
+        "sufficient_data": true
+      },
+      {
+        "answer": "C",
+        "derivation": "Golden rice is engineered to produce β‑carotene, a precursor of vitamin A, preventing vitamin‑A‑deficiency‑related blindness.",
+        "assumptions": [],
+        "sufficient_data": true
+      }
+    ],
+    "validation": {
+      "passed": true,
+      "errors": [],
+      "scope": []
+    },
+    "replies": {
+      "R040": "Your observation has been noted; the answer appears to be correct as written."
+    },
+    "priority": 1,
+    "urgencyReason": "Support or explanation",
+    "oldestReport": "2026-11-04T20:19:00Z"
+  }
+]

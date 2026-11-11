@@ -8,4 +8,4 @@ My week-one metric is **faculty-confirmed harmful auto-edits / auto-applied repa
 
 Beyond this brief, I would pitch a **correction propagation workflow**. When faculty verify a scoring defect, identify affected attempts, prepare a plain-language correction, and let faculty approve reassessment or learner follow-up. Fixing the database does not repair the harm to a student who already encountered the question.
 
-The current artifact is an assistant-reviewed baseline, explicitly disclosed in the console. A live Gemini pipeline is implemented separately; no external model run or hidden-ground-truth accuracy is claimed until measured. Demo approvals change an isolated workspace and send no student messages.
+The console discloses whether its precomputed findings came from the assistant-reviewed baseline or a completed live provider run. The UI shows evidence and guarded edits without claiming hidden-ground-truth accuracy. Demo approvals change an isolated workspace and send no student messages.

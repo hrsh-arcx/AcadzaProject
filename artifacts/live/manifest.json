@@ -1,35 +1,63 @@
 {
   "schemaVersion": "1.0",
   "mode": "live",
-  "generatedAt": "2026-11-11T06:39:13.922413+00:00",
+  "generatedAt": "2026-11-11T09:35:55.528476+00:00",
   "inputHashes": {
     "questions": "17378ffabb67cca5a8a9c3c181db85d19bf63d91a371b87c7fd540eaffb6009b",
     "reports": "9a8f6fcb3b9077a0eb6d6e42936cad412fb49b0072a2ea7ee7b54a35024c495e",
     "taxonomy": "6b2dbcd1658ee71c87946478fe0de19759b540b58acc6fed9fa12de48f935958"
   },
-  "reportCount": 0,
-  "questionCount": 0,
-  "complete": false,
-  "model": "gemini-3.6-flash",
-  "apiCallsThisRun": 1,
-  "cacheHits": 0,
+  "reportCount": 44,
+  "questionCount": 39,
+  "complete": true,
+  "model": "openai/gpt-oss-120b, qwen/qwen3.8-27b",
+  "modelsUsed": [
+    "openai/gpt-oss-120b",
+    "qwen/qwen3.8-27b"
+  ],
+  "modelSwitches": [
+    {
+      "afterCases": 15,
+      "model": "qwen/qwen3.8-27b"
+    },
+    {
+      "afterCases": 31,
+      "model": "openai/gpt-oss-120b"
+    }
+  ],
+  "provider": "groq",
+  "responseModesUsed": [
+    "json_object",
+    "strict_json_schema"
+  ],
+  "apiCallsThisRun": 23,
+  "cacheHits": 94,
   "thinkingLevel": "low",
-  "requestBudget": 3,
-  "interruption": {
-    "questionId": "68dea616d0cda73d07e93ae6",
-    "reason": "Gemini HTTP 429; no credentials logged, existing results preserved; quota details=[{\"quotaMetric\": \"generativelanguage.googleapis.com/generate_content_free_tier_requests\", \"quotaId\": \"GenerateRequestsPerDayPerProjectPerModel-FreeTier\", \"quotaValue\": \"20\"}, {\"retryDelay\": \"4846s\"}]"
-  },
-  "batchSize": 8,
+  "requestBudget": 0,
+  "interruption": null,
+  "batchSize": 1,
   "confidenceMeaning": "Uncalibrated evidence rating: 0.90 calculation or blind agreement; 0.80 textual/history support; 0.65 limited support; unresolved capped at 0.75; blocked 0.30. Not a probability.",
   "promptHashes": {
     "adjudicate-batch-v2.txt": "97f86503b1b62eb0c5c030fbb8d67051737ee48f5de4df54c8580cd347917700",
     "adjudicate-v1.txt": "fff8f9215ca247b5e928db4af17c6fb900844032a7b6441ad0a925ba656c0c15",
+    "adjudicate-v2.txt": "90b25738d7824c2b32241d6623f22e0dfea1882e784d814a2407f10b76722303",
+    "json-fallback.txt": "153ab7e0731c2b36645f04b17b2ebd59bea408e07485b6ea61238be65b224022",
     "solve-batch-v2.txt": "d43dd0aad035508a8d873b3ee15ea2ece446e77dde798f6dcc3564b674052c14",
     "solve-v1.txt": "7d1fb8ed7ac0810542f8b282090fc0e36ea2f850c47d8c37bef393ef967b231b",
     "verify-batch-v2.txt": "484fe6c2eb888c652eef6c11f3a7bf1bc26d242d8856a508aeb4138bc361fe71",
     "verify-v1.txt": "0ecebbcb2d3511b9e74c3c5b18135a4cbab73c89956e2ee7faa3501080bb1a29"
   },
-  "resultsHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-  "routeCounts": {},
-  "disclosure": "Gemini-generated proposals; writes remain gated by deterministic policy."
+  "resultsHash": "c02b4d7b93b76d214241797e4a73c56ceb2ab78e80c00b5f1c3fe7f982c0f3be",
+  "routeCounts": {
+    "faculty_review": 24,
+    "auto_apply": 3,
+    "no_change": 17
+  },
+  "disclosure": "Groq-generated proposals; writes remain gated by deterministic policy. Cached model responses were replayed through revised deterministic policy without new API calls.",
+  "policyReplay": {
+    "at": "2026-11-11T09:38:42.482053+00:00",
+    "apiCalls": 0,
+    "cacheHits": 117,
+    "previousResultsHash": "07e526533b31a3d64f777bf622901132a70b63145d7a9b5579b7bf6e60cf752d"
+  }
 }

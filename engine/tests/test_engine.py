@@ -151,3 +151,99 @@ def test_provider_refuses_missing_credentials_without_replacing_results(monkeypa
     with pytest.raises(ValueError, match="no live results"):
         Gemini(tmp_path)
     assert (ROOT / "results.json").read_bytes() == before
+
+
+def test_blind_key_disagreement_overrides_false_no_error_claim():
+    from engine.cli import reconcile_blind_key
+    question = next(q for q in QUESTIONS if q["_id"] == next(r["questionId"] for r in REPORTS if r["reportId"] == "R004"))
+    solves = [{"answer": "D", "sufficient_data": True}, {"answer": "(D)", "sufficient_data": True}]
+    proposal = {"verdict": "no_error", "repair": None, "patches": [], "unresolved": False,
+        "evidence": "Wrongly says the key matches", "student_reply": "The key is correct."}
+    result = reconcile_blind_key(question, solves, proposal)
+    assert result["verdict"] == "defect" and result["repair"] == "answer_key"
+    assert result["patches"] == [] and result["unresolved"] is True
+    assert "stored answer A" in result["evidence"] and "blind answers D" in result["evidence"]
+
+
+def test_blind_key_consensus_blocks_contradictory_patch():
+    from engine.cli import reconcile_blind_key
+    question = next(q for q in QUESTIONS if q["_id"] == next(r["questionId"] for r in REPORTS if r["reportId"] == "R029"))
+    solves = [{"answer": "(A)", "sufficient_data": True}, {"answer": "A", "sufficient_data": True}]
+    proposal = {"verdict": "defect", "repair": "answer_key", "patches": [{"field": "answer", "find": "A", "replace": "C"}],
+        "unresolved": False, "evidence": "Wrong edit", "student_reply": "Review pending."}
+    result = reconcile_blind_key(question, solves, proposal)
+    assert result["patches"] == [] and result["unresolved"] is True
+
+
+def test_requested_unit_does_not_create_a_false_numeric_key_change():
+    from engine.cli import reconcile_blind_key
+    question = next(q for q in QUESTIONS if q["_id"] == next(r["questionId"] for r in REPORTS if r["reportId"] == "R032"))
+    solves = [{"answer": "8 cm", "sufficient_data": True}, {"answer": "8 cm", "sufficient_data": True}]
+    proposal = {"verdict": "defect", "repair": "answer_key", "patches": [{"field": "answer", "find": "8", "replace": "8 cm"}],
+        "unresolved": False, "evidence": "Wrong unit claim", "student_reply": "Review pending."}
+    result = reconcile_blind_key(question, solves, proposal)
+    assert result["verdict"] == "no_error" and result["repair"] is None and result["patches"] == []
+
+
+def test_already_fixed_requires_matching_history_and_current_text():
+    from engine.cli import reconcile_history
+    question = next(q for q in QUESTIONS if q["_id"] == next(r["questionId"] for r in REPORTS if r["reportId"] == "R017"))
+    report = next(r for r in REPORTS if r["reportId"] == "R017")
+    proposal = {"verdict": "defect", "repair": "spelling", "patches": [], "unresolved": True,
+        "evidence": "Model copied a prior typo", "student_reply": "Review pending."}
+    result = reconcile_history(question, [report], proposal)
+    assert result["verdict"] == "already_fixed" and result["repair"] is None
+    assert result["patches"] == [] and result["unresolved"] is False
+
+
+def test_conflicting_verdict_and_content_repair_cannot_escape_export_policy():
+    from engine.cli import reconcile_taxonomy
+    proposal = {"verdict": "display_issue", "repair": "markup_leak", "patches": [{"field": "question", "find": "x", "replace": "y"}],
+        "unresolved": False, "evidence": "Inconsistent model output", "student_reply": "Change applied."}
+    result = reconcile_taxonomy(proposal, TAXONOMY)
+    assert result["verdict"] == "defect" and result["repair"] == "markup_leak"
+    assert result["patches"] == [] and result["unresolved"] is True
+    assert "No question change has been applied" in result["student_reply"]
+
+
+def test_dry_run_reply_cannot_claim_a_change_was_completed():
+    from engine.cli import reconcile_reply
+    proposal = {"verdict": "defect", "student_reply": "Thanks, the spelling has been corrected."}
+    result = reconcile_reply(proposal)
+    assert "has been corrected" not in result["student_reply"]
+    assert "no new question change has been applied" in result["student_reply"]
+    fixed = {"verdict": "already_fixed", "student_reply": "The spelling has been corrected."}
+    assert reconcile_reply(fixed)["student_reply"] == "The spelling has been corrected."
+
+
+def test_two_blind_no_option_findings_block_key_only_repair():
+    from engine.cli import reconcile_unanswerable
+    solves = [{"answer": None, "sufficient_data": True,
+        "derivation": "The provided options do not include both statements false."},
+        {"answer": None, "sufficient_data": True,
+        "derivation": "None of the provided options describes the result."}]
+    proposal = {"verdict": "defect", "repair": "answer_key", "patches": [{"field": "answer", "find": "D", "replace": "A"}],
+        "unresolved": False, "evidence": "Key seems wrong", "student_reply": "Key changed."}
+    result = reconcile_unanswerable(solves, proposal)
+    assert result["repair"] == "unsound" and result["patches"] == [] and result["unresolved"] is True
+
+
+def test_combined_mcq_labels_are_normalized_without_settling_answer_dispute():
+    from engine.cli import reconcile_mcq_storage
+    question = next(q for q in QUESTIONS if q["_id"] == next(r["questionId"] for r in REPORTS if r["reportId"] == "R020"))
+    proposal = {"verdict": "not_actionable", "repair": None, "patches": [], "unresolved": True,
+        "evidence": "Solvers disagree", "student_reply": "Review pending."}
+    result = reconcile_mcq_storage(question, [{"answer": ["A", "B", "D"]}, {"answer": ["A", "B", "C", "D"]}], proposal)
+    assert result["verdict"] == "defect" and result["repair"] == "answer_key"
+    assert result["patches"][0]["replace"] == ["A", "B", "D"] and result["unresolved"] is True
+    assert not validate_proposal(question, result["verdict"], result["repair"], result["patches"], TAXONOMY)
+
+
+def test_type_migration_proposes_dependent_key_change_atomically():
+    from engine.cli import reconcile_mcq_storage
+    question = next(q for q in QUESTIONS if q["_id"] == next(r["questionId"] for r in REPORTS if r["reportId"] == "R021"))
+    proposal = {"verdict": "defect", "repair": "type_mismatch", "patches": [{"field": "questionType", "find": "mcq", "replace": "scq"}],
+        "unresolved": False, "evidence": "Only B solves", "student_reply": "Review pending."}
+    result = reconcile_mcq_storage(question, [{"answer": "B"}, {"answer": "B"}], proposal)
+    assert len(result["patches"]) == 2 and result["unresolved"] is True
+    assert not validate_proposal(question, result["verdict"], result["repair"], result["patches"], TAXONOMY)

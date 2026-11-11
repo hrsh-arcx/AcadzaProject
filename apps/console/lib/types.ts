@@ -29,6 +29,7 @@ export type Report = {
 };
 export type Case = {
   id: string;
+  model?: string | null;
   title: string;
   question: Question;
   reports: Report[];

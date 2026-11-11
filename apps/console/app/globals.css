@@ -1359,6 +1359,39 @@ kbd {
   font-size: 17px;
   font-weight: 500;
 }
+.run-comparison {
+  margin: 18px 0;
+  padding: 19px 20px;
+  border: 1px solid #dbe8da;
+  border-radius: 7px;
+  background: #f3f8f0;
+}
+.run-comparison-heading {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 9px;
+  color: #416d4b;
+}
+.run-comparison-heading strong {
+  font-size: 14px;
+  font-weight: 600;
+}
+.run-comparison-heading span {
+  margin-left: auto;
+  font-size: 10px;
+  color: #7b9776;
+}
+.run-comparison p {
+  margin: 12px 0 6px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: #506553;
+}
+.run-comparison small {
+  font-size: 10px;
+  color: #819681;
+}
 .run-warning {
   display: flex;
   gap: 10px;
@@ -1539,7 +1572,7 @@ kbd {
     font-size: 11px;
   }
   .case-card h3 {
-    font-size: 12px;
+    font-size: 14px;
   }
   .case-title-row h2 {
     font-size: 25px;
@@ -1664,7 +1697,7 @@ kbd {
     height: 39px;
   }
   .rail-small {
-    font-size: 6px;
+    display: none;
   }
   .workspace-shell {
     margin-left: 54px;
@@ -1684,7 +1717,7 @@ kbd {
     font-size: 10px;
   }
   .topbar-right {
-    font-size: 8px;
+    font-size: 10px;
   }
   .demo-tag,
   .topbar-divider {
@@ -1698,12 +1731,12 @@ kbd {
     letter-spacing: -1px;
   }
   .page-heading p {
-    font-size: 10px;
+    font-size: 12px;
     line-height: 1.7;
     max-width: 220px;
   }
   .eyebrow {
-    font-size: 7px;
+    font-size: 10px;
   }
   .summary-row {
     margin-bottom: 15px;
@@ -1711,7 +1744,7 @@ kbd {
   .summary-row > button {
     padding: 12px 10px;
     gap: 7px;
-    font-size: 9px;
+    font-size: 11px;
   }
   .summary-row strong {
     font-size: 17px;
@@ -1760,7 +1793,7 @@ kbd {
     margin: 0;
   }
   .case-card h3 {
-    font-size: 10px;
+    font-size: 13px;
     margin: 7px 0 9px;
   }
   .case-card.active:before {
@@ -1783,7 +1816,7 @@ kbd {
     font-size: 20px;
   }
   .case-identifiers {
-    font-size: 7px;
+    font-size: 10px;
     line-height: 1.7;
     gap: 5px;
   }
@@ -1793,7 +1826,7 @@ kbd {
     overflow-x: auto;
   }
   .detail-tabs button {
-    font-size: 9px;
+    font-size: 11px;
   }
   .detail-tabs svg {
     display: none;
@@ -1804,7 +1837,7 @@ kbd {
     overflow: visible;
   }
   .academic-content {
-    font-size: 13px;
+    font-size: 15px;
   }
   .review-actions {
     position: sticky;
@@ -1814,15 +1847,20 @@ kbd {
     padding: 11px;
   }
   .action-buttons {
-    gap: 4px;
+    gap: 8px;
+    flex-wrap: wrap;
   }
   .button {
-    font-size: 9px;
-    padding: 9px 8px;
+    font-size: 11px;
+    padding: 11px 9px;
     gap: 4px;
   }
+  .action-buttons .button {
+    flex: 1 1 calc(50% - 8px);
+  }
   .action-buttons .primary {
-    margin-left: auto;
+    flex-basis: 100%;
+    margin-left: 0;
   }
   .insight-panel {
     display: flex;
@@ -1834,7 +1872,7 @@ kbd {
     width: 100%;
   }
   .insight-title .tiny {
-    font-size: 8px;
+    font-size: 10px;
   }
   .evidence-box p {
     font-size: 12px;
@@ -1846,17 +1884,17 @@ kbd {
     font-size: 12px;
   }
   .reply-box .tiny {
-    font-size: 9px;
+    font-size: 10px;
   }
   .guard-note p {
     font-size: 10px;
   }
   .checks-box .section-label,
   .section-label {
-    font-size: 8px;
+    font-size: 10px;
   }
   .page-footer {
-    font-size: 7px;
+    font-size: 10px;
     align-items: flex-start;
     gap: 12px;
     line-height: 1.7;
@@ -1917,10 +1955,24 @@ kbd {
   }
   .review-banner {
     padding: 10px 15px;
-    font-size: 8px;
+    font-size: 10px;
   }
   .review-banner button {
-    font-size: 7px;
+    font-size: 10px;
+  }
+  .case-card-meta,
+  .case-reference,
+  .case-card-bottom,
+  .sort-label,
+  .report-card > div:first-child,
+  .report-card time,
+  .report-reply,
+  .inline-note,
+  .student-lead > span,
+  .review-actions > div:first-child,
+  .confidence-note,
+  .tiny {
+    font-size: 10px;
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -1940,16 +1992,16 @@ kbd {
     font-size: 10px;
   }
   .case-card h3 {
-    font-size: 12px;
+    font-size: 14px;
   }
   .case-card-meta,
   .case-reference,
   .case-card-bottom {
-    font-size: 10px;
+    font-size: 11px;
   }
   .queue-filters select,
   .search-box input {
-    font-size: 11px;
+    font-size: 12px;
   }
   .sort-label,
   .queue-footer {
@@ -1957,7 +2009,7 @@ kbd {
   }
   .detail-tabs button,
   .button {
-    font-size: 11px;
+    font-size: 12px;
   }
   .case-identifiers,
   .case-overline,
@@ -1965,10 +2017,10 @@ kbd {
     font-size: 10px;
   }
   .evidence-box p {
-    font-size: 12px;
+    font-size: 13px;
   }
   .reply-box p {
-    font-size: 12px;
+    font-size: 13px;
   }
   .reply-box .tiny,
   .guard-note p,
@@ -1977,10 +2029,10 @@ kbd {
   }
   .check-row,
   .checks-box details {
-    font-size: 11px;
+    font-size: 12px;
   }
   .academic-content {
-    font-size: 14px;
+    font-size: 16px;
   }
   .review-actions > div:first-child {
     font-size: 10px;
@@ -1993,7 +2045,7 @@ kbd {
     font-size: 10px;
   }
   .student-lead blockquote {
-    font-size: 12px;
+    font-size: 13px;
   }
   .student-lead > span {
     font-size: 10px;

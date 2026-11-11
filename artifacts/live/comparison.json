@@ -1,0 +1,50 @@
+{
+  "comparedAt": "2026-11-11T09:45:05.328266+00:00",
+  "baselineResultsHash": "ad01996588d55be28bb1469f238b0cdc71305603f8c4594861e81003aa558fa5",
+  "liveResultsHash": "c02b4d7b93b76d214241797e4a73c56ceb2ab78e80c00b5f1c3fe7f982c0f3be",
+  "reportCount": 44,
+  "groupedCases": 39,
+  "verdictRepairAgreement": 44,
+  "routeDifferenceIds": [
+    "R001",
+    "R002",
+    "R003",
+    "R004",
+    "R005",
+    "R011",
+    "R014",
+    "R016",
+    "R024"
+  ],
+  "editDifferenceIds": [
+    "R006",
+    "R007",
+    "R008",
+    "R011",
+    "R013",
+    "R014",
+    "R018",
+    "R019",
+    "R022",
+    "R024"
+  ],
+  "reviewedRouteCounts": {
+    "auto_apply": 12,
+    "faculty_review": 15,
+    "no_change": 17
+  },
+  "liveRouteCounts": {
+    "faculty_review": 24,
+    "auto_apply": 3,
+    "no_change": 17
+  },
+  "modelsUsed": [
+    "openai/gpt-oss-120b",
+    "qwen/qwen3.8-27b"
+  ],
+  "responseModesUsed": [
+    "json_object",
+    "strict_json_schema"
+  ],
+  "note": "Agreement is between two artifacts for this supplied dataset, not hidden-ground-truth accuracy."
+}

@@ -1,4 +1,5 @@
 import bundle from "../generated/bundle.json";
+import liveComparison from "../../../artifacts/live/comparison.json";
 import { Case, Taxonomy } from "./types";
 import Ajv from "ajv/dist/2020";
 import schema from "../../../contracts/result.schema.json";
@@ -9,4 +10,5 @@ for (const result of bundle.results) {
 }
 export const cases = bundle.cases as unknown as Case[];
 export const taxonomy = bundle.taxonomy as Taxonomy;
-export const manifest = bundle.manifest;
+export const manifest = bundle.manifest as typeof bundle.manifest & { provider?: string | null };
+export const comparison = liveComparison;

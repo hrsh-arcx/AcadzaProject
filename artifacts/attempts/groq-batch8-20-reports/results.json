@@ -1,0 +1,226 @@
+[
+  {
+    "reportId": "R001",
+    "questionId": "60f744b3f1b9bc7cc7b4a949",
+    "verdict": "defect",
+    "repair": "answer_key",
+    "edit": null,
+    "route": "faculty_review",
+    "confidence": 0.65,
+    "evidence": "The stored answer key is \"C\" (130 V) while the solution and blind solves both give 50 V, matching option A. The key is therefore incorrect.",
+    "student_reply": "Thank you for pointing this out; the answer key will be reviewed."
+  },
+  {
+    "reportId": "R002",
+    "questionId": "60f744b3f1b9bc7cc7b4a949",
+    "verdict": "defect",
+    "repair": "answer_key",
+    "edit": null,
+    "route": "faculty_review",
+    "confidence": 0.65,
+    "evidence": "The stored answer key is \"C\" (130 V) while the solution and blind solves both give 50 V, matching option A. The key is therefore incorrect.",
+    "student_reply": "Thank you for pointing this out; the answer key will be reviewed."
+  },
+  {
+    "reportId": "R003",
+    "questionId": "60f744b3f1b9bc7cc7b4a949",
+    "verdict": "defect",
+    "repair": "answer_key",
+    "edit": null,
+    "route": "faculty_review",
+    "confidence": 0.65,
+    "evidence": "The stored answer key is \"C\" (130 V) while the solution and blind solves both give 50 V, matching option A. The key is therefore incorrect.",
+    "student_reply": "Thank you for pointing this out; the answer key will be reviewed."
+  },
+  {
+    "reportId": "R004",
+    "questionId": "68e870ef42c06737d6e565c4",
+    "verdict": "defect",
+    "repair": "answer_key",
+    "edit": null,
+    "route": "faculty_review",
+    "confidence": 0.65,
+    "evidence": "The solution calculates the pressure as 4800 N/m², which corresponds to option D, but the stored answer key is \"A\". The key is wrong.",
+    "student_reply": "We appreciate your feedback; the answer key will be corrected."
+  },
+  {
+    "reportId": "R005",
+    "questionId": "68dea616d0cda73d07e93ae6",
+    "verdict": "defect",
+    "repair": "answer_key",
+    "edit": null,
+    "route": "faculty_review",
+    "confidence": 0.65,
+    "evidence": "The stored answer is \"2\" but both independent blind solves compute n = 1.5 and n = 5, indicating the keyed answer is inconsistent with the physics of flux through the cube.",
+    "student_reply": "Thank you for pointing this out; the answer key appears to be incorrect."
+  },
+  {
+    "reportId": "R007",
+    "questionId": "60f742f6660d187cc13a8078",
+    "verdict": "defect",
+    "repair": "answer_key",
+    "edit": null,
+    "route": "faculty_review",
+    "confidence": 0.65,
+    "evidence": "The problem statement lacks the inductance value, so the impedance cannot be determined. The stored answer \"C\" (50 Ω) is unsupported by the given data.",
+    "student_reply": "Thanks for noticing the missing data; the question will be examined further."
+  },
+  {
+    "reportId": "R008",
+    "questionId": "60f742f6660d187cc13a8078",
+    "verdict": "defect",
+    "repair": "answer_key",
+    "edit": null,
+    "route": "faculty_review",
+    "confidence": 0.65,
+    "evidence": "The problem statement lacks the inductance value, so the impedance cannot be determined. The stored answer \"C\" (50 Ω) is unsupported by the given data.",
+    "student_reply": "Thanks for noticing the missing data; the question will be examined further."
+  },
+  {
+    "reportId": "R009",
+    "questionId": "622f08d7b70e4b50e4500a1b",
+    "verdict": "defect",
+    "repair": "option_repair",
+    "edit": null,
+    "route": "faculty_review",
+    "confidence": 0.65,
+    "evidence": "The question text provides only three answer options (A, B, C) while reports note that option D is missing, indicating an incomplete set of choices.",
+    "student_reply": "We appreciate the notice; an additional option should be added to complete the question."
+  },
+  {
+    "reportId": "R010",
+    "questionId": "622f08d7b70e4b50e4500a1b",
+    "verdict": "defect",
+    "repair": "option_repair",
+    "edit": null,
+    "route": "faculty_review",
+    "confidence": 0.65,
+    "evidence": "The question text provides only three answer options (A, B, C) while reports note that option D is missing, indicating an incomplete set of choices.",
+    "student_reply": "We appreciate the notice; an additional option should be added to complete the question."
+  },
+  {
+    "reportId": "R012",
+    "questionId": "61dffbec08489156b684bd22",
+    "verdict": "defect",
+    "repair": "spelling",
+    "edit": {
+      "field": "question",
+      "find": "Epithellial tisue",
+      "replace": "Epithelial tissue"
+    },
+    "route": "auto_apply",
+    "confidence": 0.8,
+    "evidence": "Option A contains the misspelled phrase \"Epithellial tisue\", which should be corrected to \"Epithelial tissue\".",
+    "student_reply": "Good catch on the spelling; the correction improves readability."
+  },
+  {
+    "reportId": "R014",
+    "questionId": "63765a28f1d8416ae0408d89",
+    "verdict": "defect",
+    "repair": "markup_leak",
+    "edit": null,
+    "route": "faculty_review",
+    "confidence": 0.3,
+    "evidence": "The report notes that the raw LaTeX command \\frac appears in the rendered question text, indicating a markup leak. Validation blocked: Find must be a unique nonempty source span",
+    "student_reply": "Thank you for pointing this out; we’ll look into fixing the markup."
+  },
+  {
+    "reportId": "R017",
+    "questionId": "6208e80a9cb2ab67dac61bd0",
+    "verdict": "already_fixed",
+    "repair": null,
+    "edit": null,
+    "route": "no_change",
+    "confidence": 0.8,
+    "evidence": "Spelling mistake was corrected in errorHistory before this report.",
+    "student_reply": "Thanks for pointing out the spelling issue; it has already been addressed."
+  },
+  {
+    "reportId": "R023",
+    "questionId": "68ecbacb2ec87a18deba1ad7",
+    "verdict": "not_actionable",
+    "repair": null,
+    "edit": null,
+    "route": "no_change",
+    "confidence": 0.9,
+    "evidence": "The comment flags the question being placed in the \"Living World\" chapter instead of a neuroscience-related chapter. This is a categorization issue not addressed by the available repair types.",
+    "student_reply": "Appreciate the note; the chapter classification will be examined by the team."
+  },
+  {
+    "reportId": "R026",
+    "questionId": "620e23cecc50543bc7db9186",
+    "verdict": "not_actionable",
+    "repair": null,
+    "edit": null,
+    "route": "no_change",
+    "confidence": 0.65,
+    "evidence": "The comment concerns syllabus relevance, which does not require a content change.",
+    "student_reply": "The concern about syllabus scope has been noted."
+  },
+  {
+    "reportId": "R029",
+    "questionId": "68e8734442c06737d6e56da4",
+    "verdict": "no_error",
+    "repair": null,
+    "edit": null,
+    "route": "no_change",
+    "confidence": 0.65,
+    "evidence": "Both blind solves reproduce the solution and yield μ = 0.8, matching the stored answer \"A\"; the report's claim of μ = 0.4 is not supported by the calculations.",
+    "student_reply": "Your observation has been noted; the existing answer appears correct."
+  },
+  {
+    "reportId": "R032",
+    "questionId": "68dea7c2387eea3d0d95f9bb",
+    "verdict": "no_error",
+    "repair": null,
+    "edit": null,
+    "route": "no_change",
+    "confidence": 0.65,
+    "evidence": "The answer key '8' matches the computed shift of 0.08 m (8 cm) in the solution.",
+    "student_reply": "The answer aligns with the solution's calculation, so the question is correct."
+  },
+  {
+    "reportId": "R034",
+    "questionId": "695ee00b88d7701e561aabc5",
+    "verdict": "defect",
+    "repair": "solution_fix",
+    "edit": null,
+    "route": "faculty_review",
+    "confidence": 0.65,
+    "evidence": "The stored solution claims the assertion is false and the reason true, selecting answer D, but physics analysis shows the resultant intensity is twice a single wave's intensity, making the assertion false and the reason also false. No answer option matches this, so the solution is incorrect.",
+    "student_reply": "Thank you for pointing this out; the solution appears to need correction."
+  },
+  {
+    "reportId": "R038",
+    "questionId": "68f21df0941cda588bc0470b",
+    "verdict": "not_actionable",
+    "repair": null,
+    "edit": null,
+    "route": "no_change",
+    "confidence": 0.9,
+    "evidence": "The report states that selecting option A saved as B, which is a platform/app behaviour problem rather than a content defect. This falls under the \"app_issue\" category, but the comment does not provide enough detail to modify the question content.",
+    "student_reply": "Thanks for reporting; the app's answer‑recording will be looked into by the developers."
+  },
+  {
+    "reportId": "R040",
+    "questionId": "6264197209f4fd65f58f5707",
+    "verdict": "no_error",
+    "repair": null,
+    "edit": null,
+    "route": "no_change",
+    "confidence": 0.9,
+    "evidence": "Both blind solves agree that option C (Golden rice) is correct, matching the stored answer key; the report’s comment \"wrong\" does not reflect an actual defect.",
+    "student_reply": "Your observation has been noted; the answer appears to be correct as written."
+  },
+  {
+    "reportId": "R042",
+    "questionId": "63c7cce12981ed154ee92c94",
+    "verdict": "not_actionable",
+    "repair": null,
+    "edit": null,
+    "route": "no_change",
+    "confidence": 0.65,
+    "evidence": "The report concerns an incorrect chapter assignment (Geometrical optics) for a physics question about displacement current, which is a metadata issue not covered by the taxonomy. No content defect is identified.",
+    "student_reply": "Thanks for pointing this out; the chapter label will be reviewed by the faculty."
+  }
+]
