@@ -301,6 +301,7 @@ button:hover:not(:disabled) {
 .review-layout {
   display: grid;
   grid-template-columns: 290px minmax(380px, 1fr) 276px;
+  grid-template-rows: minmax(0, 1fr);
   min-height: 660px;
   height: calc(100vh - 332px);
   border: 1px solid #dde3d9;
@@ -530,6 +531,7 @@ kbd {
 }
 .detail-panel {
   min-width: 0;
+  min-height: 0;
   display: flex;
   flex-direction: column;
   background: #fffefa;
@@ -862,6 +864,7 @@ kbd {
   margin-left: auto;
 }
 .insight-panel {
+  min-height: 0;
   background: #f9faf5;
   border-left: 1px solid var(--line);
   padding: 23px 19px;

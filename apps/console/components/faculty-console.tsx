@@ -314,7 +314,7 @@ export default function FacultyConsole() {
       <div className="workspace-shell">
         <header className="topbar">
           <div className="wordmark">
-            acadza<span> / </span>
+            Acadza<span> / </span>
             <span className="workspace-name">Review room</span>
           </div>
           <div className="topbar-right">

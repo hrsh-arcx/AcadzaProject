@@ -35,6 +35,7 @@ Update this file with actual results, failures, commands, and limits as they occ
 
 ## Latest verified outcomes
 
+- A reported desktop scroll failure was reproduced at 1920 x 877 on R023: the centre grid item expanded beyond its fixed-height layout, clipping the action footer. Grid row and panel minimum sizing were corrected. Playwright/Edge then confirmed the centre content scrolls, R023's **Approve finding** and R001's **Approve correction** buttons are visible, and action footers remain within their panels at 390, 900, 1024, 1280, and 1920px widths. No approval was submitted during this layout check.
 - Python suite: **46 passed**, including batch ID coverage, size fallback, blind-input isolation, Groq request/limit behavior, key consistency, MCQ serialization, and atomic type-migration guards.
 - Console suite: **13 passed**, including the actual route handlers' unconfigured-storage, cross-origin, and request-size checks.
 - The final production Next.js build and TypeScript check passed after the dashboard's responsive text, per-case model labels, blind answers, and completed-run comparison card were added. HTTP GET on port 3100 returned 200 and the report queue. A subsequent local Edge/Playwright preview captured and visually checked desktop and mobile layouts and the Proposed change tab after restarting the stale preview server.
