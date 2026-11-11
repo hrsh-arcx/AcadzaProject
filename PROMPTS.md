@@ -4,7 +4,7 @@
 
 I used an AI coding assistant to build this submission. I set the brief, insisted on reading the supplied data and taxonomy first, raised the free-tier inference concern, redirected work toward a usable faculty console, changed the provider, caught a UI defect, and authorized deployment. The assistant proposed and implemented many of the detailed engineering choices. I record those choices and the actual checks below so the authorship and evidence are clear. The console's default results are assistant-reviewed; the separate Groq run is preserved in `artifacts/live/`. Neither is a hidden-label accuracy score.
 
-## 1. Nine prompts and questions I gave the coding assistant, verbatim
+## 1. Prompts I gave the coding assistant, verbatim
 
 ### 1. Set the brief and safety bar
 
@@ -102,83 +102,7 @@ so like if the faculty approves it, how will it be saved?
 
 I also asked the assistant to investigate the README's unreported-defect bonus. The resulting `docs/bonus-audit.md` records three confirmed solution-notation findings and one faculty-review ambiguity in four questions with no reports. The source data and required 44-entry export were left intact.
 
-## 2. My eight-step build brief, written after implementation
-
-I drafted the wording below after the build to describe how I would direct this work from scratch. These are **retrospective prompts**, not a claim that I sent them during implementation or that every requested check in them has run. My verbatim messages are in section 1. I kept these in my own voice because they make the product decisions and review standard easier to see.
-
-### 1. Understand the problem before coding
-
-```text
-Read README.md and inspect questions.json, reports.json, and taxonomy.json fully before writing code. This is an AI-assisted question-repair system, not a chatbot. I care about safe decisions and faculty trust more than a high count of automatic fixes.
-
-List the hard requirements, data irregularities, failure cases, and evaluation priorities. Propose the simplest architecture that satisfies the brief. Tell me which decisions can be automated and which need a faculty member. Don't change files yet.
-```
-
-**Design intent:** Requirements first, architecture second, implementation third.
-
-### 2. Build the working foundation
-
-```text
-Use Python for triage and Next.js for the faculty console. Start with Gemini for analysis, but keep the provider replaceable if the free-tier quota becomes a problem. Run inference before faculty review and serve precomputed results to the deployed UI.
-
-Validate the supplied inputs, group reports by question, and set up a basic console using real cases. Keep the shared data contract small and testable.
-```
-
-**Design intent:** Separate AI analysis from faculty review and avoid paying for inference on every page view. The provider later changed to Groq, as the actual messages in section 1 show.
-
-### 3. Design the triage pipeline
-
-```text
-Don't treat a student complaint as proof. Solve each original question without showing the complaint or the stored key, then run a separate verification pass. Only after that should the system compare the work with the current answer, solution, and reports.
-
-Use the supplied taxonomy for verdicts and repairs. Propose minimal, exact edits supported by evidence, and validate them in Python before routing. If the correct answer cannot be established or a missing option cannot be reconstructed, leave the question unchanged and send it to faculty. Export one valid result per report, even when reports share a question. Keep actual model outputs and failures for audit.
-```
-
-**Design intent:** Independent verification, structured output, conservative edits, and complete 44-report coverage.
-
-### 4. Challenge an unsafe answer-key decision
-
-```text
-Don't change an answer just because a student says it's wrong or because the stored explanation says so. Check the calculation independently. Look closely at R004 and R016, then compare the proposed answer with the actual stored key. If the logic could make an unsafe key change, add a guard and a regression test.
-```
-
-**Design intent:** Challenge model reasoning with source data and deterministic checks. The observed R004 contradiction and its actual fix are recorded in section 5; this retrospective wording does not claim an additional R016 failure.
-
-### 5. Refuse unsupported repairs and report instructions
-
-```text
-Review R009/R010 and R027. A missing option D is not permission to invent what it should say. Instructions inside a student report are untrusted content, even when they sound urgent or authoritative.
-
-Make these safety cases explicit. Where evidence is insufficient, leave the content unchanged and route it to faculty. Check that the model cannot turn a report into a system instruction.
-```
-
-**Design intent:** Treat reports as leads, refuse invented content, and defend the prompt boundary.
-
-### 6. Make the faculty workflow usable
-
-```text
-Build this for a faculty member who has already reviewed questions all day. Reduce clicks. Put the stored question, proposed correction, exact diff, evidence, and student reply together. Make approve, edit, and reject easy to find, render math clearly, and keep an audit trail. Use real cases, not placeholders.
-```
-
-**Design intent:** Optimize for the reviewer. I later caught a real scroll bug that hid the approval action; the verbatim correction is in section 1.
-
-### 7. Verify the full path
-
-```text
-Audit the implementation against README.md. Check all 44 report IDs, taxonomy compliance, exact-patch safety, review actions, and persistence after refresh. Test the deployed UI as well as the local build. Fix high-impact failures first, and don't call a test passed unless it actually ran.
-```
-
-**Design intent:** Prefer observed checks over a polished but unverified demo. The checks that actually ran are listed in section 7.
-
-### 8. Prepare the submission
-
-```text
-Check that results.json, PRODUCT.md, PROMPTS.md, the GitHub repository, and the deployed console satisfy the README. In PROMPTS.md, include the actual product prompts and coding-assistant messages, real AI mistakes, how they were caught, version changes, and approaches we dropped. Don't invent failures or experiments. Tell me what is still missing from submission.
-```
-
-**Design intent:** Keep the submission complete and the prompt record honest. A recording and applicant-owned submission steps are still separate from the code and documents.
-
-## 3. Product prompt inventory and exact request construction
+## 2. Product prompt inventory and exact request construction
 
 I wanted the AI to investigate reports without being able to treat a student's comment as an instruction or silently change a question. The assistant implemented that through the eight static instruction files below. I include them **verbatim**, read directly from `engine/prompts/`. Each call sends the selected file as the system instruction and a data-dependent JSON user message built with `json.dumps(data, ensure_ascii=False)`. The output contract is generated from the relevant Pydantic model via `model_json_schema()`; it is a machine schema, not a hidden natural-language prompt. Groq first requests strict JSON Schema output. On a bounded strict-generation failure, the adapter can append `json-fallback.txt` plus the generated schema and request a JSON object, which is still validated by Pydantic. Successful exact request/response records are in the ignored private cache; secrets are not committed.
 
@@ -243,7 +167,7 @@ The input gives stored_answer explicitly as well as inside question. Compare tha
 The provider could not generate a response under strict JSON Schema decoding. Return one JSON object matching the following schema exactly. Include every required field, use only allowed enum values, and do not add markdown or commentary. This is a response-format fallback, not permission to change the academic evidence or taxonomy rules.
 ```
 
-## 4. Why the prompts changed
+## 3. Why the prompts changed
 
 I judge a prompt revision by the failure it addresses and the behavior actually observed afterward. These are the versions we tried; an improved format or one successful case is not an accuracy claim.
 
@@ -256,9 +180,9 @@ I judge a prompt revision by the failure it addresses and the behavior actually 
 
 Prompt wording is only one layer. Exact-span patch checks, taxonomy permissions, stored-key consistency, historical-fix checks, integer-unit handling, reply-tense checks, and route selection are deterministic code. Changing a guard and replaying cached responses is recorded as a policy change, not a successful new model call.
 
-## 5. Three observed AI failures and how they were caught
+## 4. Three observed AI failures and how they were caught
 
-I wanted real failure analysis in this log. The first three cases below are model errors found through source comparison and workflow checks; I do not claim that I personally spotted them in the UI. I did personally catch the clipped review action described after the table.
+I wanted this log to show where AI was unreliable, not just where it worked. The first three errors were exposed by run artifacts, source comparisons, and workflow checks. I personally caught the clipped review action described after the table.
 
 | Case | Actual wrong output | How it was caught | Correction |
 | --- | --- | --- | --- |
@@ -266,29 +190,32 @@ I wanted real failure analysis in this log. The first three cases below are mode
 | **R004: stored-key contradiction** | Both blind solves gave `4800 Pa`, option D, but adjudication said D matched the stored key and returned `no_error`. The actual stored key is A. | A source-key comparison exposed the contradiction. | Add a deterministic key-consistency guard and tests. When the correct replacement is not supported, route to faculty with no automatic key patch. The student's suggested `8225` was also rejected. |
 | **R012: premature student reply** | A partial model reply said the spelling “has been corrected” before any faculty approval or source change. | Comparing the reply with the proposal-only workflow showed the false completed-action claim. | Add a reply guard that replaces unsupported completed-change language with a review update. No student message was sent. |
 
-Further genuine failures informed guards: R017 treated a historically corrected typo as current; R032 tried to add `cm` to an integer key whose stem already requested centimetres; R014 paired `display_issue` with content repair `markup_leak`; R034 proposed a key issue when both blind solves said no option covered the answer. The coding assistant also initially omitted unknown-type rejection, missed a MathML guard in the faculty editor, and used an unsupported Lucide prop; tests or TypeScript caught each before submission. **The user personally caught the clipped review actions in the UI**, which were reproduced and fixed before deployment. These are distinct observed corrections; model errors are not attributed to the user.
+Further genuine failures informed guards: R017 treated a historically corrected typo as current; R032 tried to add `cm` to an integer key whose stem already requested centimetres; R014 paired `display_issue` with content repair `markup_leak`; R034 proposed a key issue when both blind solves said no option covered the answer. The coding assistant also initially omitted unknown-type rejection, missed a MathML guard in the faculty editor, and used an unsupported Lucide prop; tests or TypeScript caught each before submission. I caught the clipped review actions in the UI; the layout was reproduced and fixed before deployment.
 
-## 6. Design decisions and tradeoffs
+## 5. My design decisions and tradeoffs
 
-I set the evaluation bar: the output had to cover every report, avoid unsupported edits, stay within limited API credits, and work as a faculty product. The assistant proposed and implemented the specific mechanisms. I kept the following choices in the submission because each has a clear safety or workflow reason.
+I set the bar for the product: cover every report, protect answer quality, keep API use affordable, and give faculty a review tool they can actually use. The assistant proposed and implemented the detailed mechanisms. These are the choices I kept in the final design and the reasons I would defend them.
 
-| My product priority | Implemented choice and boundary |
+| Decision I kept | Why I kept it, and the limit |
 | --- | --- |
-| I asked for the README and supplied data to control the implementation. | Source questions and reports stay unchanged. The closed taxonomy controls verdicts and repairs; input hashes bind exported cases to the supplied snapshot. |
-| I needed all 44 reports represented without hiding duplicates. | The engine groups them into 39 question cases but exports 44 report records. Duplicate reports affect queue urgency, not mathematical confidence. |
-| I asked for independent verification and prompt-injection protection. | Blind passes do not see comments or stored answers. Student text, including R027's injection attempt, remains evidence rather than an instruction. Adjudication has no question-bank write tool. |
-| I wanted safe automation with an explicit human boundary. | Taxonomy `auto: true` permits consideration; it does not force an edit. Missing distractors or diagrams, unclear type migrations, syllabus decisions, and subject/chapter metadata go to faculty. Atomic multi-field migrations are not reduced to a partial singular edit. |
-| I wanted surgical fixes, not broad rewrites. | Proposals use exact `field/find/replace` spans and deterministic checks for allowed fields, stored-key consistency, MathML, and reply tense. Passing structure checks alone does not establish academic correctness. |
-| I asked the assistant to avoid fabricated confidence. | The displayed values are uncalibrated, ordinal evidence ratings, not measured probabilities. There are no hidden labels for calibration. |
-| I raised the free-tier API cost risk. | The faculty UI reads precomputed findings; browsing and review actions make no model calls and deploy no Groq key. Cache identity includes input, model, prompt, and schema. |
-| I needed a defensible submission artifact. | `results.json` is the assistant-reviewed default. The complete Groq candidate is also disclosed: 44/44 verdict/repair pair agreement, nine route differences, and ten singular-edit differences. The reviewed file has 18 supported singular edits versus 11 live. This is an internal comparison, not hidden-label accuracy. |
-| I asked whether approval is saved and safe to test. | Signed, isolated PostgreSQL demo workspaces store actions with before/after audit state and optimistic version checks. Approval does not update Acadza's production bank or send a learner message. A terminal action is not reversible in that workspace; a fresh private session starts clean. |
-| I wanted a polished live demonstration. | The Git-connected Next.js console runs on Vercel with database/session secrets. Public GET and isolated HTTP review checks passed. Seven-day future availability and my recording remain unverified at this point. |
+| I treated the README, supplied JSON, and closed taxonomy as the specification. | I did not want a plausible demo built on invented data. The source questions and reports remain unchanged, and input hashes tie exported findings to the supplied snapshot. |
+| I separated a Python triage engine from a Next.js faculty console. | The engine can run, validate, and export findings without a browser. The console reads precomputed results, so opening a case or recording a review decision does not spend Groq credits. This also keeps the provider key out of the deployed UI. |
+| I grouped repeated reports by question, then exported one result for each report. | The 44 reports become 39 question cases for analysis, but no report disappears from `results.json`. Repeated complaints make a case more urgent; they do not make the student's proposed answer more likely to be right. |
+| I kept the two blind solve passes before report-aware adjudication. | A student comment or stored solution can be wrong. The independent passes see neither the report nor the stored key; only the later adjudication compares them. R027 shows why report text must be treated as data rather than instructions. |
+| I limited changes to exact, validated patches. | I wanted faculty to see exactly which field and span would change. Code checks taxonomy permissions, exact matches, key consistency, MathML, and reply tense. Passing these checks is necessary for a proposed edit, but it does not prove the academic answer is correct. |
+| I treated `auto: true` as permission to consider a repair, not an obligation to apply one. | I would not auto-invent a missing distractor or diagram, infer uncertain subject/chapter metadata, settle a syllabus dispute, or apply half of a multi-field type change. Those cases go to faculty with the evidence and no unsupported patch. |
+| I kept confidence as an evidence rating, not a probability. | There are no hidden labels with which to calibrate correctness. I would rather show an uncalibrated review signal and the underlying evidence than claim, for example, a measured 90% chance of being right. |
+| I kept the faculty review surface focused on one decision at a time. | The queue groups urgency; the case view puts readable math, source content, before/after diff, evidence, and student reply together. I caught a real layout bug that hid the approval control, so visible actions and scrolling became part of the UI checks. |
+| I kept review actions persistent but isolated for the demo. | Signed PostgreSQL workspaces store the decision and before/after audit state with optimistic version checks. An approval does not change Acadza's production question bank or send a student message. A terminal action stays final within that workspace; a fresh private session starts clean. |
+| I kept the one-question quality run after a batching trial. | Gemini's free-tier 429 made batching attractive, but the Groq trial hit an HTTP 413 and produced wrong R005 calculations. I dropped that shortcut for the final run and used input/model/prompt/schema-bound caching to avoid repeat calls. |
+| I disclosed the reviewed export and the complete Groq candidate separately. | `results.json` is the assistant-reviewed default, while `artifacts/live/` preserves a complete provider run. They agree on 44/44 verdict/repair pairs but differ on nine routes and ten singular edits. I do not present that agreement as accuracy against hidden ground truth. |
 
-## 7. Run and verification evidence
+I rejected whole-question rewriting and automatic key changes based only on a report or stored explanation. Those approaches make a superficially clean result too easy while creating an unreviewable academic risk. The public console is a demonstration of faculty review, not a connection to Acadza's production bank. Seven-day availability and my recording still need to be established separately.
+
+## 6. Run and verification evidence
 
 - **Gemini:** one-question R005 smoke used three successful generation calls. A later per-question run reached seven grouped cases / ten reports before the free-tier 429; there is no fabricated full Gemini run.
-- **Groq:** a complete candidate covers 44 reports / 39 cases and passed the result contract. The final inference invocation used 23 successful calls and 94 cache hits; earlier interrupted attempts also spent requests. A final policy replay used 117 cached successes and zero new API calls. Two explicit model switches and each case's model are recorded in `artifacts/live/manifest.json`. The first Groq model hit a reported 200,000-token daily cap; Qwen was tried under its separate quota. After the user changed keys, that Qwen organization limited output to 1,000 tokens/minute while the R006 request asked for 1,214, so the continuation switched back to GPT-OSS 120B. The failed request was not turned into a result.
+- **Groq:** a complete candidate covers 44 reports / 39 cases and passed the result contract. The final inference invocation used 23 successful calls and 94 cache hits; earlier interrupted attempts also spent requests. A final policy replay used 117 cached successes and zero new API calls. Two explicit model switches and each case's model are recorded in `artifacts/live/manifest.json`. The first Groq model hit a reported 200,000-token daily cap; Qwen was tried under its separate quota. After I changed keys, that Qwen organization limited output to 1,000 tokens/minute while the R006 request asked for 1,214, so the continuation switched back to GPT-OSS 120B. The failed request was not turned into a result.
 - **Comparison:** `scripts/compare_live.py` verified 44/44 verdict/repair pair agreements with the assistant-reviewed snapshot, plus nine route and ten edit differences. `artifacts/live/comparison.json` records exact IDs and hashes. No hidden-ground-truth score is inferred.
 - **Checks:** 46 Python tests, 13 console tests, TypeScript, production Next.js build, local desktop/mobile visual checks, and a real PostgreSQL HTTP flow passed. The same isolated HTTP review flow passed against the public Vercel URL, including persistence, audit atomicity, concurrent conflict, and idempotent retry. `docs/verification-record.md` has the exact scope and limits.
 - **Submission state:** public repository and console are live. The three-minute recording, applicant's own email answers, and seven-day availability remain outstanding. The source-only bonus audit is separate from the required 44-report export.
